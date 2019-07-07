@@ -1,3 +1,7 @@
+## 0.1.2+3
+
+* Improved Travis CI setup.
+
 ## 0.1.2+2
 
 * Updated description.

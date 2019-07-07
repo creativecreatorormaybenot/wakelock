@@ -1,14 +1,12 @@
 # Based on https://medium.com/@nocnoc/flutter-unit-widget-and-integration-testing-with-ios-and-android-emulators-on-travis-ci-df17ed7c3be
 matrix:
   exclude:
-    - &integration-test-stage
-      stage: Integration Testing
+    - stage: Integration Testing
+      name: Android
       sudo: true
       dist: trusty
       language: generic
       os: linux
-      env:
-        - platform=Android
       before_install:
         - sudo apt-get install -y --no-install-recommends lib32stdc++6 libstdc++6 > /dev/null
         # Install the Android SDK Dependency.
@@ -51,14 +49,11 @@ matrix:
 
         # cd to example
         - cd example
-      script: travis_retry flutter driver test_driver/app.dart
+      script: flutter driver test_driver/app.dart
   include:
-    - <<: *integration-test-stage
+    - name: iOS
       os: osx
       osx_image: xcode10.2
-      env:
-        - platform=iOS
-      # Run integration tests on ios
       before_install:
         - open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app
         - export HOMEBREW_NO_AUTO_UPDATE=1
