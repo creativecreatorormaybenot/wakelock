@@ -45,7 +45,7 @@ jobs:
         - flutter doctor -v
 
         # Wait for emulator to finish startup.
-        - ./ci/wait.sh
+        #- ./ci/wait.sh
         - adb shell input keyevent 82
         - flutter devices
 
@@ -54,7 +54,7 @@ jobs:
       script: travis_retry flutter driver test_driver/app.dart
     - <<: *integration-test-stage
       os: osx
-      osx_image: xcode8.0
+      osx_image: xcode10.2
       env: iOS
       # Run integration tests on ios
       before_install:
