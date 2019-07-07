@@ -1,3 +1,7 @@
+## 0.1.0+1
+
+* Fixed dependency issue.
+
 ## 0.1.0
 
 * Bumped version to indicate that the plugin is fully usable.
