@@ -1,6 +1,6 @@
 name: wakelock
 description: Wakelock is a Flutter plugin that allows you to easily toggle the Android and iOS screen wakelock on or off in order to prevent the screen from automatically turning off.
-version: 0.1.0+3
+version: 0.1.1
 author: creativecreatorormaybenot <19204050+creativecreatorormaybenot@users.noreply.github.com>
 homepage: https://github.com/creativecreatorormaybenot/wakelock
 
