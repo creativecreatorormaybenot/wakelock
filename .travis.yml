@@ -1,13 +1,15 @@
 # Originally based on https://medium.com/@nocnoc/flutter-unit-widget-and-integration-testing-with-ios-and-android-emulators-on-travis-ci-df17ed7c3be
 language: generic
-sudo: true
 
 matrix:
   exclude:
     - stage: Integration Testing
       name: Android
+
       os: linux
       dist: trusty
+      sudo: true
+
       before_install:
         - sudo apt-get install -y --no-install-recommends lib32stdc++6 libstdc++6 > /dev/null
         # Install the Android SDK Dependency.
@@ -48,13 +50,14 @@ matrix:
         - adb shell input keyevent 82
         - flutter devices
 
-        # cd to example
         - cd example
       script: flutter driver test_driver/app.dart
   include:
     - name: iOS
+
       os: osx
       osx_image: xcode10.2
+
       before_install:
         - open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app
         - export HOMEBREW_NO_AUTO_UPDATE=1
