@@ -1,12 +1,13 @@
-# Based on https://medium.com/@nocnoc/flutter-unit-widget-and-integration-testing-with-ios-and-android-emulators-on-travis-ci-df17ed7c3be
+# Originally based on https://medium.com/@nocnoc/flutter-unit-widget-and-integration-testing-with-ios-and-android-emulators-on-travis-ci-df17ed7c3be
+language: generic
+sudo: true
+
 matrix:
   exclude:
     - stage: Integration Testing
       name: Android
-      sudo: true
-      dist: trusty
-      language: generic
       os: linux
+      dist: trusty
       before_install:
         - sudo apt-get install -y --no-install-recommends lib32stdc++6 libstdc++6 > /dev/null
         # Install the Android SDK Dependency.
