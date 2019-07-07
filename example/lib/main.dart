@@ -17,32 +17,36 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) => MaterialApp(
           home: Scaffold(
               body: Center(
-                  child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: <Widget>[
-        FlatButton(
-          child: const Text('enable wakelock'),
-          onPressed: () {
-            // The following code will enable the wakelock on Android or iOS using the wakelock plugin.
-            setState(() {
-              Wakelock.enableWakelock();
-            });
-          },
-        ),
-        FlatButton(
-          child: const Text('disable wakelock'),
-          onPressed: () {
-            // The following code will disable the wakelock on Android or iOS using the wakelock plugin.
-            setState(() {
-              Wakelock.disableWakelock();
-            });
-          },
-        ),
-        FutureBuilder(
-          future: Wakelock.isWakelockEnabled,
-          builder: (context, AsyncSnapshot<bool> snapshot) {
-            // The use of FutureBuilder is necessary here to await the bool value from isWakelockEnabled.
-            if (!snapshot.hasData) return Container(); // The Future is retrieved so fast that you will not be able to see any loading indicator.
-            return Text('wakelock is currently ${snapshot.data ? 'enabled' : 'disabled'}');
-          },
-        )
-      ]))));
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
+            FlatButton(
+              child: const Text('enable wakelock'),
+              onPressed: () {
+                // The following code will enable the wakelock on Android or iOS using the wakelock plugin.
+                setState(() {
+                  Wakelock.enableWakelock();
+                });
+              },
+            ),
+            FlatButton(
+              child: const Text('disable wakelock'),
+              onPressed: () {
+                // The following code will disable the wakelock on Android or iOS using the wakelock plugin.
+                setState(() {
+                  Wakelock.disableWakelock();
+                });
+              },
+            ),
+            FutureBuilder(
+              future: Wakelock.isWakelockEnabled,
+              builder: (context, AsyncSnapshot<bool> snapshot) {
+                // The use of FutureBuilder is necessary here to await the bool value from isWakelockEnabled.
+                if (!snapshot.hasData)
+                  return Container(); // The Future is retrieved so fast that you will not be able to see any loading indicator.
+                return Text(
+                    'wakelock is currently ${snapshot.data ? 'enabled' : 'disabled'}');
+              },
+            )
+          ]))));
 }

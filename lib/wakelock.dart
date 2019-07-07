@@ -16,11 +16,13 @@ class Wakelock {
 
   /// This can simply be called using `Wakelock.enableWakelock()` and does not return anything.
   /// You can await the [Future] to wait for the operation to complete.
-  static Future<void> enableWakelock() => _channel.invokeMethod('toggleWakelock', {'enable': true});
+  static Future<void> enableWakelock() =>
+      _channel.invokeMethod('toggleWakelock', {'enable': true});
 
   /// This can simply be called using `Wakelock.disableWakelock()` and does not return anything.
   /// You can await the [Future] to wait for the operation to complete.
-  static Future<void> disableWakelock() => _channel.invokeMethod('toggleWakelock', {'enable': false});
+  static Future<void> disableWakelock() =>
+      _channel.invokeMethod('toggleWakelock', {'enable': false});
 
   /// You can simply use this function to toggle the wakelock using a [bool] value.
   /// ```dart
@@ -28,9 +30,11 @@ class Wakelock {
   /// Wakelock.toggleWakelock(enable);
   /// ```
   /// You can await the [Future] to wait for the operation to complete.
-  static Future<void> toggleWakelock(bool enable) => _channel.invokeMethod('toggleWakelock', {'enable': enable});
+  static Future<void> toggleWakelock(bool enable) =>
+      _channel.invokeMethod('toggleWakelock', {'enable': enable});
 
   /// If you want to retrieve the current wakelock status, you will have to call [Wakelock.isWakelockEnabled]
   /// and await its result: `bool isWakelockEnabled = await Wakelock.isWakelockEnabled()`
-  static Future<bool> get isWakelockEnabled => _channel.invokeMethod('isWakelockEnabled');
+  static Future<bool> get isWakelockEnabled =>
+      _channel.invokeMethod('isWakelockEnabled');
 }
