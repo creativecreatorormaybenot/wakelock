@@ -1,6 +1,7 @@
 ## 0.1.0+1
 
 * Fixed dependency issue.
+* Removed unnecessary dependencies.
 
 ## 0.1.0
 
