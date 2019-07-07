@@ -46,7 +46,9 @@ bool isEnabled = await Wakelock.isEnabled;
 
 If you want to wait for the wakelock toggle on Android or iOS to complete (which takes an insignificant amount of time), you can also await either of `Wakelock.enable`, `Wakelock.disable`, and `Wakelock.toggle`.
 
-## Note
+## Notes
 
 This plugin is originally based on [`screen`](https://pub.dev/packages/screen).  
 Specifically, the wakelock functionality was extracted into this plugin due to a lack of maintenance.
+
+If you want to contribute to this plugin, follow the [contributing guide](https://github.com/creativecreatorormaybenot/wakelock/blob/master/CONTRIBUTING.md).
