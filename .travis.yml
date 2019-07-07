@@ -7,8 +7,8 @@ matrix:
       dist: trusty
       language: generic
       os: linux
-      env: Android
-      # Run integration tests on Android
+      env:
+        - platform=Android
       before_install:
         - sudo apt-get install -y --no-install-recommends lib32stdc++6 libstdc++6 > /dev/null
         # Install the Android SDK Dependency.
@@ -56,22 +56,26 @@ matrix:
     - <<: *integration-test-stage
       os: osx
       osx_image: xcode10.2
-      env: iOS
+      env:
+        - platform=iOS
       # Run integration tests on ios
       before_install:
         - open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app
         - export HOMEBREW_NO_AUTO_UPDATE=1
+
         - brew install libimobiledevice
         - brew install ideviceinstaller
         - brew install ios-deploy
         - brew install cocoapods || echo 'ignore exit(1)'
         - brew link --overwrite cocoapods
 
-        - wget --quiet --output-document=flutter.zip https://storage.googleapis.com/flutter_infra/releases/dev/macos/flutter_macos_v1.7.11-dev.zip && unzip -qq flutter.zip > /dev/null && rm flutter.zip
+        - git clone -b master https://github.com/flutter/flutter.git
+        - ./flutter/bin/flutter --version
+
         - export PATH="$PATH":"$HOME/.pub-cache/bin"
         - export PATH=$PWD/flutter/bin:$PWD/flutter/bin/cache/dart-sdk/bin:$PATH
+
         - flutter doctor -v
 
-        # cd to example
         - cd example
-      script: travis_retry flutter driver test_driver/app.dart
+      script: flutter driver test_driver/app.dart
