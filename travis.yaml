@@ -13,7 +13,7 @@ before_script:
   - flutter doctor
 script:
   - set -e
-  - ./scripts/drive.sh
+  - ./ci/drive.sh
 matrix:
   fast_finish: true
 cache:
