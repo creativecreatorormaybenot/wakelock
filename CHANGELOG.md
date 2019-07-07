@@ -1,3 +1,8 @@
+## 0.1.2+1 (Unreleased)
+
+* Added integration testing.
+* Removed unnecessary Android Manifest permission.
+
 ## 0.1.2
 
 * Changed `Wakelock.toggle`'s parameter to a named parameter.

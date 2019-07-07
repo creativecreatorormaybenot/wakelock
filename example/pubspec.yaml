@@ -13,5 +13,9 @@ dev_dependencies:
   wakelock:
     path: ../
 
+  flutter_driver:
+    sdk: flutter
+  test:
+
 flutter:
   uses-material-design: true
