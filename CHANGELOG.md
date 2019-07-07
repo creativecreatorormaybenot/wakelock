@@ -1,7 +1,7 @@
 ## 0.1.2+2
 
 * Updated description.
-* Latest Flutter master is used in integration tests now.
+* Flutter master is used in integration tests now.
 
 ## 0.1.2+1
 
