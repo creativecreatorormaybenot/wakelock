@@ -47,9 +47,12 @@ jobs:
         - flutter doctor -v
 
         # Wait for emulator to finish startup.
-        - ./script/android-wait-for-emulator.sh
+        - ./ci/wait.sh
         - adb shell input keyevent 82
         - flutter devices
+
+        # cd to example
+        - cd example
       script: travis_retry flutter driver test_driver/app.dart
     - <<: *integration-test-stage
       os: osx
@@ -72,4 +75,7 @@ jobs:
         - export PATH="$PATH":"$HOME/.pub-cache/bin"
         - export PATH=$PWD/flutter/bin:$PWD/flutter/bin/cache/dart-sdk/bin:$PATH
         - flutter doctor -v
+
+        # cd to example
+        - cd example
       script: travis_retry flutter driver test_driver/main.dart

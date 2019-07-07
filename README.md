@@ -1,4 +1,4 @@
-# Wakelock [![](https://img.shields.io/pub/v/wakelock.svg)](https://pub.dev/packages/wakelock)
+# Wakelock [![](https://img.shields.io/pub/v/wakelock.svg)](https://pub.dev/packages/wakelock) [![](https://travis-ci.com/creativecreatorormaybenot/wakelock.svg?branch=master)](https://travis-ci.com/creativecreatorormaybenot/wakelock)
 
 This plugin allows you to enable and toggle the Android and iOS screen wakelock, which prevents the screen from turning off automatically.  
 Essentially, this allows you to keep the device awake, i.e. prevent the phone or tablet from sleeping.
