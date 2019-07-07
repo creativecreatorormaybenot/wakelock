@@ -39,8 +39,8 @@ jobs:
         - $ANDROID_HOME/emulator/emulator -avd test -no-audio -no-window -gpu swiftshader &
 
         # install pre-compiled flutter
-        - FLUTTER_CHANNEL=stable
-        - FLUTTER_VERSION=1.0.0-${FLUTTER_CHANNEL}
+        - FLUTTER_CHANNEL=master
+        - FLUTTER_VERSION=v1.8.1-pre.23-${FLUTTER_CHANNEL}
         - wget --quiet --output-document=flutter.tar.xz https://storage.googleapis.com/flutter_infra/releases/${FLUTTER_CHANNEL}/linux/flutter_linux_v${FLUTTER_VERSION}.tar.xz && tar xf flutter.tar.xz > /dev/null && rm flutter.tar.xz
         - export PATH="$PATH":"$HOME/.pub-cache/bin"
         - export PATH=$PWD/flutter/bin:$PWD/flutter/bin/cache/dart-sdk/bin:$PATH
@@ -69,8 +69,8 @@ jobs:
         - brew link --overwrite cocoapods
 
         # install pre-compiled flutter
-        - FLUTTER_CHANNEL=stable
-        - FLUTTER_VERSION=1.0.0-${FLUTTER_CHANNEL}
+        - FLUTTER_CHANNEL=master
+        - FLUTTER_VERSION=v1.8.1-pre.23-${FLUTTER_CHANNEL}
         - wget --quiet --output-document=flutter.zip https://storage.googleapis.com/flutter_infra/releases/${FLUTTER_CHANNEL}/macos/flutter_macos_v${FLUTTER_VERSION}.zip && unzip -qq flutter.zip > /dev/null && rm flutter.zip
         - export PATH="$PATH":"$HOME/.pub-cache/bin"
         - export PATH=$PWD/flutter/bin:$PWD/flutter/bin/cache/dart-sdk/bin:$PATH
