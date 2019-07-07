@@ -24,7 +24,7 @@ The following steps are based on [flutter/plugin's contributing guide](https://g
 
 After having followed these steps, you are ready to [create a pull request](https://help.github.com/en/articles/creating-a-pull-request-from-a-fork).  
 The GitHub interface makes this very easy by providing a button on your fork page that creates a pull request with changes from a recently pushed to branch.  
-Alternatively, you can also use `git pull-request` when using [GitHub hub](https://hub.github.com/).
+Alternatively, you can also use `git pull-request` via [GitHub hub](https://hub.github.com/).
 
 # Notes
 
