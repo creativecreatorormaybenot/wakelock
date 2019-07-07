@@ -30,13 +30,13 @@ import 'package:wakelock/wakelock.dart';
 // ...
 
 // The following lines of code toggle the wakelock based on a bool value.
-bool enable = true;
+bool on = true;
 // The following statement enables the wakelock.
-Wakelock.toggle(enable);
+Wakelock.toggle(on: on);
 
-enable = false;
+on = false;
 // The following statement disables the wakelock.
-Wakelock.toggle(enable);
+Wakelock.toggle(on: on);
 
 // If you want to retrieve the current wakelock status,
 // you will have to be in an async scope

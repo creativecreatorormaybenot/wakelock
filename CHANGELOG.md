@@ -1,3 +1,8 @@
+## 0.1.2
+
+* Changed `Wakelock.toggle`'s parameter to a named parameter.
+* Improved iOS implementation.
+
 ## 0.1.1+2
 
 * Made the plugin description more concise.

@@ -12,11 +12,16 @@
 - (void)handleMethodCall:(FlutterMethodCall*)call result:(FlutterResult)result {
   if ([@"toggle" isEqualToString:call.method]) {
     NSNumber *enable = call.arguments[@"enable"];
-    [[UIApplication sharedApplication] setIdleTimerDisabled:enable.boolValue];
-    result(nil);
+    NSNumber *enabled = [NSNumber numberWithBool:[[UIApplication sharedApplication] isIdleTimerDisabled]];
+
+    if([enable isEqualToNumber:enabled]) {
+      result(nil);
+    } else {
+      [[UIApplication sharedApplication] setIdleTimerDisabled:enable.boolValue];
+      result(nil);
+    }
   } else if ([@"isEnabled" isEqualToString:call.method]) {
-    bool enabled = [[UIApplication sharedApplication] isIdleTimerDisabled];
-    result([NSNumber numberWithBool:enabled]);
+    result([NSNumber numberWithBool:[[UIApplication sharedApplication] isIdleTimerDisabled]]);
   } else {
     result(FlutterMethodNotImplemented);
   }

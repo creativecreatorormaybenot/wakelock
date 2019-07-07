@@ -26,6 +26,7 @@ class _MyAppState extends State<MyApp> {
                 // The following code will enable the wakelock on Android or iOS using the wakelock plugin.
                 setState(() {
                   Wakelock.enable();
+                  // You could also use Wakelock.toggle(on: true);
                 });
               },
             ),
@@ -35,6 +36,7 @@ class _MyAppState extends State<MyApp> {
                 // The following code will disable the wakelock on Android or iOS using the wakelock plugin.
                 setState(() {
                   Wakelock.disable();
+                  // You could also use Wakelock.toggle(on: false);
                 });
               },
             ),

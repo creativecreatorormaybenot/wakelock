@@ -26,12 +26,16 @@ class Wakelock {
 
   /// You can simply use this function to toggle the wakelock using a [bool] value.
   /// ```dart
-  /// bool enable = true;
-  /// Wakelock.toggle(enable);
+  /// // This line keeps the screen on.
+  /// Wakelock.toggle(on: true);
+  ///
+  /// bool turnOnWakelock = false;
+  /// // The following line disables the wakelock.
+  /// Wakelock.toggle(on: turnOnWakelock);
   /// ```
   /// You can await the [Future] to wait for the operation to complete.
-  static Future<void> toggle(bool enable) =>
-      _channel.invokeMethod('toggle', {'enable': enable});
+  static Future<void> toggle({bool on}) =>
+      _channel.invokeMethod('toggle', {'enable': on});
 
   /// If you want to retrieve the current wakelock status, you will have to call [Wakelock.isEnabled]
   /// and await its result: `bool isEnabled = await Wakelock.isEnabled()`
