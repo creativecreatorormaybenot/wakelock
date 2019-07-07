@@ -2,6 +2,7 @@
 
 * Added integration testing.
 * Removed unnecessary Android Manifest permission.
+* Added a contributing guide.
 
 ## 0.1.2
 
