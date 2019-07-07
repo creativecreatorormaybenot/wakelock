@@ -1,4 +1,4 @@
-# Wakelock
+# Wakelock [![](https://img.shields.io/pub/v/android_alarm_manager.svg)](https://pub.dev/packages/android_alarm_manager)
 
 This plugin allows you to enable and toggle the Android and iOS screen wakelock, which prevents the screen from turning off automatically.
 
