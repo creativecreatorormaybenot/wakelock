@@ -2,7 +2,11 @@
 
 This plugin allows you to enable and toggle the Android and iOS screen wakelock, which prevents the screen from turning off automatically.
 
-## Getting Started
+## Usage
+
+To use this plugin, follow the [installing guide](https://pub.dev/packages/wakelock#-installing-tab-).
+
+### Implementation
 
 Everything in this plugin is controlled via the [`Wakelock` class](https://pub.dev/documentation/wakelock/latest/wakelock/Wakelock-class.html).  
 If you want to enable the wakelock, you can simply call [`Wakelock.enableWakelock`](https://pub.dev/documentation/wakelock/latest/wakelock/Wakelock/enableWakelock.html) and to disable it, you can use [`Wakelock.disableWakelock`](https://pub.dev/documentation/wakelock/latest/wakelock/Wakelock/disableWakelock.html):

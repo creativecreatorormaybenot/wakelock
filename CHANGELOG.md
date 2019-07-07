@@ -1,3 +1,8 @@
+## 0.1.0+2
+
+* Improved README.
+* Removed unnecessary files.
+
 ## 0.1.0+1
 
 * Fixed dependency issue.

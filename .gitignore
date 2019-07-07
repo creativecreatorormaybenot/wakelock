@@ -1,10 +1,9 @@
 .DS_Store
-.dart_tool/
-
+.dart_tool
 .packages
-.pub/
-
-build/
-
+.pub
+build
 .idea
 wakelock.iml
+.metadata
+pubspec.lock
