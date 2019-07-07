@@ -1,3 +1,7 @@
+## 0.1.1+2
+
+* Made the plugin description more concise.
+
 ## 0.1.1+1
 
 * Elaborated a bit more in description.
