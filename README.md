@@ -39,5 +39,5 @@ If you want to wait for the wakelock toggle on Android or iOS to complete (which
 
 ## Note
 
-This plugin is originally based on [`flutter_screen`](https://pub.dev/packages/screen).  
+This plugin is originally based on [`screen`](https://pub.dev/packages/screen).  
 Specifically, the wakelock functionality was extracted into this plugin due to a lack of maintenance.
