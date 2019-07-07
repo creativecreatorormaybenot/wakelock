@@ -39,9 +39,7 @@ jobs:
         - $ANDROID_HOME/emulator/emulator -avd test -no-audio -no-window -gpu swiftshader &
 
         # install pre-compiled flutter
-        - FLUTTER_CHANNEL=master
-        - FLUTTER_VERSION=v1.8.1-pre.23-${FLUTTER_CHANNEL}
-        - wget --quiet --output-document=flutter.tar.xz https://storage.googleapis.com/flutter_infra/releases/${FLUTTER_CHANNEL}/linux/flutter_linux_v${FLUTTER_VERSION}.tar.xz && tar xf flutter.tar.xz > /dev/null && rm flutter.tar.xz
+        - wget --quiet --output-document=flutter.tar.xz https://storage.googleapis.com/flutter_infra/releases/dev/linux/flutter_linux_v1.7.11-dev.tar.xz && tar xf flutter.tar.xz > /dev/null && rm flutter.tar.xz
         - export PATH="$PATH":"$HOME/.pub-cache/bin"
         - export PATH=$PWD/flutter/bin:$PWD/flutter/bin/cache/dart-sdk/bin:$PATH
         - flutter doctor -v
@@ -68,10 +66,7 @@ jobs:
         - brew install cocoapods || echo 'ignore exit(1)'
         - brew link --overwrite cocoapods
 
-        # install pre-compiled flutter
-        - FLUTTER_CHANNEL=master
-        - FLUTTER_VERSION=v1.8.1-pre.23-${FLUTTER_CHANNEL}
-        - wget --quiet --output-document=flutter.zip https://storage.googleapis.com/flutter_infra/releases/${FLUTTER_CHANNEL}/macos/flutter_macos_v${FLUTTER_VERSION}.zip && unzip -qq flutter.zip > /dev/null && rm flutter.zip
+        - wget --quiet --output-document=flutter.zip https://storage.googleapis.com/flutter_infra/releases/dev/macos/flutter_macos_v1.7.11-dev.zip && unzip -qq flutter.zip > /dev/null && rm flutter.zip
         - export PATH="$PATH":"$HOME/.pub-cache/bin"
         - export PATH=$PWD/flutter/bin:$PWD/flutter/bin/cache/dart-sdk/bin:$PATH
         - flutter doctor -v

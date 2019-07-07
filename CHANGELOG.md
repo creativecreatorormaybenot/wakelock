@@ -1,4 +1,4 @@
-## 0.1.2+1 (Unreleased)
+## 0.1.2+1
 
 * Added integration testing.
 * Removed unnecessary Android Manifest permission.
