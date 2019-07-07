@@ -4,7 +4,6 @@ This plugin allows you to enable and toggle the Android and iOS screen wakelock,
 
 ## Getting Started
 
-The usage of this plugin is very straight forward.  
 If you want to enable the wakelock, you can simply call `Wakelock.enableWakelock` and to disable it, you can use `Wakelock.disableWakelock`:
 
 ```dart
