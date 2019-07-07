@@ -1,6 +1,7 @@
 ## 0.1.2+3
 
 * Improved Travis CI setup.
+* Updated badges.
 
 ## 0.1.2+2
 
