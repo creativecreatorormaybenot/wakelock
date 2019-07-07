@@ -1,21 +1,75 @@
-language: bash
-os:
-  - osx
-env:
-  - FLUTTER_CHANNEL="stable"
-  - FLUTTER_CHANNEL="master"
-sudo: false
-before_script:
-  - cd ..
-  - git clone https://github.com/flutter/flutter.git -b $FLUTTER_CHANNEL
-  - export PATH=$PATH:$PWD/flutter/bin:$PWD/flutter/bin/cache/dart-sdk/bin
-  - cd -
-  - flutter doctor
-script:
-  - set -e
-  - ./ci/drive.sh
-matrix:
-  fast_finish: true
-cache:
-  directories:
-    - $HOME/.pub-cache
+# Based on https://medium.com/@nocnoc/flutter-unit-widget-and-integration-testing-with-ios-and-android-emulators-on-travis-ci-df17ed7c3be
+jobs:
+  include:
+    - &integration-test-stage
+      stage: Integration Testing
+      sudo: true
+      dist: trusty
+      language: generic
+      os: linux
+      env: Android
+      # Run integration tests on Android
+      before_install:
+        - sudo apt-get install -y --no-install-recommends lib32stdc++6 libstdc++6 > /dev/null
+        # Install the Android SDK Dependency.
+        - export ANDROID_HOME=/opt/android-sdk-linux
+        - cd /opt
+        - wget -q https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip -O android-sdk-tools.zip
+        - unzip -q android-sdk-tools.zip -d ${ANDROID_HOME}
+        - rm android-sdk-tools.zip
+        - cd -
+        - PATH=${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/platform-tools
+        # Silence warning.
+        - mkdir -p ~/.android
+        - touch ~/.android/repositories.cfg
+        # Accept licenses before installing components, no need to echo "y" for each component
+        - yes | sdkmanager --licenses
+        # Platform tools
+        - sdkmanager "emulator" "tools" "platform-tools" > /dev/null
+        - sdkmanager --list | head -15
+        # install older packages (for emulator)
+        - sdkmanager "build-tools;25.0.2" "platforms;android-25" > /dev/null
+
+        # Create and start emulator.
+        - EMULATOR_API_LEVEL=22
+        - ANDROID_ABI="default;armeabi-v7a"
+        - sdkmanager "system-images;android-$EMULATOR_API_LEVEL;$ANDROID_ABI" > /dev/null
+        - sdkmanager --list | head -15
+        - echo no | avdmanager create avd --force -n test -k "system-images;android-$EMULATOR_API_LEVEL;$ANDROID_ABI"
+        - $ANDROID_HOME/emulator/emulator -avd test -no-audio -no-window -gpu swiftshader &
+
+        # install pre-compiled flutter
+        - FLUTTER_CHANNEL=stable
+        - FLUTTER_VERSION=1.0.0-${FLUTTER_CHANNEL}
+        - wget --quiet --output-document=flutter.tar.xz https://storage.googleapis.com/flutter_infra/releases/${FLUTTER_CHANNEL}/linux/flutter_linux_v${FLUTTER_VERSION}.tar.xz && tar xf flutter.tar.xz > /dev/null && rm flutter.tar.xz
+        - export PATH="$PATH":"$HOME/.pub-cache/bin"
+        - export PATH=$PWD/flutter/bin:$PWD/flutter/bin/cache/dart-sdk/bin:$PATH
+        - flutter doctor -v
+
+        # Wait for emulator to finish startup.
+        - ./script/android-wait-for-emulator.sh
+        - adb shell input keyevent 82
+        - flutter devices
+      script: travis_retry flutter driver test_driver/app.dart
+    - <<: *integration-test-stage
+      os: osx
+      osx_image: xcode8.0
+      env: iOS
+      # Run integration tests on ios
+      before_install:
+        - open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app
+        - export HOMEBREW_NO_AUTO_UPDATE=1
+        - brew install libimobiledevice
+        - brew install ideviceinstaller
+        - brew install ios-deploy
+        - brew install cocoapods || echo 'ignore exit(1)'
+        - brew link --overwrite cocoapods
+
+        # install pre-compiled flutter
+        - FLUTTER_CHANNEL=stable
+        - FLUTTER_VERSION=1.0.0-${FLUTTER_CHANNEL}
+        - wget --quiet --output-document=flutter.zip https://storage.googleapis.com/flutter_infra/releases/${FLUTTER_CHANNEL}/macos/flutter_macos_v${FLUTTER_VERSION}.zip && unzip -qq flutter.zip > /dev/null && rm flutter.zip
+        - export PATH="$PATH":"$HOME/.pub-cache/bin"
+        - export PATH=$PWD/flutter/bin:$PWD/flutter/bin/cache/dart-sdk/bin:$PATH
+        - flutter doctor -v
+      script: travis_retry flutter driver test_driver/main.dart
