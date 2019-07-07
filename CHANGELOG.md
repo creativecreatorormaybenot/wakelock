@@ -1,3 +1,7 @@
+## 0.1.1+1
+
+* Elaborated a bit more in description.
+
 ## 0.1.1
 
 * Renamed functions.
