@@ -1,3 +1,7 @@
+## 0.1.0+3
+
+* Added wakelock permission in Android Manifest.
+
 ## 0.1.0+2
 
 * Improved README.
