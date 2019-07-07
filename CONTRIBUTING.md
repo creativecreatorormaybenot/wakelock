@@ -31,5 +31,5 @@ Alternatively, you can also use `git pull-request` via [GitHub hub](https://hub.
  * You should remember to exlcude all files and directories your IDE might generate using the `.gitignore` files (if they do not already contain them for your IDE).  
    If you feel like you can make useful additions to any of the `.gitignore` files, you can include them in your pull request, potentially with an explanation.
 
- * It is probably easier for you to run the integration tests for the plugin locally before opening a pull request using `flutter drive --target=test_driver/app.dart` in the `example` directory.  
+ * It is probably easier for you to run the integration tests for the plugin locally using `flutter drive --target=test_driver/app.dart` in the `example` directory before opening a pull request (CI also runs the integration tests).  
    This way you can ensure that any changes you have made work properly. Furthermore, you might also want to add some tests if you implement new functionality.
