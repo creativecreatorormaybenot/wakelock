@@ -1,6 +1,6 @@
 # Based on https://medium.com/@nocnoc/flutter-unit-widget-and-integration-testing-with-ios-and-android-emulators-on-travis-ci-df17ed7c3be
-jobs:
-  include:
+matrix:
+  exclude:
     - &integration-test-stage
       stage: Integration Testing
       sudo: true
@@ -45,13 +45,14 @@ jobs:
         - flutter doctor -v
 
         # Wait for emulator to finish startup.
-        #- ./ci/wait.sh
+        - ./ci/wait.sh
         - adb shell input keyevent 82
         - flutter devices
 
         # cd to example
         - cd example
       script: travis_retry flutter driver test_driver/app.dart
+  include:
     - <<: *integration-test-stage
       os: osx
       osx_image: xcode10.2
