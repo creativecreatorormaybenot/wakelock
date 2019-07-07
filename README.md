@@ -1,0 +1,38 @@
+# Wakelock
+
+This plugin allows you to enable and toggle the Android and iOS screen wakelock, which prevents the screen from turning off automatically.
+
+## Getting Started
+
+The usage of this plugin is very straight forward.  
+If you want to enable the wakelock, you can simply call `Wakelock.enableWakelock` and to disable it, you can use `Wakelock.disableWakelock`:
+
+```dart
+import 'package:wakelock/wakelock.dart';
+// ...
+
+// The following line will enable the Android and iOS wakelock.
+Wakelock.enableWakelock();
+
+// The next line disables the wakelock again.
+Wakelock.disableWakelock();
+```
+
+For more advanced usage, you can pass a `bool` to `Wakelock.toggleWakelock` to enable or disable the wakelock and also retrieve the current wakelock status using `Wakelock.isWakelockEnabled`:
+
+```dart
+import 'package:wakelock/wakelock.dart';
+// ...
+
+// The following lines of code toggle the wakelock based on a bool value.
+bool enableWakelock = true;
+Wakelock.toggleWakelock(enableWakelock); // This statement enables the wakelock.
+
+enableWakelock = false;
+Wakelock.toggleWakelock(enableWakelock); // This statement disables the wakelock.
+
+// If you want to retrieve the current wakelock status, you will have to be in an async scope to await the Future returned by isWakelockEnabled.
+bool isWakelockEnabled = await Wakelock.isWakelockEnabled;
+```
+
+If you want to wait for the wakelock toggle on Android or iOS to complete (which takes an insignificant amount of time), you can also await either of `Wakelock.enableWakelock`, `Wakelock.disableWakelock`, and `Wakelock.toggleWakelock`.
