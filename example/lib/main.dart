@@ -25,7 +25,7 @@ class _MyAppState extends State<MyApp> {
               onPressed: () {
                 // The following code will enable the wakelock on Android or iOS using the wakelock plugin.
                 setState(() {
-                  Wakelock.enableWakelock();
+                  Wakelock.enable();
                 });
               },
             ),
@@ -34,14 +34,14 @@ class _MyAppState extends State<MyApp> {
               onPressed: () {
                 // The following code will disable the wakelock on Android or iOS using the wakelock plugin.
                 setState(() {
-                  Wakelock.disableWakelock();
+                  Wakelock.disable();
                 });
               },
             ),
             FutureBuilder(
-              future: Wakelock.isWakelockEnabled,
+              future: Wakelock.isEnabled,
               builder: (context, AsyncSnapshot<bool> snapshot) {
-                // The use of FutureBuilder is necessary here to await the bool value from isWakelockEnabled.
+                // The use of FutureBuilder is necessary here to await the bool value from isEnabled.
                 if (!snapshot.hasData)
                   return Container(); // The Future is retrieved so fast that you will not be able to see any loading indicator.
                 return Text(

@@ -1,3 +1,8 @@
+## 0.1.1
+
+* Renamed functions.
+* Improved README.
+
 ## 0.1.0+3
 
 * Added wakelock permission in Android Manifest.

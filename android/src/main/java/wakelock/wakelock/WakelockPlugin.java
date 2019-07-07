@@ -20,15 +20,15 @@ public class WakelockPlugin implements MethodCallHandler {
     channel.setMethodCallHandler(new WakelockPlugin(registrar));
   }
 
-  private boolean isWakelockEnabled() {
+  private boolean isEnabled() {
     return (registrar.activity().getWindow().getAttributes().flags &
             WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON) != 0;
   }
 
   @Override
   public void onMethodCall(MethodCall call, Result result) {
-    if (call.method.equals("toggleWakelock")) {
-      final boolean enable = call.argument("enable"), enabled = isWakelockEnabled();
+    if (call.method.equals("toggle")) {
+      final boolean enable = call.argument("enable"), enabled = isEnabled();
       if (enable) {
         if (!enabled)
           registrar.activity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
@@ -36,8 +36,8 @@ public class WakelockPlugin implements MethodCallHandler {
         registrar.activity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
       }
       result.success(null);
-    } else if (call.method.equals("isWakelockEnabled")) {
-      result.success(isWakelockEnabled());
+    } else if (call.method.equals("isEnabled")) {
+      result.success(isEnabled());
     } else {
       result.notImplemented();
     }

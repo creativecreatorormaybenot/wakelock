@@ -10,11 +10,11 @@
 }
 
 - (void)handleMethodCall:(FlutterMethodCall*)call result:(FlutterResult)result {
-  if ([@"toggleWakelock" isEqualToString:call.method]) {
+  if ([@"toggle" isEqualToString:call.method]) {
     NSNumber *enable = call.arguments[@"enable"];
     [[UIApplication sharedApplication] setIdleTimerDisabled:enable.boolValue];
     result(nil);
-  } else if ([@"isWakelockEnabled" isEqualToString:call.method]) {
+  } else if ([@"isEnabled" isEqualToString:call.method]) {
     bool enabled = [[UIApplication sharedApplication] isIdleTimerDisabled];
     result([NSNumber numberWithBool:enabled]);
   } else {
