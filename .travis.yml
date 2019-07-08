@@ -1,7 +1,7 @@
 sudo: true
 
 matrix:
-  include:
+  exclude: # excluding Android test as Flutter seems to require Vulkan https://travis-ci.com/creativecreatorormaybenot/wakelock/jobs/214156381
     - stage: Integration Testing
 
       name: Android
@@ -41,6 +41,7 @@ matrix:
         - cd example
       script:
         - flutter driver test_driver/app.dart
+  include:
     - name: iOS
 
       os: osx
