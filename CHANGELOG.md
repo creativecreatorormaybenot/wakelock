@@ -1,3 +1,7 @@
+## 0.1.2+4
+
+* Updated the example's README.
+
 ## 0.1.2+3
 
 * Improved Travis CI setup.
