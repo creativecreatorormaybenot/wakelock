@@ -1,67 +1,43 @@
 # Originally based on https://medium.com/@nocnoc/flutter-unit-widget-and-integration-testing-with-ios-and-android-emulators-on-travis-ci-df17ed7c3be
-language: generic
+sudo: true
 
 matrix:
-  exclude:
+  include:
     - stage: Integration Testing
+
       name: Android
 
       os: linux
       dist: trusty
-      sudo: true
+      language: android
 
-      before_install:
-        - sudo apt-get install -y --no-install-recommends lib32stdc++6 libstdc++6 > /dev/null
-        # Install the Android SDK Dependency.
-        - export ANDROID_HOME=/opt/android-sdk-linux
-        - cd /opt
-        - wget -q https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip -O android-sdk-tools.zip
-        - unzip -q android-sdk-tools.zip -d ${ANDROID_HOME}
-        - rm android-sdk-tools.zip
-        - cd -
-        - PATH=${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/platform-tools
-        # Silence warning.
-        - mkdir -p ~/.android
-        - touch ~/.android/repositories.cfg
-        # Accept licenses before installing components, no need to echo "y" for each component
-        - yes | sdkmanager --licenses
-        # Platform tools
-        - sdkmanager "emulator" "tools" "platform-tools" > /dev/null
-        - sdkmanager --list | head -15
-        # install older packages (for emulator)
-        - sdkmanager "build-tools;25.0.2" "platforms;android-25" > /dev/null
-
-        # Create and start emulator.
-        - EMULATOR_API_LEVEL=22
-        - ANDROID_ABI="default;armeabi-v7a"
-        - sdkmanager "system-images;android-$EMULATOR_API_LEVEL;$ANDROID_ABI" > /dev/null
-        - sdkmanager --list | head -15
-        - echo no | avdmanager create avd --force -n test -k "system-images;android-$EMULATOR_API_LEVEL;$ANDROID_ABI"
-        - $ANDROID_HOME/emulator/emulator -avd test -no-audio -no-window -gpu swiftshader &
-
-        # install pre-compiled flutter
-        - wget --quiet --output-document=flutter.tar.xz https://storage.googleapis.com/flutter_infra/releases/dev/linux/flutter_linux_v1.7.11-dev.tar.xz && tar xf flutter.tar.xz > /dev/null && rm flutter.tar.xz
+      install:
+        - git clone -b master https://github.com/flutter/flutter.git
+        - ./flutter/bin/flutter --version
+      before_script:
         - export PATH="$PATH":"$HOME/.pub-cache/bin"
         - export PATH=$PWD/flutter/bin:$PWD/flutter/bin/cache/dart-sdk/bin:$PATH
+
+        - echo no | android create avd --force -n test -t android-28 --abi armeabi-v7a -c 100M
+        - emulator -avd test -no-audio -no-window &
+        - android-wait-for-emulator
+        - adb shell input keyevent 82 &
+
         - flutter doctor -v
 
-        # Wait for emulator to finish startup.
-        - ./ci/wait.sh
-        - adb shell input keyevent 82
-        - flutter devices
-
         - cd example
-      script: flutter driver test_driver/app.dart
-  include:
+      script:
+        - flutter driver test_driver/app.dart
     - name: iOS
 
       os: osx
       osx_image: xcode10.2
+      language: generic
 
       before_install:
         - open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app
         - export HOMEBREW_NO_AUTO_UPDATE=1
-
+      install:
         - brew install libimobiledevice
         - brew install ideviceinstaller
         - brew install ios-deploy
@@ -70,11 +46,12 @@ matrix:
 
         - git clone -b master https://github.com/flutter/flutter.git
         - ./flutter/bin/flutter --version
-
+      before_script:
         - export PATH="$PATH":"$HOME/.pub-cache/bin"
         - export PATH=$PWD/flutter/bin:$PWD/flutter/bin/cache/dart-sdk/bin:$PATH
 
         - flutter doctor -v
 
         - cd example
-      script: flutter driver test_driver/app.dart
+      script:
+        - flutter driver test_driver/app.dart

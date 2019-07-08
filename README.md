@@ -44,7 +44,7 @@ Wakelock.toggle(on: on);
 bool isEnabled = await Wakelock.isEnabled;
 ```
 
-If you want to wait for the wakelock toggle on Android or iOS to complete (which takes an insignificant amount of time), you can also await either of `Wakelock.enable`, `Wakelock.disable`, and `Wakelock.toggle`.
+If you want to wait for the wakelock toggle on Android or iOS to complete (which takes an insignificant amount of time), you can also await any of `Wakelock.enable`, `Wakelock.disable`, and `Wakelock.toggle`.
 
 ## Notes
 
