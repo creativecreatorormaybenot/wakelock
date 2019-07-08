@@ -7,6 +7,6 @@ See [`example/lib/main.dart`](https://github.com/creativecreatorormaybenot/wakel
 ## Integration testing
 
 For integration testing, this plugin uses [`example/test_driver`](https://github.com/creativecreatorormaybenot/wakelock/tree/master/example/test_driver). The project has a setup for continuous integration, which will run the integration test to confirm that the plugin is working correctly.  
-The status for the latest commit is: [![build status](https://travis-ci.com/creativecreatorormaybenot/wakelock.svg?branch=master)](https://travis-ci.com/creativecreatorormaybenot/wakelock)
+The status for the latest commit is [![build status](https://travis-ci.com/creativecreatorormaybenot/wakelock.svg?branch=master)](https://travis-ci.com/creativecreatorormaybenot/wakelock).
 
 If you want to run the integration tests yourself, you can run `flutter drive --target=test_driver/app.dart` from the `example` directory.
