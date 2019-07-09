@@ -18,7 +18,7 @@ matrix:
 
     - stage: Code analysis
 
-      name: Dart code (plugin)
+      name: Dart code
 
       os: linux
       dist: trusty
@@ -35,22 +35,6 @@ matrix:
         - cd wakelock
 
         - flutter packages get
-      script:
-        - flutter analyze
-
-    - name: Dart code (example)
-
-      os: linux
-      dist: trusty
-      language: generic
-
-      install:
-        - git clone -b master https://github.com/flutter/flutter.git
-        - ./flutter/bin/flutter --version
-      before_script:
-        - export PATH=$HOME/.pub-cache/bin:$PWD/flutter/bin:$PWD/flutter/bin/cache/dart-sdk/bin:$PATH
-
-        - cd example
       script:
         - flutter analyze
 
