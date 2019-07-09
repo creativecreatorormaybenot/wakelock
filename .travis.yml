@@ -16,7 +16,7 @@ matrix:
         - export PATH="$PATH":"$HOME/.pub-cache/bin"
         - export PATH=$PWD/flutter/bin:$PWD/flutter/bin/cache/dart-sdk/bin:$PATH
       script:
-        - flutter format . --set-exit-if-changed --fix
+        - flutter format lib example --set-exit-if-changed --fix
 
     - stage: Code analysis
 
