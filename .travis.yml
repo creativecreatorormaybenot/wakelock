@@ -32,9 +32,9 @@ matrix:
       before_script:
         - export PATH=$HOME/.pub-cache/bin:$PWD/flutter/bin:$PWD/flutter/bin/cache/dart-sdk/bin:$PATH
 
-        - flutter packages get
-
         - cd wakelock
+
+        - flutter packages get
       script:
         - flutter analyze
 
