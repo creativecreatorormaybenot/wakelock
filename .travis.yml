@@ -1,12 +1,29 @@
 matrix:
   include:
-    - stage: Format Checking
+    - stage: Format checking
+
+      name: Dart code
 
       os: linux
       dist: trusty
       language: generic
 
-      name: Dart code
+      install:
+        - git clone -b master https://github.com/flutter/flutter.git
+        - ./flutter/bin/flutter --version
+      before_script:
+        - export PATH="$PATH":"$HOME/.pub-cache/bin"
+        - export PATH=$PWD/flutter/bin:$PWD/flutter/bin/cache/dart-sdk/bin:$PATH
+      script:
+        - flutter format lib example --set-exit-if-changed --fix
+
+    - stage: Code analysis
+
+      name: Dart code (plugin)
+
+      os: linux
+      dist: trusty
+      language: generic
 
       before_install:
         - cd ..
@@ -19,22 +36,26 @@ matrix:
 
         - cd wakelock
       script:
-        - flutter format lib example --set-exit-if-changed --fix
-
-    - stage: Code Analysis
-
-      name: Dart code (plugin)
-
-      script:
         - flutter analyze
 
     - name: Dart code (example)
 
-      script:
+      os: linux
+      dist: trusty
+      language: generic
+
+      install:
+        - git clone -b master https://github.com/flutter/flutter.git
+        - ./flutter/bin/flutter --version
+      before_script:
+        - export PATH="$PATH":"$HOME/.pub-cache/bin"
+        - export PATH=$PWD/flutter/bin:$PWD/flutter/bin/cache/dart-sdk/bin:$PATH
+
         - cd example
+      script:
         - flutter analyze
 
-    - stage: Integration Testing
+    - stage: Integration testing
 
       name: iOS
 
