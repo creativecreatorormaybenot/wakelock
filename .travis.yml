@@ -1,11 +1,10 @@
-os: linux
-dist: trusty
-sudo: true
-language: generic
-
 matrix:
   include:
-    - stage: Check Format
+    - stage: Format Checking
+
+      os: linux
+      dist: trusty
+      language: generic
 
       name: Dart code
 
@@ -18,30 +17,17 @@ matrix:
       script:
         - flutter format lib example --set-exit-if-changed --fix
 
-    - stage: Code analysis
+    - stage: Code Analysis
 
       name: Dart code (plugin)
 
-      install:
-        - git clone -b master https://github.com/flutter/flutter.git
-        - ./flutter/bin/flutter --version
-      before_script:
-        - export PATH="$PATH":"$HOME/.pub-cache/bin"
-        - export PATH=$PWD/flutter/bin:$PWD/flutter/bin/cache/dart-sdk/bin:$PATH
       script:
         - flutter analyze
 
     - name: Dart code (example)
 
-      install:
-        - git clone -b master https://github.com/flutter/flutter.git
-        - ./flutter/bin/flutter --version
-      before_script:
-        - export PATH="$PATH":"$HOME/.pub-cache/bin"
-        - export PATH=$PWD/flutter/bin:$PWD/flutter/bin/cache/dart-sdk/bin:$PATH
-
-        - cd example
       script:
+        - cd example
         - flutter analyze
 
     - stage: Integration Testing
@@ -77,6 +63,7 @@ matrix:
 
       os: linux
       dist: trusty
+      sudo: true
       language: android
 
       android:

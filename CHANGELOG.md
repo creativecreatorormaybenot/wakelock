@@ -1,3 +1,7 @@
+## 0.1.2+5
+
+* Expanded continuous integration to include format checking and code analysis.
+
 ## 0.1.2+4
 
 * Updated the example's README.

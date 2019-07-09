@@ -12,7 +12,7 @@ import 'package:flutter/services.dart';
 /// The [Wakelock.isEnabled] function allows you to retrieve the current wakelock
 /// status from Android or iOS.
 class Wakelock {
-  static const MethodChannel _channel = const MethodChannel('wakelock');
+  static const MethodChannel _channel = MethodChannel('wakelock');
 
   /// This can simply be called using `Wakelock.enable()` and does not return anything.
   /// You can await the [Future] to wait for the operation to complete.

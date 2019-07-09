@@ -1,6 +1,6 @@
 name: wakelock
 description: This plugin allows you to keep Android and iOS devices awake, i.e. prevent the screen from sleeping by toggling the wakelock of the phone or tablet on or off.
-version: 0.1.2+4
+version: 0.1.2+5
 author: creativecreatorormaybenot <19204050+creativecreatorormaybenot@users.noreply.github.com>
 homepage: https://github.com/creativecreatorormaybenot/wakelock
 
