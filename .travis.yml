@@ -1,10 +1,79 @@
+os: linux
+dist: trusty
 sudo: true
+language: generic
 
 matrix:
-  exclude: # excluding Android test as Flutter seems to require Vulkan https://travis-ci.com/creativecreatorormaybenot/wakelock/jobs/214156381
+  include:
+    - stage: Check Format
+
+      name: Dart code
+
+      install:
+        - git clone -b master https://github.com/flutter/flutter.git
+        - ./flutter/bin/flutter --version
+      before_script:
+        - export PATH="$PATH":"$HOME/.pub-cache/bin"
+        - export PATH=$PWD/flutter/bin:$PWD/flutter/bin/cache/dart-sdk/bin:$PATH
+      script:
+        - flutter format . --set-exit-if-changed --fix
+
+    - stage: Code analysis
+
+      name: Dart code (plugin)
+
+      install:
+        - git clone -b master https://github.com/flutter/flutter.git
+        - ./flutter/bin/flutter --version
+      before_script:
+        - export PATH="$PATH":"$HOME/.pub-cache/bin"
+        - export PATH=$PWD/flutter/bin:$PWD/flutter/bin/cache/dart-sdk/bin:$PATH
+      script:
+        - flutter analyze
+
+    - name: Dart code (example)
+
+      install:
+        - git clone -b master https://github.com/flutter/flutter.git
+        - ./flutter/bin/flutter --version
+      before_script:
+        - export PATH="$PATH":"$HOME/.pub-cache/bin"
+        - export PATH=$PWD/flutter/bin:$PWD/flutter/bin/cache/dart-sdk/bin:$PATH
+
+        - cd example
+      script:
+        - flutter analyze
+
     - stage: Integration Testing
 
-      name: Android
+      name: iOS
+
+      os: osx
+      osx_image: xcode10.2
+
+      before_install:
+        - open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app
+        - export HOMEBREW_NO_AUTO_UPDATE=1
+      install:
+        - brew install libimobiledevice
+        - brew install ideviceinstaller
+        - brew install ios-deploy
+        - brew install cocoapods || echo 'ignore exit(1)'
+        - brew link --overwrite cocoapods
+
+        - git clone -b master https://github.com/flutter/flutter.git
+        - ./flutter/bin/flutter --version
+      before_script:
+        - export PATH="$PATH":"$HOME/.pub-cache/bin"
+        - export PATH=$PWD/flutter/bin:$PWD/flutter/bin/cache/dart-sdk/bin:$PATH
+
+        - flutter doctor -v
+
+        - cd example
+      script:
+        - flutter driver test_driver/app.dart
+  exclude: # excluding Android test as Flutter seems to require Vulkan https://travis-ci.com/creativecreatorormaybenot/wakelock/jobs/214156381
+    - name: Android
 
       os: linux
       dist: trusty
@@ -35,34 +104,6 @@ matrix:
         - emulator -avd test -no-window &
         - android-wait-for-emulator
         - adb shell input keyevent 82 &
-
-        - flutter doctor -v
-
-        - cd example
-      script:
-        - flutter driver test_driver/app.dart
-  include:
-    - name: iOS
-
-      os: osx
-      osx_image: xcode10.2
-      language: generic
-
-      before_install:
-        - open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app
-        - export HOMEBREW_NO_AUTO_UPDATE=1
-      install:
-        - brew install libimobiledevice
-        - brew install ideviceinstaller
-        - brew install ios-deploy
-        - brew install cocoapods || echo 'ignore exit(1)'
-        - brew link --overwrite cocoapods
-
-        - git clone -b master https://github.com/flutter/flutter.git
-        - ./flutter/bin/flutter --version
-      before_script:
-        - export PATH="$PATH":"$HOME/.pub-cache/bin"
-        - export PATH=$PWD/flutter/bin:$PWD/flutter/bin/cache/dart-sdk/bin:$PATH
 
         - flutter doctor -v
 
