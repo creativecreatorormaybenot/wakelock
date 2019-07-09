@@ -34,4 +34,4 @@ Alternatively, you can also use `git pull-request` via [GitHub hub](https://hub.
  * It is probably easier for you to run the integration tests for the plugin locally using `flutter drive --target=test_driver/app.dart` in the `example` directory before opening a pull request (CI also runs the integration tests).  
    This way you can ensure that any changes you have made work properly. Furthermore, you might also want to add some tests if you implement new functionality.
 
- * You should also run `flutter format . --fix` in the root directory and make sure that `flutter analyze` does not report any errors. 
+ * You should also run `flutter format lib example --fix` in the root directory and make sure that `flutter analyze` does not report any errors. 
