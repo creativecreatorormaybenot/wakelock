@@ -1,5 +1,5 @@
 name: wakelock_example
-description: Demonstrates how to use the wakelock plugin.
+description: Demonstrates how to use the wakelock plugin and is used for integration testing.
 publish_to: 'none'
 
 environment:
