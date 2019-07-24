@@ -1,3 +1,7 @@
+## 0.1.2+7
+
+* Formatting in `AndroidManifest.xml`.
+
 ## 0.1.2+6
 
 * Cleaned up the Android manifest.
