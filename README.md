@@ -1,7 +1,7 @@
 # Wakelock [![](https://travis-ci.com/creativecreatorormaybenot/wakelock.svg?branch=master)](https://travis-ci.com/creativecreatorormaybenot/wakelock) [![](https://img.shields.io/github/stars/creativecreatorormaybenot/wakelock.svg)](https://github.com/creativecreatorormaybenot/wakelock) [![](https://img.shields.io/pub/v/wakelock.svg)](https://pub.dev/packages/wakelock)
 
-This Flutter plugin allows you to enable and toggle the Android and iOS screen wakelock, which prevents the screen from turning off automatically.  
-Essentially, this allows you to keep the device awake, i.e. prevent the phone or tablet from sleeping.
+This Flutter plugin allows you to enable and toggle the screen wakelock on Android and iOS, which prevents the screen from turning off automatically.  
+Essentially, this allows you to keep the device awake, i.e. prevent the device from sleeping.
 
 ## Usage
 
@@ -10,7 +10,8 @@ To use this plugin, follow the [installing guide](https://pub.dev/packages/wakel
 ### Implementation
 
 Everything in this plugin is controlled via the [`Wakelock` class](https://pub.dev/documentation/wakelock/latest/wakelock/Wakelock-class.html).  
-If you want to enable the wakelock, you can simply call [`Wakelock.enable`](https://pub.dev/documentation/wakelock/latest/wakelock/Wakelock/enable.html) and to disable it, you can use [`Wakelock.disable`](https://pub.dev/documentation/wakelock/latest/wakelock/Wakelock/disable.html):
+If you want to enable the wakelock, i.e. keep the device awake, you can simply call [`Wakelock.enable`](https://pub.dev/documentation/wakelock/latest/wakelock/Wakelock/enable.html) 
+and to disable it again, you can use [`Wakelock.disable`](https://pub.dev/documentation/wakelock/latest/wakelock/Wakelock/disable.html):
 
 ```dart
 import 'package:wakelock/wakelock.dart';
@@ -23,7 +24,8 @@ Wakelock.enable();
 Wakelock.disable();
 ```
 
-For more advanced usage, you can pass a `bool` to [`Wakelock.toggle`](https://pub.dev/documentation/wakelock/latest/wakelock/Wakelock/toggle.html) to enable or disable the wakelock and also retrieve the current wakelock status using [`Wakelock.isEnabled`](https://pub.dev/documentation/wakelock/latest/wakelock/Wakelock/isEnabled.html):
+For more advanced usage, you can pass a `bool` to [`Wakelock.toggle`](https://pub.dev/documentation/wakelock/latest/wakelock/Wakelock/toggle.html) to enable or disable the wakelock 
+and also retrieve the current wakelock status using [`Wakelock.isEnabled`](https://pub.dev/documentation/wakelock/latest/wakelock/Wakelock/isEnabled.html):
 
 ```dart
 import 'package:wakelock/wakelock.dart';
@@ -44,7 +46,8 @@ Wakelock.toggle(on: on);
 bool isEnabled = await Wakelock.isEnabled;
 ```
 
-If you want to wait for the wakelock toggle on Android or iOS to complete (which takes an insignificant amount of time), you can also await any of `Wakelock.enable`, `Wakelock.disable`, and `Wakelock.toggle`.
+If you want to wait for the wakelock toggle on Android or iOS to complete (which takes an insignificant amount of time), 
+you can also `await` any of `Wakelock.enable`, `Wakelock.disable`, and `Wakelock.toggle`.
 
 ## Notes
 

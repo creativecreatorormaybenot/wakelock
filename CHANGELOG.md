@@ -1,3 +1,10 @@
+## 0.1.2+6
+
+* Cleaned up Android manifest.
+* Changed a test name in `test_driver`.
+* Updated description.
+* Updated `README.md`.
+
 ## 0.1.2+5
 
 * Expanded continuous integration to include format checking and code analysis.

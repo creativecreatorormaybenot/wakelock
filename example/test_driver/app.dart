@@ -10,7 +10,7 @@ void main() {
   tearDownAll(() => completer.complete(null));
 
   group('wakelock', () {
-    test('is disabled on start', () async {
+    test('is disabled at start', () async {
       expect(await Wakelock.isEnabled, false);
     });
 
