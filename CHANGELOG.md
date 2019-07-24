@@ -2,8 +2,9 @@
 
 * Cleaned up Android manifest.
 * Changed a test name in `test_driver`.
-* Updated description.
+* Updated the plugin description.
 * Updated `README.md`.
+* Updated `CONTRIBUTING.md`.
 * Removed unnecessary `Assets` directory from the `ios` folder.
 
 ## 0.1.2+5
