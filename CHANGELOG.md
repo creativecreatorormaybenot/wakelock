@@ -1,6 +1,6 @@
 ## 0.1.2+6
 
-* Cleaned up Android manifest.
+* Cleaned up the Android manifest.
 * Changed a test name in `test_driver`.
 * Updated the plugin description.
 * Updated `README.md`.
