@@ -5,6 +5,7 @@
 * Updated the plugin description.
 * Updated `README.md`.
 * Updated `CONTRIBUTING.md`.
+* Updated `.travis.yml`.
 * Removed unnecessary `Assets` directory from the `ios` folder.
 
 ## 0.1.2+5
