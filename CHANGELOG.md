@@ -4,6 +4,7 @@
 * Changed a test name in `test_driver`.
 * Updated description.
 * Updated `README.md`.
+* Removed unnecessary `Assets` directory from the `ios` folder.
 
 ## 0.1.2+5
 
