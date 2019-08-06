@@ -5,11 +5,12 @@ import 'package:flutter/services.dart';
 /// To enable the wakelock, you can use [Wakelock.enable] and to disable it,
 /// you can call [Wakelock.disable].
 /// You do not need to worry about making redundant calls, e.g. calling [Wakelock.enable]
-/// when the wakelock is already enabled as the plugin handles this for you.
+/// when the wakelock is already enabled as the plugin handles this for you, i.e. it checks
+/// the status to determine if the wakelock is already enabled or disabled.
 /// If you want the flexibility to pass a [bool] to control whether the wakelock should be
 /// enabled or disabled, you can use [Wakelock.toggle].
 ///
-/// The [Wakelock.isEnabled] function allows you to retrieve the current wakelock
+/// The [Wakelock.isEnabled] property allows you to retrieve the current wakelock
 /// status from Android or iOS.
 class Wakelock {
   static const MethodChannel _channel = MethodChannel('wakelock');

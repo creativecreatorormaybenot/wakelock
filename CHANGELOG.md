@@ -1,3 +1,7 @@
+## 0.1.2+8
+
+* Updated documentation.
+
 ## 0.1.2+7
 
 * Formatting in `AndroidManifest.xml`.
