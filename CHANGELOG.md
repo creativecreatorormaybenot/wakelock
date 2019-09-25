@@ -1,3 +1,7 @@
+## 0.1.3
+
+* Completed AndroidX migration.
+
 ## 0.1.2+8
 
 * Updated documentation.
