@@ -5,7 +5,7 @@ The following steps are based on [flutter/plugin's contributing guide](https://g
 ## Creating a fork
 
  * If you have not yet configured your machine with an SSH key that is known to GitHub, then follow [GitHub's directions](https://help.github.com/articles/generating-ssh-keys/) to generate an SSH key.
- * Fork [this repository](https://github.com/creativecreatorormaybenot/wakelock/new) using the "Fork" button in the upper right corner of the repository's GitHub page.
+ * Fork [this repository](https://github.com/creativecreatorormaybenot/wakelock) using the "Fork" button in the upper right corner of the repository's GitHub page.
  * `git clone git@github.com:<github_user_name>/wakelock.git`
  * `cd wakelock`
  * `git remote add upstream git@github.com:creativecreatorormaybenot/wakelock.git`  
