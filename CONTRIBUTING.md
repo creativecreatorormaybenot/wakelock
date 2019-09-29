@@ -1,6 +1,6 @@
 # Steps
 
-The following steps are based on [flutter/plugin's contributing guide](https://github.com/flutter/plugins/blob/2ea66626c245a4373a6e07706ab2e7d471e25bd6/CONTRIBUTING.md).
+The following steps are based on a version of [flutter/plugin's contributing guide](https://github.com/flutter/plugins/blob/2ea66626c245a4373a6e07706ab2e7d471e25bd6/CONTRIBUTING.md).
 
 ## Creating a fork
 
