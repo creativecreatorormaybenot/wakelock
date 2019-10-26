@@ -9,7 +9,7 @@ The following steps are based on a version of [flutter/plugin's contributing gui
  * `git clone git@github.com:<github_user_name>/wakelock.git`
  * `cd wakelock`
  * `git remote add upstream git@github.com:creativecreatorormaybenot/wakelock.git`  
-   This ensures that `git fetch` fetches from this remote repository instead of from your own fork to get the latest changes.
+   This ensures that `git fetch upstream` is possible to fetch from this remote repository instead of from your own fork to get the latest changes.
    
 ## Creating a patch
 
