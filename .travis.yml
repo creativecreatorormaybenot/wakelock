@@ -65,7 +65,6 @@ matrix:
         - cd example
       script:
         - travis_retry flutter driver test_driver/app.dart
-  exclude: # Currently excluding the Android test as Flutter seems to require Vulkan (https://travis-ci.com/creativecreatorormaybenot/wakelock/jobs/214156381).
     - name: Android
 
       os: linux
@@ -102,4 +101,4 @@ matrix:
 
         - cd example
       script:
-        - flutter driver test_driver/app.dart
+        - flutter driver test_driver/app.dart --enable-software-rendering
