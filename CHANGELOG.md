@@ -1,3 +1,7 @@
+## 0.1.3+1
+
+* Updated `pubspec.yaml` to match new format.
+
 ## 0.1.3
 
 * Completed AndroidX migration.
