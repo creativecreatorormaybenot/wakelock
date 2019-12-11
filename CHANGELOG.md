@@ -1,3 +1,7 @@
+## 0.1.3+2
+
+* Fix `pubspec.yaml`.
+
 ## 0.1.3+1
 
 * Updated `pubspec.yaml` to match new format.
