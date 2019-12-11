@@ -1,15 +1,7 @@
 name: wakelock
 description: This plugin allows you to keep Android and iOS devices awake, i.e. prevent the screen from sleeping by toggling the wakelock of the device on or off.
-version: 0.1.3+2
+version: 0.1.3+3
 homepage: https://github.com/creativecreatorormaybenot/wakelock
-
-environment:
-  sdk: ">=2.1.0 <3.0.0"
-  flutter: ">=1.12.13+hotfix.4"
-
-dependencies:
-  flutter:
-    sdk: flutter
 
 flutter:
   plugin:
@@ -19,3 +11,11 @@ flutter:
         pluginClass: WakelockPlugin
       ios:
         pluginClass: WakelockPlugin
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
+  flutter: ">=1.10.0 <2.0.0"

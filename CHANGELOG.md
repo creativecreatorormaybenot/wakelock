@@ -1,3 +1,7 @@
+## 0.1.3+3
+
+* Fix Flutter SDK version constraint.
+
 ## 0.1.3+2
 
 * Fix `pubspec.yaml`.
