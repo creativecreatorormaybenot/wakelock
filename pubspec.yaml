@@ -6,12 +6,16 @@ homepage: https://github.com/creativecreatorormaybenot/wakelock
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
+  flutter: ">=1.12.13+hotfix.4"
 
 dependencies:
   flutter:
     sdk: flutter
 
 flutter:
-  plugin:
-    androidPackage: wakelock.wakelock
-    pluginClass: WakelockPlugin
+  platforms:
+    android:
+      package: wakelock.wakelock
+      pluginClass: WakelockPlugin
+    ios:
+      pluginClass: WakelockPlugin
