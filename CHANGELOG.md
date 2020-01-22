@@ -1,3 +1,7 @@
+## 0.1.3+4
+
+* Fix iOS simulator issue.
+
 ## 0.1.3+3
 
 * Fix Flutter SDK version constraint.
