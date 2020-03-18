@@ -43,6 +43,16 @@ jobs:
 
   format:
     needs: build
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+          - macos-latest
+        channel:
+          - 'stable'
+          - 'beta'
+          - 'dev'
     name: Check format (channel=${{ matrix.channel }}, os=${{ matrix.os }}
 
     steps:
@@ -50,6 +60,16 @@ jobs:
 
   analyze:
     needs: build
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+          - macos-latest
+        channel:
+          - 'stable'
+          - 'beta'
+          - 'dev'
     name: Analyze (channel=${{ matrix.channel }}, os=${{ matrix.os }}
 
     steps:
@@ -57,6 +77,16 @@ jobs:
 
   unit_testing:
     needs: build
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+          - macos-latest
+        channel:
+          - 'stable'
+          - 'beta'
+          - 'dev'
     name: Unit testing (channel=${{ matrix.channel }}, os=${{ matrix.os }}
 
     steps:
@@ -64,6 +94,16 @@ jobs:
 
   integration_testing:
     needs: build
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+          - macos-latest
+        channel:
+          - 'stable'
+          - 'beta'
+          - 'dev'
     name: Integration testing (channel=${{ matrix.channel }}, os=${{ matrix.os }}
 
     steps:
@@ -71,4 +111,3 @@ jobs:
           cd example
           flutter drive --target=test_driver/app.dart
           cd ..
-
