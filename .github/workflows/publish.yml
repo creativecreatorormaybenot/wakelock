@@ -15,19 +15,19 @@ jobs:
       - uses: subosito/flutter-action@v1.2.0
         with:
           channel: stable
-      - run: flutter pub get
-      - name: flutter create example
-        run: |
+      - name: Setup projects (root & example)
+      - run: |
+          flutter pub get
           cd example
           flutter create .
+          flutter pub get
           cd ..
-      - name: format
+      - name: Check format
         run: flutter format . --set-exit-if-changed --fix
-      - name: analyze
-        run: flutter analyze
-      - name: unit tests
+      - run: flutter analyze
+      - name: Run unit tests
         run: flutter test
-      - name: integration tests
+      - name: Run integration tests
         run: |
           cd example
           flutter drive --target=test_driver/app.dart

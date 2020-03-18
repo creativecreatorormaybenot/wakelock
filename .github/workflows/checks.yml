@@ -31,16 +31,16 @@ jobs:
       - uses: subosito/flutter-action@v1.2.0
         with:
           channel: ${{ matrix.channel }}
-      - run: flutter pub get
-      - name: flutter create example
-        run: |
+      - name: Setup projects (root & example)
+      - run: |
+          flutter pub get
           cd example
           flutter create .
+          flutter pub get
           cd ..
-      - name: format
+      - name: Check format
         run: flutter format . --set-exit-if-changed --fix
-      - name: analyze
-        run: flutter analyze
+      - run: flutter analyze
 
   test:
     runs-on: ${{ matrix.os }}
@@ -60,9 +60,9 @@ jobs:
       - uses: subosito/flutter-action@v1.2.0
         with:
           channel: ${{ matrix.channel }}
-      - name: unit testing
+      - name: Run unit tests
         run: flutter test
-      - name: integration testing
+      - name: Run integration tests
         run: |
           cd example
           flutter drive --target=test_driver/app.dart
