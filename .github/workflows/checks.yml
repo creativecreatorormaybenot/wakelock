@@ -86,14 +86,15 @@ jobs:
           cd ..
       - name: Run unit tests
         run: flutter test
-      - run: cd example
       - name: Run integration tests on iOS
         if: contains(matrix.device, 'iPhone')
-        run: flutter drive --target=test_driver/app.dart
+        run: |
+          cd example
+          flutter drive --target=test_driver/app.dart
       - name: Run integration tests on Android
         if: contains(matrix.device, 'Nexus')
         uses: reactivecircus/android-emulator-runner@v2.5.0
         with:
           api-level: 29
           profile: ${{ matrix.device }}
-          script: flutter drive --target=test_driver/app.dart
+          script: cd example && flutter drive --target=test_driver/app.dart
