@@ -36,6 +36,7 @@ jobs:
           flutter pub get
           cd example
           flutter create .
+          rm -rf test
           flutter pub get
           cd ..
       - name: Check format
