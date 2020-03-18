@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
 /// To enable the wakelock, you can use [Wakelock.enable] and to disable it,
@@ -26,6 +27,7 @@ class Wakelock {
       _channel.invokeMethod('toggle', {'enable': false});
 
   /// You can simply use this function to toggle the wakelock using a [bool] value.
+  ///
   /// ```dart
   /// // This line keeps the screen on.
   /// Wakelock.toggle(on: true);
@@ -34,9 +36,12 @@ class Wakelock {
   /// // The following line disables the wakelock.
   /// Wakelock.toggle(on: turnOnWakelock);
   /// ```
+  ///
   /// You can await the [Future] to wait for the operation to complete.
-  static Future<void> toggle({bool on}) =>
-      _channel.invokeMethod('toggle', {'enable': on});
+  static Future<void> toggle({@required bool on}) {
+    assert(on != null, 'The [on] parameter cannot be null when toggling the wakelock.');
+    return _channel.invokeMethod('toggle', {'enable': on});
+  }
 
   /// If you want to retrieve the current wakelock status, you will have to call [Wakelock.isEnabled]
   /// and await its result: `bool isEnabled = await Wakelock.isEnabled()`

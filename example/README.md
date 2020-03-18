@@ -1,12 +1,16 @@
-# Example
+# wakelock_example
 
-This is a basic example demonstrating the functionality of the wakelock plugin, including enabling & disabling the wakelock and also retrieving the current wakelock status using a `FutureBuilder`.
+Demonstrates how to use the wakelock plugin.
 
-See [`example/lib/main.dart`](https://github.com/creativecreatorormaybenot/wakelock/blob/master/example/lib/main.dart).
+## Getting Started
 
-## Integration testing
+This project is a starting point for a Flutter application.
 
-For integration testing, this plugin uses [`example/test_driver`](https://github.com/creativecreatorormaybenot/wakelock/tree/master/example/test_driver). The project has a setup for continuous integration, which will run the integration tests to confirm that the plugin is working correctly.  
-The status for the latest commit is [![build status](https://travis-ci.com/creativecreatorormaybenot/wakelock.svg?branch=master)](https://travis-ci.com/creativecreatorormaybenot/wakelock).
+A few resources to get you started if this is your first Flutter project:
 
-If you want to run the integration tests yourself, you can run `flutter drive --target=test_driver/app.dart` from the `example` directory.
+- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
+- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+
+For help getting started with Flutter, view our
+[online documentation](https://flutter.dev/docs), which offers tutorials,
+samples, guidance on mobile development, and a full API reference.

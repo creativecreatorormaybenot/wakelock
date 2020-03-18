@@ -1,14 +1,28 @@
+## 0.1.4
+
+* Added assertion for `on` in `Wakelock.toggle` to be non-null and an `@required` annotation.
+  This is not a breaking change because this was logically required before.
+* Switched from Java to Kotlin for the Android implementation.
+* Updated plugin files to the latest Flutter standards.
+* Updated structure to ignore unnecessary files.
+* Added unit testing.
+* Improved the integration tests to make use of the example app.
+* Updated example app.
+* Added GitHub actions and removed Travis CI.
+* Made `CHANGELOG.md` formulations more consistent.
+* Updated year in `LICENSE`.
+
 ## 0.1.3+4
 
-* Fix iOS simulator issue.
+* Fixed iOS simulator issue.
 
 ## 0.1.3+3
 
-* Fix Flutter SDK version constraint.
+* Fixed Flutter SDK version constraint.
 
 ## 0.1.3+2
 
-* Fix `pubspec.yaml`.
+* Fixed `pubspec.yaml`.
 
 ## 0.1.3+1
 
@@ -24,7 +38,7 @@
 
 ## 0.1.2+7
 
-* Formatting in `AndroidManifest.xml`.
+* Formatted `AndroidManifest.xml`.
 
 ## 0.1.2+6
 
@@ -101,5 +115,4 @@
 
 ## 0.0.1
 
-* The wakelock plugin allows you to toggle the Android and iOS wakelock
-  and retrieve its current status.
+* Initial version.
