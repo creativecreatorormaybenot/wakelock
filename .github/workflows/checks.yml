@@ -16,9 +16,9 @@ on:
       - '**/test_driver/**'
 
 jobs:
-  build:
+  analyze:
     runs-on: ${{ matrix.os }}
-
+    name: Format and analysis (${{ matrix.channel }} on ${{ matrix.os }})
     strategy:
       matrix:
         os:
@@ -40,10 +40,14 @@ jobs:
           cd example
           flutter create .
           cd ..
+      - name: format
+        run: flutter format . --set-exit-if-changed --fix
+      - name: analyze
+        run: flutter analyze
 
-  format:
-    needs: build
+  test:
     runs-on: ${{ matrix.os }}
+    name: Format and analysis (${{ matrix.channel }} on ${{ matrix.os }})
     strategy:
       matrix:
         os:
@@ -53,61 +57,16 @@ jobs:
           - 'stable'
           - 'beta'
           - 'dev'
-    name: Check format (channel=${{ matrix.channel }}, os=${{ matrix.os }}
 
     steps:
-      - run: flutter format . --set-exit-if-changed --fix
-
-  analyze:
-    needs: build
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os:
-          - ubuntu-latest
-          - macos-latest
-        channel:
-          - 'stable'
-          - 'beta'
-          - 'dev'
-    name: Analyze (channel=${{ matrix.channel }}, os=${{ matrix.os }}
-
-    steps:
-      - run: flutter analyze
-
-  unit_testing:
-    needs: build
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os:
-          - ubuntu-latest
-          - macos-latest
-        channel:
-          - 'stable'
-          - 'beta'
-          - 'dev'
-    name: Unit testing (channel=${{ matrix.channel }}, os=${{ matrix.os }}
-
-    steps:
-      - run: flutter test
-
-  integration_testing:
-    needs: build
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os:
-          - ubuntu-latest
-          - macos-latest
-        channel:
-          - 'stable'
-          - 'beta'
-          - 'dev'
-    name: Integration testing (channel=${{ matrix.channel }}, os=${{ matrix.os }}
-
-    steps:
-      - run: |
+      - uses: actions/checkout@v2
+      - uses: subosito/flutter-action@v1.2.0
+        with:
+          channel: ${{ matrix.channel }}
+      - name: unit testing
+        run: flutter test
+      - name: integration testing
+        run: |
           cd example
           flutter drive --target=test_driver/app.dart
           cd ..
