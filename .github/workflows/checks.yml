@@ -15,16 +15,16 @@ on:
 jobs:
   analyze:
     runs-on: ${{ matrix.os }}
-    name: Format and analysis (${{ matrix.channel }} on ${{ matrix.os }})
+    name: Format check & analysis (${{ matrix.channel }} on ${{ matrix.os }})
     strategy:
       matrix:
         os:
           - ubuntu-latest
-          - macos-latest
         channel:
           - 'stable'
           - 'beta'
           - 'dev'
+      fail-fast: false
 
     steps:
       - uses: actions/checkout@v2
@@ -46,17 +46,18 @@ jobs:
   test:
     # Not using the conditional as jobs are not re-run when the draft status changes.
     #if: github.event.pull_request.draft == false
-    runs-on: ${{ matrix.os }}
-    name: Format and analysis (${{ matrix.channel }} on ${{ matrix.os }})
+    runs-on: macos-latest
+    name: Unit & integration tests (${{ matrix.channel }} on ${{ matrix.device }})
     strategy:
       matrix:
-        os:
-          - ubuntu-latest
-          - macos-latest
+        device:
+          - iPhone 11 Pro Max (13.1)
+          - Pixel 3
         channel:
           - 'stable'
           - 'beta'
           - 'dev'
+      fail-fast: true
 
     steps:
       - uses: actions/checkout@v2
@@ -65,6 +66,24 @@ jobs:
           channel: ${{ matrix.channel }}
       - name: Run unit tests
         run: flutter test
+      - name: Start iOS simulator
+        if: contains(${{ matrix.device }}, 'iPhone')
+        run: |
+          UDID=$(
+            xcrun instruments -s |
+            awk \
+              -F ' *[][]' \
+              -v 'device=${{ matrix.device }}' \
+              '$1 == device { print $2 }'
+          )
+          xcrun simctl boot "${UDID}"
+      - name: Start Android emulator
+        if: contains(${{ matrix.device }}, 'Pixel')
+        uses: reactivecircus/android-emulator-runner@v2.5.0
+        with:
+          api-level: 29
+          profile: ${{ matrix.device }}
+          script: echo noop
       - name: Run integration tests
         run: |
           cd example
