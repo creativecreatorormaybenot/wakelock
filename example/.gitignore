@@ -46,3 +46,6 @@ app.*.map.json
 pubspec.lock
 .metadata
 test
+ios
+android
+web
