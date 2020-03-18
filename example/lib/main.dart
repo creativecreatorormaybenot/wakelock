@@ -49,19 +49,10 @@ class _ExampleAppState extends State<ExampleApp> {
                   // The use of FutureBuilder is necessary here to await the bool value from isEnabled.
                   if (!snapshot.hasData)
                     return Container(); // The Future is retrieved so fast that you will not be able to see any loading indicator.
-                  return Text('wakelock is currently ${snapshot.data ? 'enabled' : 'disabled'}');
+                  return Text(
+                      'wakelock is currently ${snapshot.data ? 'enabled' : 'disabled'}');
                 },
               ),
-              FlatButton(
-                // This button is primarily used by the integration test.
-                // You can also use it yourself if you want to check that
-                // the wakelock status is not changed from the outside.
-                onPressed: () {
-                  // This will cause the FutureBuilder above to rebuild.
-                  setState(() {});
-                },
-                child: const Text('refresh wakelock status'),
-              )
             ],
           ),
         ),

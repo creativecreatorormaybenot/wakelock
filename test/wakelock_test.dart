@@ -51,7 +51,7 @@ void main() {
     });
 
     test('non-null assertion', () async {
-      expect(Wakelock.toggle(on: null), throwsAssertionError);
+      expect(() async => await Wakelock.toggle(on: null), throwsAssertionError);
     });
   });
 

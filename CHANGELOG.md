@@ -11,6 +11,7 @@
 * Added GitHub actions and removed Travis CI.
 * Made `CHANGELOG.md` formulations more consistent.
 * Updated year in `LICENSE`.
+* Enforced `pedantic` lint rules.
 
 ## 0.1.3+4
 

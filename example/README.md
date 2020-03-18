@@ -2,7 +2,7 @@
 
 This is a basic example demonstrating the functionality of the wakelock plugin, including enabling & disabling the wakelock and also retrieving the current wakelock status using a `FutureBuilder`.
 
-If you want to run this example app, you need to run `flutter create .` in the `example` directory (`cd example` from the plugin directory) first. This is also necessary when running the Flutter driver tests.
+If you want to run this example app, you need to run `flutter create .` in the `example` directory (`cd example` from the plugin directory) first. This is also necessary when running the Flutter Driver tests.
 
 See [`example/lib/main.dart`](https://github.com/creativecreatorormaybenot/wakelock/blob/master/example/lib/main.dart).
 

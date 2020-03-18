@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
+import 'package:meta/meta.dart';
 
 /// To enable the wakelock, you can use [Wakelock.enable] and to disable it,
 /// you can call [Wakelock.disable].
@@ -39,7 +39,8 @@ class Wakelock {
   ///
   /// You can await the [Future] to wait for the operation to complete.
   static Future<void> toggle({@required bool on}) {
-    assert(on != null, 'The [on] parameter cannot be null when toggling the wakelock.');
+    assert(on != null,
+        'The [on] parameter cannot be null when toggling the wakelock.');
     return _channel.invokeMethod('toggle', {'enable': on});
   }
 
