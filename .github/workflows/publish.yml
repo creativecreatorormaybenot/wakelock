@@ -1,0 +1,45 @@
+name: Publish
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    name: Check format, analyze, and test
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: subosito/flutter-action@v1.2.0
+        with:
+          channel: stable
+      - run: flutter pub get
+      - name: flutter create example
+        run: |
+          cd example
+          flutter create .
+          cd ..
+      - name: format
+        run: flutter format . --set-exit-if-changed --fix
+      - name: analyze
+        run: flutter analyze
+      - name: unit tests
+        run: flutter test
+      - name: integration tests
+        run: |
+          cd example
+          flutter drive --target=test_driver/app.dart
+  publish:
+    needs: checks
+    runs-on: ubuntu-latest
+    name: Publish plugin
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: sakebook/actions-flutter-pub-publisher@v1.2.1
+        with:
+          credential: ${{ secrets.PUB_CREDENTIAL }}
+          flutter_package: true
+          skip_test: true
