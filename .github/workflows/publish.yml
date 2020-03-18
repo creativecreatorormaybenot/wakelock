@@ -7,7 +7,7 @@ on:
 
 jobs:
   checks:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     name: Check format, analyze, and test
 
     steps:
@@ -28,6 +28,11 @@ jobs:
       - run: flutter analyze
       - name: Run unit tests
         run: flutter test
+      - name: Start Android emulator
+        uses: reactivecircus/android-emulator-runner@v2.5.0
+        with:
+          api-level: 29
+          script: echo noop
       - name: Run integration tests
         run: |
           cd example
