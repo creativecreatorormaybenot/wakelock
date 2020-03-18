@@ -18,3 +18,6 @@ dev_dependencies:
   flutter_driver:
     sdk: flutter
   test: # This is equivalent to any.
+
+dependency_overrides:
+  pedantic: 1.9.0
