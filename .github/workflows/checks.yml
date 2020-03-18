@@ -69,6 +69,7 @@ jobs:
       - name: Start iOS simulator
         if: contains(${{ matrix.device }}, 'iPhone')
         run: |
+          xcrun instruments -s
           UDID=$(
             xcrun instruments -s |
             awk \
@@ -76,7 +77,7 @@ jobs:
               -v 'device=${{ matrix.device }}' \
               '$1 == device { print $2 }'
           )
-          xcrun simctl boot "${UDID}"
+          xcrun simctl boot "${UDID:?simulator not found}"
       - name: Start Android emulator
         if: contains(${{ matrix.device }}, 'Pixel')
         uses: reactivecircus/android-emulator-runner@v2.5.0
