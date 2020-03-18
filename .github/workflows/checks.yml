@@ -57,7 +57,7 @@ jobs:
           - 'stable'
           - 'beta'
           - 'dev'
-      fail-fast: false # revert after everything is fixed todo
+      fail-fast: true
 
     steps:
       - name: Start iOS simulator
@@ -72,13 +72,6 @@ jobs:
               '$1 == device { print $2 }'
           )
           xcrun simctl boot "${UDID:?simulator not found}"
-      - name: Start Android emulator
-        if: contains(matrix.device, 'Nexus')
-        uses: reactivecircus/android-emulator-runner@v2.5.0
-        with:
-          api-level: 29
-          profile: ${{ matrix.device }}
-          script: echo noop
       - uses: actions/checkout@v2
       - uses: subosito/flutter-action@v1.2.0
         with:
@@ -93,8 +86,14 @@ jobs:
           cd ..
       - name: Run unit tests
         run: flutter test
-      - name: Run integration tests
-        run: |
-          cd example
-          flutter drive --target=test_driver/app.dart
-          cd ..
+      - run: cd example
+      - name: Run integration tests on iOS
+        if: contains(matrix.device, 'iPhone')
+        run: flutter drive --target=test_driver/app.dart
+      - name: Run integration tests on Android
+        if: contains(matrix.device, 'Nexus')
+        uses: reactivecircus/android-emulator-runner@v2.5.0
+        with:
+          api-level: 29
+          profile: ${{ matrix.device }}
+          script: flutter drive --target=test_driver/app.dart
