@@ -43,6 +43,7 @@ jobs:
       - run: flutter analyze
 
   test:
+    if: github.event.pull_request.draft == false
     runs-on: ${{ matrix.os }}
     name: Format and analysis (${{ matrix.channel }} on ${{ matrix.os }})
     strategy:

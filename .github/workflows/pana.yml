@@ -13,7 +13,8 @@ on:
       - '**/test_driver/**'
 
 jobs:
-  build:
+  configure:
+    if: github.event.pull_request.draft == false
     runs-on: ubuntu-latest
 
     steps:
