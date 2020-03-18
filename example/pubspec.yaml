@@ -3,7 +3,7 @@ description: Demonstrates how to use the wakelock plugin and is used for integra
 publish_to: 'none'
 
 environment:
-  sdk: ">=2.7.10<3.0.0"
+  sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
   flutter:
