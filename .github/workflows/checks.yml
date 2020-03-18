@@ -1,0 +1,74 @@
+name: Checks
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+    paths:
+      - '**/lib/**'
+      - '**/android/**'
+      - '**/ios/**'
+      - '**/pubspec.yaml'
+      - '**/test/**'
+      - '**/test_driver/**'
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+          - macos-latest
+        channel:
+          - 'stable'
+          - 'beta'
+          - 'dev'
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: subosito/flutter-action@v1.2.0
+        with:
+          channel: ${{ matrix.channel }}
+      - run: flutter pub get
+      - name: flutter create example
+        run: |
+          cd example
+          flutter create .
+          cd ..
+
+  format:
+    needs: build
+    name: Check format (channel=${{ matrix.channel }}, os=${{ matrix.os }}
+
+    steps:
+      - run: flutter format . --set-exit-if-changed --fix
+
+  analyze:
+    needs: build
+    name: Analyze (channel=${{ matrix.channel }}, os=${{ matrix.os }}
+
+    steps:
+      - run: flutter analyze
+
+  unit_testing:
+    needs: build
+    name: Unit testing (channel=${{ matrix.channel }}, os=${{ matrix.os }}
+
+    steps:
+      - run: flutter test
+
+  integration_testing:
+    needs: build
+    name: Integration testing (channel=${{ matrix.channel }}, os=${{ matrix.os }}
+
+    steps:
+      - run: |
+          cd example
+          flutter drive --target=test_driver/app.dart
+          cd ..
+
