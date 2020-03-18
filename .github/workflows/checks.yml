@@ -73,7 +73,7 @@ jobs:
           )
           xcrun simctl boot "${UDID:?simulator not found}"
       - name: Start Android emulator
-        if: contains(matrix.device, 'Pixel')
+        if: contains(matrix.device, 'Nexus')
         uses: reactivecircus/android-emulator-runner@v2.5.0
         with:
           api-level: 29
