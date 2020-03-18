@@ -67,7 +67,7 @@ jobs:
       - name: Run unit tests
         run: flutter test
       - name: Start iOS simulator
-        if: startsWith(${{ matrix.device }}, 'iPhone') == true
+        if: contains(matrix.device, 'iPhone')
         run: |
           xcrun instruments -s
           UDID=$(
@@ -79,7 +79,7 @@ jobs:
           )
           xcrun simctl boot "${UDID:?simulator not found}"
       - name: Start Android emulator
-        if: startsWith(${{ matrix.device }}, 'Pixel') == true
+        if: contains(matrix.device, 'Pixel')
         uses: reactivecircus/android-emulator-runner@v2.5.0
         with:
           api-level: 29
