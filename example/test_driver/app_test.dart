@@ -7,7 +7,8 @@ void main() async {
 
   setUpAll(() async {
     driver = await FlutterDriver.connect();
-    bareTestingResult = await driver.requestData('', timeout: const Duration(minutes: 1));
+    bareTestingResult =
+        await driver.requestData('', timeout: const Duration(minutes: 1));
   });
 
   tearDownAll(() => driver?.close());
@@ -49,7 +50,8 @@ extension on FlutterDriver {
 
   Future<void> _expectEnabled(Matcher matcher) async {
     // Check the widget in the example app.
-    final result = await _finds(find.text('wakelock is currently ${matcher == isTrue ? 'enabled' : 'disabled'}'));
+    final result = await _finds(find.text(
+        'wakelock is currently ${matcher == isTrue ? 'enabled' : 'disabled'}'));
 
     expect(result, isTrue);
   }
