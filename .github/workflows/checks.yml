@@ -51,7 +51,7 @@ jobs:
     strategy:
       matrix:
         device:
-          - 'iPhone 11 Pro Max (13.1)'
+          - 'iPhone 11 (13.3)'
           - 'Pixel 3'
         channel:
           - 'stable'
