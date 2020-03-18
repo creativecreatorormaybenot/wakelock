@@ -57,7 +57,7 @@ jobs:
           - 'stable'
           - 'beta'
           - 'dev'
-      fail-fast: true
+      fail-fast: false # revert after everything is fixed todo
 
     steps:
       - uses: actions/checkout@v2
