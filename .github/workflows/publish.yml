@@ -16,7 +16,7 @@ jobs:
         with:
           channel: stable
       - name: Setup projects (root & example)
-      - run: |
+        run: |
           flutter pub get
           cd example
           flutter create .

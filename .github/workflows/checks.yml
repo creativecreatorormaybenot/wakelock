@@ -32,7 +32,7 @@ jobs:
         with:
           channel: ${{ matrix.channel }}
       - name: Setup projects (root & example)
-      - run: |
+        run: |
           flutter pub get
           cd example
           flutter create .
