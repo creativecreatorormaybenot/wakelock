@@ -1,9 +1,13 @@
 .DS_Store
 .dart_tool
+
 .packages
 .pub
+
 build
-.idea
-wakelock.iml
-.metadata
+
+# Cleanliness
 pubspec.lock
+**.iml
+.idea
+.metadata

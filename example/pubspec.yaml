@@ -3,19 +3,21 @@ description: Demonstrates how to use the wakelock plugin and is used for integra
 publish_to: 'none'
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
 
 dev_dependencies:
+  pedantic: 1.9.0
+
   wakelock:
     path: ../
 
   flutter_driver:
     sdk: flutter
-  test:
+  test: # This is equivalent to any.
 
-flutter:
-  uses-material-design: true
+dependency_overrides:
+  pedantic: 1.9.0

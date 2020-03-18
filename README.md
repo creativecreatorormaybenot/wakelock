@@ -1,4 +1,4 @@
-# Wakelock [![](https://travis-ci.com/creativecreatorormaybenot/wakelock.svg?branch=master)](https://travis-ci.com/creativecreatorormaybenot/wakelock) [![](https://img.shields.io/github/stars/creativecreatorormaybenot/wakelock.svg)](https://github.com/creativecreatorormaybenot/wakelock) [![](https://img.shields.io/pub/v/wakelock.svg)](https://pub.dev/packages/wakelock)
+# Wakelock [![](https://github.com/creativecreatorormaybenot/wakelock/workflows/Pana/badge.svg)](https://github.com/creativecreatorormaybenot/wakelock/actions) [![](https://img.shields.io/github/stars/creativecreatorormaybenot/wakelock.svg)](https://github.com/creativecreatorormaybenot/wakelock) [![](https://img.shields.io/pub/v/wakelock.svg)](https://pub.dev/packages/wakelock)
 
 This Flutter plugin allows you to enable and toggle the screen wakelock on Android and iOS, which prevents the screen from turning off automatically.  
 Essentially, this allows you to keep the device awake, i.e. prevent the device from sleeping.

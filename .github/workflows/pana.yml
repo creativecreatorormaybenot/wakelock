@@ -1,0 +1,25 @@
+name: Pana
+
+on:
+  pull_request:
+    branches:
+      - master
+    paths:
+      - '**/lib/**'
+      - '**/android/**'
+      - '**/ios/**'
+      - '**/pubspec.yaml'
+      - '**/test/**'
+      - '**/test_driver/**'
+
+jobs:
+  configure:
+    # Not using the conditional as jobs are not re-run when the draft status changes.
+    #if: github.event.pull_request.draft == false
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: axel-op/dart-package-analyzer@v2.0.0
+        with:
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
