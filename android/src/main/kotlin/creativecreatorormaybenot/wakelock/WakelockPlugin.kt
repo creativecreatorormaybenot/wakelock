@@ -38,7 +38,7 @@ public class WakelockPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
     }
   }
 
-  private lateinit var wakelock: Wakelock
+  private var wakelock: Wakelock? = null
 
   private fun setup() {
     wakelock = Wakelock()
@@ -47,10 +47,10 @@ public class WakelockPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
   override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
     when (call.method) {
       "toggle" -> {
-        wakelock.toggle(call.argument<Boolean>("enable")!!, result)
+        wakelock?.toggle(call.argument<Boolean>("enable")!!, result)
       }
       "isEnabled" -> {
-        wakelock.isEnabled(result)
+        wakelock?.isEnabled(result)
       }
       else -> {
         result.notImplemented()
@@ -60,14 +60,15 @@ public class WakelockPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
 
   override fun onDetachedFromEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {
     channel.setMethodCallHandler(null)
+    wakelock = null
   }
 
   override fun onAttachedToActivity(binding: ActivityPluginBinding) {
-    wakelock.activity = binding.activity
+    wakelock?.activity = binding.activity
   }
 
   override fun onDetachedFromActivity() {
-    wakelock.activity = null
+    wakelock?.activity = null
   }
 
   override fun onReattachedToActivityForConfigChanges(binding: ActivityPluginBinding) {

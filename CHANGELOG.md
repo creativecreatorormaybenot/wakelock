@@ -1,7 +1,7 @@
 ## 0.1.4
 
-* Added assertion for `on` in `Wakelock.toggle` to be non-null and an `@required` annotation.
-  This is not a breaking change because this was logically required before.
+* Added assertion for `on` in `Wakelock.toggle` to be non-null and `@required` annotation.
+  This is not a breaking change since it was logically required before.
 * Switched from Java to Kotlin for the Android implementation.
 * Updated plugin files to the latest Flutter standards.
 * Updated structure to ignore unnecessary files.
