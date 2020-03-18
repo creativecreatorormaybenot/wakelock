@@ -52,7 +52,7 @@ jobs:
       matrix:
         device:
           - 'iPhone 11 (13.3)'
-          - 'Pixel 3'
+          - 'Nexus 6'
         channel:
           - 'stable'
           - 'beta'
