@@ -97,4 +97,6 @@ jobs:
         with:
           api-level: 29
           profile: ${{ matrix.device }}
+          emulator-options: -no-snapshot -noaudio
+          disable-animations: false
           script: cd example && flutter drive --target=test_driver/app.dart

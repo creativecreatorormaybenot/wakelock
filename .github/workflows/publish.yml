@@ -11,11 +11,6 @@ jobs:
     name: Check format, analyze, and test
 
     steps:
-      - name: Start Android emulator
-        uses: reactivecircus/android-emulator-runner@v2.5.0
-        with:
-          api-level: 29
-          script: echo noop
       - uses: actions/checkout@v2
       - uses: subosito/flutter-action@v1.2.0
         with:
@@ -33,10 +28,13 @@ jobs:
       - run: flutter analyze
       - name: Run unit tests
         run: flutter test
-      - name: Run integration tests
-        run: |
-          cd example
-          flutter drive --target=test_driver/app.dart
+      - name: Run integration tests on Android
+        uses: reactivecircus/android-emulator-runner@v2.5.0
+        with:
+          api-level: 29
+          emulator-options: -no-snapshot -noaudio
+          disable-animations: false
+          script: cd example && flutter drive --target=test_driver/app.dart
   publish:
     needs: checks
     runs-on: ubuntu-latest

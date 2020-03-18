@@ -22,7 +22,6 @@ void main() async {
       // Use the button in the example app instead of a direct plugin call.
       await driver.tap(find.text('enable wakelock'));
 
-      await Future.delayed(const Duration(milliseconds: 420));
       await driver._expectEnabled(isTrue);
     });
 
@@ -30,7 +29,6 @@ void main() async {
       // Use the button in the example app instead of a direct plugin call.
       await driver.tap(find.text('disable wakelock'));
 
-      await Future.delayed(const Duration(milliseconds: 420));
       await driver._expectEnabled(isFalse);
     });
   });
