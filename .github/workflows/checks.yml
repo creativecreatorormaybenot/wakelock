@@ -52,7 +52,7 @@ jobs:
       matrix:
         device:
           - 'iPhone 11 (13.3)'
-          - 'Nexus 6'
+          - 'Android'
         channel:
           - 'stable'
           - 'beta'
@@ -96,7 +96,5 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2.5.0
         with:
           api-level: 29
-          profile: ${{ matrix.device }}
-          emulator-options: -no-snapshot -noaudio
           disable-animations: false
           script: cd example && flutter drive --target=test_driver/app.dart
