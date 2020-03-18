@@ -11,6 +11,11 @@ jobs:
     name: Check format, analyze, and test
 
     steps:
+      - name: Start Android emulator
+        uses: reactivecircus/android-emulator-runner@v2.5.0
+        with:
+          api-level: 29
+          script: echo noop
       - uses: actions/checkout@v2
       - uses: subosito/flutter-action@v1.2.0
         with:
@@ -28,11 +33,6 @@ jobs:
       - run: flutter analyze
       - name: Run unit tests
         run: flutter test
-      - name: Start Android emulator
-        uses: reactivecircus/android-emulator-runner@v2.5.0
-        with:
-          api-level: 29
-          script: echo noop
       - name: Run integration tests
         run: |
           cd example
