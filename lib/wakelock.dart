@@ -1,7 +1,7 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-import 'package:meta/meta.dart';
 
 /// To enable the wakelock, you can use [Wakelock.enable] and to disable it,
 /// you can call [Wakelock.disable].
