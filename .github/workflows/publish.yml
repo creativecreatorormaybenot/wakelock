@@ -29,6 +29,7 @@ jobs:
       - name: Run unit tests
         run: flutter test
       - name: Run integration tests on Android
+        if: false # Run these locally for now.
         uses: reactivecircus/android-emulator-runner@v2.5.0
         with:
           api-level: 29
