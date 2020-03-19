@@ -92,7 +92,7 @@ jobs:
           cd example
           flutter drive --target=test_driver/app.dart
       - name: Run integration tests on Android
-        if: contains(matrix.device, 'Nexus')
+        if: contains(matrix.device, 'Android') && false # Run these locally for now.
         uses: reactivecircus/android-emulator-runner@v2.5.0
         with:
           api-level: 29
