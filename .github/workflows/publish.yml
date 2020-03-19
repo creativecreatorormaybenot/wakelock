@@ -44,6 +44,6 @@ jobs:
       - uses: actions/checkout@v2
       - uses: sakebook/actions-flutter-pub-publisher@v1.2.1
         with:
-          credential: ${{ secrets.PUB_CREDENTIAL }}
+          credential: ${{ secrets.PUB_CREDENTIALS }}
           flutter_package: true
           skip_test: true
