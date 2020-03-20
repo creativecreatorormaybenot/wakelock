@@ -1,3 +1,10 @@
+## 0.1.4+1
+
+* Finished migration to new Flutter embedding.
+* Fixed missing activity on 
+* Upgraded CI to also run Android integration tests with the new fix.
+* Lowered Flutter SDK version constraint to `1.12.0`.
+
 ## 0.1.4
 
 * Added assertion for `on` in `Wakelock.toggle` to be non-null and `@required` annotation.
