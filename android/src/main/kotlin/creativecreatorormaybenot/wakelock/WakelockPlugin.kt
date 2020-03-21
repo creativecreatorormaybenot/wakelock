@@ -44,7 +44,7 @@ public class WakelockPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
   private var wakelock: Wakelock? = null
 
   override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
-    if (registrar != null) wakelock!!.activity = registrar.activity()
+    if (registrar != null) wakelock!!.activity = registrar!!.activity()
     when (call.method) {
       "toggle" -> {
         wakelock!!.toggle(call.argument<Boolean>("enable")!!, result)
