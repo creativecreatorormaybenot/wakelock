@@ -62,6 +62,7 @@ public class WakelockPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
   override fun onDetachedFromEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {
     channel.setMethodCallHandler(null)
     wakelock = null
+    registrar = null
   }
 
   override fun onAttachedToActivity(binding: ActivityPluginBinding) {
