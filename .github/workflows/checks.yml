@@ -57,7 +57,7 @@ jobs:
           - 'stable'
           - 'beta'
           - 'dev'
-      fail-fast: true
+      fail-fast: false
 
     steps:
       - name: Start iOS simulator
@@ -87,12 +87,12 @@ jobs:
       - name: Run unit tests
         run: flutter test
       - name: Run integration tests on iOS
-        if: contains(matrix.device, 'iPhone')
+        if: contains(matrix.device, 'iPhone') && false # Need to run locally for now.
         run: |
           cd example
           flutter drive --target=test_driver/app.dart
       - name: Run integration tests on Android
-        if: contains(matrix.device, 'Android') && false # Run these locally for now.
+        if: contains(matrix.device, 'Android')
         uses: reactivecircus/android-emulator-runner@v2.5.0
         with:
           api-level: 29

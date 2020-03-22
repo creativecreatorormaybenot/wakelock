@@ -16,8 +16,10 @@ public class WakelockPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
   override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
     channel = MethodChannel(flutterPluginBinding.binaryMessenger, "wakelock")
     channel.setMethodCallHandler(this)
-    setup()
+    wakelock = Wakelock()
   }
+
+  private var registrar: Registrar? = null
 
   // This static function is optional and equivalent to onAttachedToEngine. It supports the old
   // pre-Flutter-1.12 Android projects. You are encouraged to continue supporting
@@ -33,34 +35,34 @@ public class WakelockPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
     fun registerWith(registrar: Registrar) {
       val channel = MethodChannel(registrar.messenger(), "wakelock")
       val plugin = WakelockPlugin()
+      plugin.registrar = registrar
+      plugin.wakelock = Wakelock()
       channel.setMethodCallHandler(plugin)
-      plugin.setup()
     }
   }
 
   private var wakelock: Wakelock? = null
 
-  private fun setup() {
-    wakelock = Wakelock()
-  }
-
   override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
+    if (registrar != null) wakelock!!.activity = registrar!!.activity()
     when (call.method) {
       "toggle" -> {
-        wakelock?.toggle(call.argument<Boolean>("enable")!!, result)
+        wakelock!!.toggle(call.argument<Boolean>("enable")!!, result)
       }
       "isEnabled" -> {
-        wakelock?.isEnabled(result)
+        wakelock!!.isEnabled(result)
       }
       else -> {
         result.notImplemented()
       }
     }
+    if (registrar != null) wakelock!!.activity = null
   }
 
   override fun onDetachedFromEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {
     channel.setMethodCallHandler(null)
     wakelock = null
+    registrar = null
   }
 
   override fun onAttachedToActivity(binding: ActivityPluginBinding) {
