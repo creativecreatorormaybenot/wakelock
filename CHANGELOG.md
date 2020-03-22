@@ -2,7 +2,6 @@
 
 * Finished migration to new Flutter plugin embedding.
 * Fixed missing activity on Android for apps using the old plugin embedding. 
-* Upgraded CI to also run Android integration tests with the new fix.
 * Lowered Flutter SDK version constraint to `1.12.0`.
 
 ## 0.1.4
