@@ -1,3 +1,7 @@
+## 0.1.4+2
+
+* Fixed Gradle builds missing NonNull annotation.
+
 ## 0.1.4+1
 
 * Finished migration to new Flutter plugin embedding.
