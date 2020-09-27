@@ -10,7 +10,8 @@ import 'wakelock_js.dart' as wakelock;
 
 /// A web implementation of the Wakelock plugin.
 class WakelockWebPlugin {
-  final _isNativeWakelockSupported = context['navigator'].hasProperty('wakeLock');
+  final _isNativeWakelockSupported =
+      context['navigator'].hasProperty('wakeLock');
   var _enabled = false;
 
   static void registerWith(Registrar registrar) {
@@ -53,7 +54,7 @@ class WakelockWebPlugin {
     } else {
       wakelock.disable();
     }
-  
+
     _enabled = enable;
   }
 
@@ -61,7 +62,7 @@ class WakelockWebPlugin {
     /// If the native WebLock API is supported
     /// since these APIs are async in nature
     /// Give immediate boolean value based on `_enabled`
-    if(_isNativeWakelockSupported) {
+    if (_isNativeWakelockSupported) {
       return _enabled;
     }
 
