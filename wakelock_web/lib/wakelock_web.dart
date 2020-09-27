@@ -20,7 +20,7 @@ class WakelockWebPlugin {
       registrar.messenger,
     );
 
-    /// Import JS libraries
+    /// Import JS library
     importJsLibrary(url: './assets/NoSleep.js', flutterPluginName: 'wakelock');
 
     final pluginInstance = WakelockWebPlugin();
