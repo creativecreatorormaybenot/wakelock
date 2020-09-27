@@ -143,7 +143,10 @@ var NoSleep = (function () {
       key: 'disable',
       value: function disable() {
         if (nativeWakeLock) {
-          this._wakeLock.release();
+          if(this._wakeLock != null) {
+            this._wakeLock.release();
+          }
+          
           this._wakeLock = null;
         } else if (oldIOS) {
           if (this.noSleepTimer) {
@@ -161,9 +164,7 @@ var NoSleep = (function () {
     {
       key: 'isEnabled',
       value: function isEnabled() {
-        if (nativeWakeLock) {
-          return this._wakeLock != null;
-        } else if (oldIOS) {
+        if (oldIOS) {
           return this.noSleepTimer != null;
         } else {
           return !this.noSleepVideo.paused;

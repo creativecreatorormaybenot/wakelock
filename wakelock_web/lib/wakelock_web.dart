@@ -1,13 +1,17 @@
 import 'dart:async';
+
 import 'dart:js';
 
 import 'package:flutter/services.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:import_js_library/import_js_library.dart';
 
+import 'wakelock_js.dart' as wakelock;
+
 /// A web implementation of the Wakelock plugin.
 class WakelockWebPlugin {
-  final _isWakelockSupported = context['navigator'].hasProperty('wakeLock');
+  final _isNativeWakelockSupported = context['navigator'].hasProperty('wakeLock');
+  var _enabled = false;
 
   static void registerWith(Registrar registrar) {
     final MethodChannel channel = MethodChannel(
@@ -44,13 +48,23 @@ class WakelockWebPlugin {
   }
 
   _toggle(bool enable) {
-    if (_isWakelockSupported) {
-      final method = enable ? 'enable' : 'disable';
-      context['Wakelock'].callMethod(method);
+    if (enable) {
+      wakelock.enable();
+    } else {
+      wakelock.disable();
     }
+  
+    _enabled = enable;
   }
 
   bool _isEnabled() {
-    return context['Wakelock'].callMethod('isEnabled');
+    /// If the native WebLock API is supported
+    /// since these APIs are async in nature
+    /// Give immediate boolean value based on `_enabled`
+    if(_isNativeWakelockSupported) {
+      return _enabled;
+    }
+
+    return wakelock.isEnabled();
   }
 }
