@@ -48,7 +48,6 @@ var nativeWakeLock = 'wakeLock' in navigator;
 var NoSleep = (function () {
   function NoSleep() {
     var _this = this;
-    var enabled = false;
 
     _classCallCheck(this, NoSleep);
 
