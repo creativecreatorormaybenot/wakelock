@@ -51,7 +51,7 @@ jobs:
     strategy:
       matrix:
         device:
-          - 'iPhone 11 Pro Max (13.5)'
+          - 'iPhone 11 Pro Max (13.7)'
           - 'Android'
         channel:
           - 'stable'
