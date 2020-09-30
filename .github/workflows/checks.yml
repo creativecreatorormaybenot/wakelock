@@ -27,8 +27,8 @@ jobs:
       fail-fast: false
 
     steps:
-      - uses: actions/checkout@v2
-      - uses: subosito/flutter-action@v1.2.0
+      - uses: actions/checkout@v2.3.3
+      - uses: subosito/flutter-action@v1.3.2
         with:
           channel: ${{ matrix.channel }}
       - name: Setup projects (root & example)
@@ -51,7 +51,7 @@ jobs:
     strategy:
       matrix:
         device:
-          - 'iPhone 11 Pro Max (13.5)'
+          - 'iPhone 11 Pro Max (13.7)'
           - 'Android'
         channel:
           - 'stable'
@@ -72,8 +72,8 @@ jobs:
               '$1 == device { print $2 }'
           )
           xcrun simctl boot "${UDID:?simulator not found}"
-      - uses: actions/checkout@v2
-      - uses: subosito/flutter-action@v1.2.0
+      - uses: actions/checkout@v2.3.3
+      - uses: subosito/flutter-action@v1.3.2
         with:
           channel: ${{ matrix.channel }}
       - name: Setup projects (root & example)
