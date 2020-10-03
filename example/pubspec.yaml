@@ -1,0 +1,23 @@
+name: wakelock_example
+description: Demonstrates how to use the wakelock plugin and is used for integration testing.
+publish_to: 'none'
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  pedantic: 1.9.0
+
+  wakelock:
+    path: ../
+
+  flutter_driver:
+    sdk: flutter
+  test: # This is equivalent to any.
+
+dependency_overrides:
+  pedantic: 1.9.0

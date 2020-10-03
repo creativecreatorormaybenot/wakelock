@@ -1,0 +1,49 @@
+name: Publish
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  checks:
+    runs-on: macos-latest
+    name: Check format, analyze, and test
+
+    steps:
+      - uses: actions/checkout@v2.3.3
+      - uses: subosito/flutter-action@v1.3.2
+        with:
+          channel: stable
+      - name: Setup projects (root & example)
+        run: |
+          flutter pub get
+          cd example
+          flutter create .
+          rm -rf test
+          flutter pub get
+          cd ..
+      - name: Check format
+        run: flutter format . --set-exit-if-changed --fix
+      - run: flutter analyze
+      - name: Run unit tests
+        run: flutter test
+      - name: Run integration tests on Android
+        if: false # Need to run locally for now.
+        uses: reactivecircus/android-emulator-runner@v2.5.0
+        with:
+          api-level: 29
+          disable-animations: false
+          script: cd example && flutter drive --target=test_driver/app.dart
+  publish:
+    needs: checks
+    runs-on: ubuntu-latest
+    name: Publish plugin
+
+    steps:
+      - uses: actions/checkout@v2.3.3
+      - uses: sakebook/actions-flutter-pub-publisher@v1.3.1
+        with:
+          credential: ${{ secrets.PUB_CREDENTIALS }}
+          flutter_package: true
+          skip_test: true
