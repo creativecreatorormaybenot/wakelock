@@ -1,9 +1,23 @@
 import 'package:pigeon/pigeon.dart';
 
-@HostApi(dartHostTestHandler: 'TestWakelockApi')
-abstract class WakelockApi {}
+/// Message for toggling the wakelock on the platform side.
+class ToggleMessage {
+  bool enable;
+}
 
-void configurePlugins(PigeonOptions options) {
+/// Message for reporting the wakelock state from the platform side.
+class IsEnabledMessage {
+  bool enabled;
+}
+
+@HostApi(dartHostTestHandler: 'TestWakelockApi')
+abstract class WakelockApi {
+  void toggle(ToggleMessage msg);
+
+  IsEnabledMessage isEnabled();
+}
+
+void configurePigeon(PigeonOptions options) {
   options
     ..dartOut = '../wakelock_platform_interface/lib/messages.dart'
     ..objcHeaderOut = 'ios/Classes/messages.h'

@@ -1,36 +1,49 @@
 package creativemaybeno.wakelock
 
 import androidx.annotation.NonNull
-
+import creativemaybeno.wakelock.Messages.IsEnabledMessage
+import creativemaybeno.wakelock.Messages.ToggleMessage
+import creativemaybeno.wakelock.Messages.WakelockApi
 import io.flutter.embedding.engine.plugins.FlutterPlugin
-import io.flutter.plugin.common.MethodCall
-import io.flutter.plugin.common.MethodChannel
-import io.flutter.plugin.common.MethodChannel.MethodCallHandler
-import io.flutter.plugin.common.MethodChannel.Result
-import io.flutter.plugin.common.PluginRegistry.Registrar
+import io.flutter.embedding.engine.plugins.activity.ActivityAware
+import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
 
 /** WakelockPlugin */
-class WakelockPlugin: FlutterPlugin, MethodCallHandler {
-  /// The MethodChannel that will the communication between Flutter and native Android
-  ///
-  /// This local reference serves to register the plugin with the Flutter Engine and unregister it
-  /// when the Flutter Engine is detached from the Activity
-  private lateinit var channel : MethodChannel
+class WakelockPlugin : FlutterPlugin, WakelockApi, ActivityAware {
+  private var wakelock: Wakelock? = null
 
   override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
-    channel = MethodChannel(flutterPluginBinding.binaryMessenger, "wakelock")
-    channel.setMethodCallHandler(this)
-  }
-
-  override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
-    if (call.method == "getPlatformVersion") {
-      result.success("Android ${android.os.Build.VERSION.RELEASE}")
-    } else {
-      result.notImplemented()
-    }
+    WakelockApi.setup(flutterPluginBinding.binaryMessenger, this)
+    wakelock = Wakelock()
   }
 
   override fun onDetachedFromEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {
-    channel.setMethodCallHandler(null)
+    WakelockApi.setup(binding.binaryMessenger, null)
+    wakelock = null
   }
+
+  override fun onAttachedToActivity(binding: ActivityPluginBinding) {
+    wakelock?.activity = binding.activity
+  }
+
+  override fun onDetachedFromActivity() {
+    wakelock?.activity = null
+  }
+
+  override fun onReattachedToActivityForConfigChanges(binding: ActivityPluginBinding) {
+    onAttachedToActivity(binding)
+  }
+
+  override fun onDetachedFromActivityForConfigChanges() {
+    onDetachedFromActivity()
+  }
+
+  override fun toggle(arg: ToggleMessage?) {
+    wakelock!!.toggle(arg!!)
+  }
+
+  override val isEnabled: IsEnabledMessage
+    get() {
+      return wakelock!!.isEnabled()
+    }
 }
