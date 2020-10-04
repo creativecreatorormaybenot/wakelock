@@ -16,6 +16,7 @@ on:
 
 jobs:
   analyze:
+    timeout-minutes: 7
     runs-on: ${{ matrix.os }}
     name: Analysis of ${{ matrix.package }} (${{ matrix.channel }}; ${{ matrix.os }})
     strategy:
@@ -46,6 +47,7 @@ jobs:
         working-directory: ${{ matrix.package }}
 
   test:
+    timeout-minutes: 14
     runs-on: macos-latest
     name: Testing of ${{ matrix.package }} (${{ matrix.channel }}; ${{ matrix.device }})
     strategy:
