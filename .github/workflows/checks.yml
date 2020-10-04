@@ -38,10 +38,10 @@ jobs:
         with:
           channel: ${{ matrix.channel }}
       - run: cd ${{ matrix.package }}
-      - run: flutter pub get .
       - name: Check format
         run: dart format . --set-exit-if-changed
-      - run: flutter analyze .
+      - run: flutter pub get
+      - run: flutter analyze
       - run: cd ..
 
   # test:
