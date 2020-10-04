@@ -37,13 +37,13 @@ jobs:
       - uses: subosito/flutter-action@v1.3.2
         with:
           channel: ${{ matrix.channel }}
-      - run: cd ${{ matrix.package }}
-      - name: Check format
-        run: dart format . --set-exit-if-changed
-      - run: ls
       - run: flutter pub get
+        working-directory: ${{ matrix.package }}
+      - name: Check format
+        working-directory: ${{ matrix.package }}
+        run: dart format . --set-exit-if-changed
       - run: flutter analyze
-      - run: cd ..
+        working-directory: ${{ matrix.package }}
 
   # test:
   #   # Not using the conditional as jobs are not re-run when the draft status changes.
