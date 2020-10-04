@@ -44,12 +44,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2.3.3
-      - uses: sakebook/actions-flutter-pub-publisher@v1.3.1
+      - uses: k-paxian/dart-package-publisher@v1.2
         with:
           relativePath: ${{ matrix.package }}
-          credential: ${{ secrets.PUB_CREDENTIALS }}
-          flutter_package: true
-          skip_test: true
+          credentialJson: ${{ secrets.PUB_CREDENTIALS }}
+          skipTests: true
 
   tag-release:
     needs: publish
