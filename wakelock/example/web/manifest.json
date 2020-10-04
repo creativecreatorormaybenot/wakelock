@@ -1,0 +1,11 @@
+{
+    "name": "wakelock example",
+    "short_name": "wakelock",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#0175C2",
+    "theme_color": "#0175C2",
+    "description": "Example app demonstrating how to use the wakelock plugin.",
+    "orientation": "portrait-primary",
+    "prefer_related_applications": false
+}

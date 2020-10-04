@@ -1,0 +1,30 @@
+name: wakelock_example
+description: >-2
+  Example app demonstrating how to use the wakelock plugin. It also includes integration tests for
+  testing the plugin in an integrated example.
+publish_to: 'none'
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  wakelock:
+    # When depending on this package from a real application you should use:
+    #   wakelock: ^x.y.z
+    # See https://dart.dev/tools/pub/dependencies#version-constraints
+    # The example app is bundled with the plugin so we use a path dependency on
+    # the parent directory to use the current plugin's version.
+    path: ../
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_driver:
+    sdk: flutter
+  integration_test: ^0.9.1
+  test: any
+
+  pedantic: ^1.9.2

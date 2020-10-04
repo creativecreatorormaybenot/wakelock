@@ -11,11 +11,14 @@ on:
       - '**/pubspec.yaml'
       - '**/test/**'
       - '**/test_driver/**'
+      - '**/assets/**'
+      - '**/integration_test/**'
 
 jobs:
   analyze:
+    timeout-minutes: 7
     runs-on: ${{ matrix.os }}
-    name: Format check & analysis (${{ matrix.channel }} on ${{ matrix.os }})
+    name: Analysis of ${{ matrix.package }} (${{ matrix.channel }}; ${{ matrix.os }})
     strategy:
       matrix:
         os:
@@ -24,6 +27,10 @@ jobs:
           - 'stable'
           - 'beta'
           - 'dev'
+        package:
+          - 'wakelock'
+          - 'wakelock_platform_interface'
+          - 'wakelock_web'
       fail-fast: false
 
     steps:
@@ -31,37 +38,36 @@ jobs:
       - uses: subosito/flutter-action@v1.3.2
         with:
           channel: ${{ matrix.channel }}
-      - name: Setup projects (root & example)
-        run: |
-          flutter pub get
-          cd example
-          flutter create .
-          rm -rf test
-          flutter pub get
-          cd ..
+      - run: flutter pub get
+        working-directory: ${{ matrix.package }}
       - name: Check format
-        run: flutter format . --set-exit-if-changed --fix
+        working-directory: ${{ matrix.package }}
+        run: dart format . --set-exit-if-changed
       - run: flutter analyze
+        working-directory: ${{ matrix.package }}
 
   test:
-    # Not using the conditional as jobs are not re-run when the draft status changes.
-    #if: github.event.pull_request.draft == false
+    timeout-minutes: 14
     runs-on: macos-latest
-    name: Unit & integration tests (${{ matrix.channel }} on ${{ matrix.device }})
+    name: Testing of ${{ matrix.package }} (${{ matrix.channel }}; ${{ matrix.device }})
     strategy:
       matrix:
         device:
           - 'iPhone 11 Pro Max (13.7)'
-          - 'Android'
         channel:
           - 'stable'
           - 'beta'
           - 'dev'
+        package:
+          - 'wakelock'
+          - 'wakelock_platform_interface'
+          # Web tests do not work for now.
+          # - 'wakelock_web'
       fail-fast: false
 
     steps:
       - name: Start iOS simulator
-        if: contains(matrix.device, 'iPhone')
+        if: matrix.package == 'wakelock'
         run: |
           xcrun instruments -s
           UDID=$(
@@ -76,25 +82,18 @@ jobs:
       - uses: subosito/flutter-action@v1.3.2
         with:
           channel: ${{ matrix.channel }}
-      - name: Setup projects (root & example)
-        run: |
-          flutter pub get
-          cd example
-          flutter create .
-          rm -rf test
-          flutter pub get
-          cd ..
-      - name: Run unit tests
+      - run: flutter pub get
+        working-directory: ${{ matrix.package }}
+      - name: Run unit tests (tester)
+        if: matrix.package != 'wakelock_web'
         run: flutter test
-      - name: Run integration tests on iOS
-        if: contains(matrix.device, 'iPhone')
+        working-directory: ${{ matrix.package }}
+      - name: Run unit tests (chrome)
+        if: matrix.package == 'wakelock_web'
+        run: flutter test --platform chrome
+        working-directory: ${{ matrix.package }}
+      - name: Integration tests on iOS
+        if: matrix.package == 'wakelock'
         run: |
-          cd example
-          flutter drive --target=test_driver/app.dart
-      - name: Run integration tests on Android
-        if: contains(matrix.device, 'Android') && false # Need to run locally for now.
-        uses: reactivecircus/android-emulator-runner@v2.5.0
-        with:
-          api-level: 29
-          disable-animations: false
-          script: cd example && flutter drive --target=test_driver/app.dart
+          cd wakelock/example
+          flutter drive --driver=test_driver/integration_test.dart --target=integration_test/wakelock_test.dart

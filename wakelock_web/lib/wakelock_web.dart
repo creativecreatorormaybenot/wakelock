@@ -1,71 +1,50 @@
 import 'dart:async';
 
-import 'dart:js';
-
-import 'package:flutter/services.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:import_js_library/import_js_library.dart';
+import 'package:js/js.dart';
+import 'package:wakelock_platform_interface/wakelock_platform_interface.dart';
+import 'package:wakelock_web/src/js_wakelock.dart' as Wakelock;
 
-import 'wakelock_js.dart' as wakelock;
-
-/// A web implementation of the Wakelock plugin.
-class WakelockWebPlugin {
-  final _isNativeWakelockSupported =
-      context['navigator'].hasProperty('wakeLock');
-  var _enabled = false;
-
+/// The web implementation of the [WakelockPlatformInterface].
+///
+/// This class implements the `wakelock` plugin functionality for web.
+class WakelockWeb extends WakelockPlatformInterface {
+  /// Registers [WakelockWeb] as the default instance of the
+  /// [WakelockPlatformInterface].
   static void registerWith(Registrar registrar) {
-    final MethodChannel channel = MethodChannel(
-      'wakelock',
-      const StandardMethodCodec(),
-      registrar.messenger,
+    // Import a version of `NoSleep.js` that was adjusted for the wakelock
+    // plugin.
+    importJsLibrary(
+        url: 'assets/no_sleep.js', flutterPluginName: 'wakelock_web');
+
+    WakelockPlatformInterface.instance = WakelockWeb();
+  }
+
+  @override
+  Future<void> toggle({bool enable}) async {
+    assert(enable != null);
+
+    Wakelock.toggle(enable);
+  }
+
+  @override
+  Future<bool> get enabled async {
+    final completer = Completer<bool>();
+
+    Wakelock.enabled().then(
+      // onResolve
+      allowInterop((value) {
+        assert(value is bool);
+
+        completer.complete(value);
+      }),
+      // onReject
+      allowInterop((error) {
+        completer.completeError(error);
+      }),
     );
 
-    /// Import JS library
-    importJsLibrary(url: './assets/NoSleep.js', flutterPluginName: 'wakelock');
-
-    final pluginInstance = WakelockWebPlugin();
-    channel.setMethodCallHandler(pluginInstance.handleMethodCall);
-  }
-
-  /// Handles method calls over the MethodChannel of this plugin.
-  /// Note: Check the "federated" architecture for a new way of doing this:
-  /// https://flutter.dev/go/federated-plugins
-  Future<dynamic> handleMethodCall(MethodCall call) async {
-    switch (call.method) {
-      case 'toggle':
-        final bool enable = call.arguments['enable'];
-        return Future.value(_toggle(enable));
-        break;
-      case 'isEnabled':
-        return Future.value(_isEnabled());
-        break;
-      default:
-        throw PlatformException(
-          code: 'Unimplemented',
-          details: 'wakelock_web for web doesn\'t implement \'${call.method}\'',
-        );
-    }
-  }
-
-  _toggle(bool enable) {
-    if (enable) {
-      wakelock.enable();
-    } else {
-      wakelock.disable();
-    }
-
-    _enabled = enable;
-  }
-
-  bool _isEnabled() {
-    /// If the native WebLock API is supported
-    /// since these APIs are async in nature
-    /// Give immediate boolean value based on `_enabled`
-    if (_isNativeWakelockSupported) {
-      return _enabled;
-    }
-
-    return wakelock.isEnabled();
+    return completer.future;
   }
 }

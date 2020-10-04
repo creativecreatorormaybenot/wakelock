@@ -11,15 +11,25 @@ on:
       - '**/pubspec.yaml'
       - '**/test/**'
       - '**/test_driver/**'
+      - '**/assets/**'
+      - '**/integration_test/**'
 
 jobs:
   configure:
-    # Not using the conditional as jobs are not re-run when the draft status changes.
-    #if: github.event.pull_request.draft == false
+    timeout-minutes: 9
     runs-on: ubuntu-latest
+    name: Configuration of ${{ matrix.package }}
+    strategy:
+      matrix:
+        package:
+          - 'wakelock'
+          - 'wakelock_platform_interface'
+          - 'wakelock_web'
+      fail-fast: false
 
     steps:
       - uses: actions/checkout@v2.3.3
       - uses: axel-op/dart-package-analyzer@v3
         with:
+          relativePath: ${{ matrix.package }}
           githubToken: ${{ secrets.GITHUB_TOKEN }}
