@@ -6,7 +6,7 @@ version: 0.2.0
 homepage: https://github.com/creativecreatorormaybenot/wakelock/tree/master/wakelock
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ">=2.8.0 <3.0.0"
   flutter: ">=1.20.0 <2.0.0"
 
 dependencies:
@@ -14,7 +14,9 @@ dependencies:
     sdk: flutter
 
   meta: ^1.2.0
+
   wakelock_platform_interface: ^0.1.0
+  wakelock_web: ^0.1.0
 
 dev_dependencies:
   flutter_test:
@@ -31,3 +33,5 @@ flutter:
         pluginClass: WakelockPlugin
       ios:
         pluginClass: WakelockPlugin
+      web:
+        default_package: wakelock_web
