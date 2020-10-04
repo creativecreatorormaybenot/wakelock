@@ -1,0 +1,34 @@
+name: Pana
+
+on:
+  pull_request:
+    branches:
+      - master
+    paths:
+      - '**/lib/**'
+      - '**/android/**'
+      - '**/ios/**'
+      - '**/pubspec.yaml'
+      - '**/test/**'
+      - '**/test_driver/**'
+      - '**/assets/**'
+      - '**/integration_test/**'
+
+jobs:
+  configure:
+    runs-on: ubuntu-latest
+    name: Pana configuration (${{ matrix.package }})
+    strategy:
+      matrix:
+        package:
+          - 'wakelock'
+          - 'wakelock_platform_interface'
+          - 'wakelock_web'
+      fail-fast: false
+
+    steps:
+      - uses: actions/checkout@v2.3.3
+      - uses: axel-op/dart-package-analyzer@v3
+        working-directory: ${{ matrix.package }}
+        with:
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
