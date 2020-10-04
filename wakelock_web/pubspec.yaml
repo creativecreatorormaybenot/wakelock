@@ -24,6 +24,9 @@ dev_dependencies:
 
   pedantic: ^1.9.2
 
+  wakelock:
+    path: ../wakelock
+
 flutter:
   plugin:
     platforms:
