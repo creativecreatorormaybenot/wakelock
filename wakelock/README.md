@@ -3,13 +3,15 @@
 Plugin that allows you to keep the device screen awake, i.e. prevent the screen from sleeping on
 Android, iOS, and web.
 
+---
 
-This Flutter plugin allows you to enable and toggle the screen wakelock on Android and iOS, which prevents the screen from turning off automatically.  
+The plugin allows you to enable and toggle the screen wakelock on Android, iOS, and web, which 
+prevents the screen from turning off automatically.    
 Essentially, this allows you to keep the device awake, i.e. prevent the device from sleeping.
 
 ## Usage
 
-To use this plugin, follow the [installing guide](https://pub.dev/packages/wakelock#-installing-tab-).
+To use this plugin, follow the [installing guide](https://pub.dev/packages/wakelock/install).
 
 ### Implementation
 
@@ -28,27 +30,33 @@ Wakelock.enable();
 Wakelock.disable();
 ```
 
-For more advanced usage, you can pass a `bool` to [`Wakelock.toggle`](https://pub.dev/documentation/wakelock/latest/wakelock/Wakelock/toggle.html) to enable or disable the wakelock 
-and also retrieve the current wakelock status using [`Wakelock.isEnabled`](https://pub.dev/documentation/wakelock/latest/wakelock/Wakelock/isEnabled.html):
+For more advanced usage, you can pass a `bool` to [`Wakelock.toggle`](https://pub.dev/documentation/wakelock/latest/wakelock/Wakelock/toggle.html)
+to enable or disable the wakelock and also retrieve the current wakelock status using
+[`Wakelock.isEnabled`](https://pub.dev/documentation/wakelock/latest/wakelock/Wakelock/isEnabled.html):
 
 ```dart
 import 'package:wakelock/wakelock.dart';
 // ...
 
 // The following lines of code toggle the wakelock based on a bool value.
-bool on = true;
+bool enable = true;
 // The following statement enables the wakelock.
-Wakelock.toggle(on: on);
+Wakelock.toggle(enable: enable);
 
-on = false;
+enable = false;
 // The following statement disables the wakelock.
-Wakelock.toggle(on: on);
+Wakelock.toggle(enable: enable);
 
 // If you want to retrieve the current wakelock status,
 // you will have to be in an async scope
-// to await the Future returned by isEnabled.
-bool isEnabled = await Wakelock.isEnabled;
+// to await the Future returned by `enabled`.
+bool wakelockEnabled = await Wakelock.enabled;
 ```
 
-If you want to wait for the wakelock toggle on Android or iOS to complete (which takes an insignificant amount of time), 
-you can also `await` any of `Wakelock.enable`, `Wakelock.disable`, and `Wakelock.toggle`.
+If you want to wait for the wakelock toggle to complete (which takes an insignificant amount of
+time), you can also `await` any of `Wakelock.enable`, `Wakelock.disable`, and `Wakelock.toggle`.
+
+## Learn more
+
+If you want to learn more about how this plugin works, how to contribute, etc., you can read through
+the [main README on GitHub](https://github.com/creativecreatorormaybenot/wakelock).
