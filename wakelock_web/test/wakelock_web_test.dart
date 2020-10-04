@@ -7,6 +7,7 @@ import 'package:wakelock_web/wakelock_web.dart';
 void main() {
   group('$WakelockWeb', () {
     setUpAll(() async {
+      // todo: the web tests do not work as the JS library import does not work.
       WakelockPlatformInterface.instance = WakelockWeb();
     });
 
