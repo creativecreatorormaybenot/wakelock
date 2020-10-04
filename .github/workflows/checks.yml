@@ -40,7 +40,6 @@ jobs:
       - run: cd ${{ matrix.package }}
       - name: Check format
         run: dart format . --set-exit-if-changed
-      - run: flutter pub get
       - run: flutter analyze
       - run: cd ..
 
