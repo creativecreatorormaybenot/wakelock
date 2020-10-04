@@ -1,7 +1,10 @@
 name: wakelock_platform_interface
-description: A common platform interface for the wakelock plugin used by the different platform implementations.
+description: >-2
+  A common platform interface for the wakelock plugin used by the different platform
+  implementations.
 version: 0.1.0
-homepage: https://github.com/creativecreatorormaybenot/wakelock/tree/master/wakelock_paltform_interface
+homepage: >-2
+  https://github.com/creativecreatorormaybenot/wakelock/tree/master/wakelock_platform_interface
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
@@ -18,3 +21,4 @@ dev_dependencies:
     sdk: flutter
 
   pedantic: ^1.9.2
+  mockito: ^4.1.2

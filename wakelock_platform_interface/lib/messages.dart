@@ -14,9 +14,10 @@ class ToggleMessage {
     pigeonMap['enable'] = enable;
     return pigeonMap;
   }
+
   // ignore: unused_element
   static ToggleMessage _fromMap(Map<dynamic, dynamic> pigeonMap) {
-    if (pigeonMap == null){
+    if (pigeonMap == null) {
       return null;
     }
     final ToggleMessage result = ToggleMessage();
@@ -33,9 +34,10 @@ class IsEnabledMessage {
     pigeonMap['enabled'] = enabled;
     return pigeonMap;
   }
+
   // ignore: unused_element
   static IsEnabledMessage _fromMap(Map<dynamic, dynamic> pigeonMap) {
-    if (pigeonMap == null){
+    if (pigeonMap == null) {
       return null;
     }
     final IsEnabledMessage result = IsEnabledMessage();
@@ -47,15 +49,15 @@ class IsEnabledMessage {
 class WakelockApi {
   Future<void> toggle(ToggleMessage arg) async {
     final Map<dynamic, dynamic> requestMap = arg._toMap();
-    const BasicMessageChannel<dynamic> channel =
-        BasicMessageChannel<dynamic>('dev.flutter.pigeon.WakelockApi.toggle', StandardMessageCodec());
-    
+    const BasicMessageChannel<dynamic> channel = BasicMessageChannel<dynamic>(
+        'dev.flutter.pigeon.WakelockApi.toggle', StandardMessageCodec());
+
     final Map<dynamic, dynamic> replyMap = await channel.send(requestMap);
     if (replyMap == null) {
       throw PlatformException(
-        code: 'channel-error',
-        message: 'Unable to establish connection on channel.',
-        details: null);
+          code: 'channel-error',
+          message: 'Unable to establish connection on channel.',
+          details: null);
     } else if (replyMap['error'] != null) {
       final Map<dynamic, dynamic> error = replyMap['error'];
       throw PlatformException(
@@ -65,18 +67,18 @@ class WakelockApi {
     } else {
       // noop
     }
-    
   }
+
   Future<IsEnabledMessage> isEnabled() async {
-    const BasicMessageChannel<dynamic> channel =
-        BasicMessageChannel<dynamic>('dev.flutter.pigeon.WakelockApi.isEnabled', StandardMessageCodec());
-    
+    const BasicMessageChannel<dynamic> channel = BasicMessageChannel<dynamic>(
+        'dev.flutter.pigeon.WakelockApi.isEnabled', StandardMessageCodec());
+
     final Map<dynamic, dynamic> replyMap = await channel.send(null);
     if (replyMap == null) {
       throw PlatformException(
-        code: 'channel-error',
-        message: 'Unable to establish connection on channel.',
-        details: null);
+          code: 'channel-error',
+          message: 'Unable to establish connection on channel.',
+          details: null);
     } else if (replyMap['error'] != null) {
       final Map<dynamic, dynamic> error = replyMap['error'];
       throw PlatformException(
@@ -86,7 +88,6 @@ class WakelockApi {
     } else {
       return IsEnabledMessage._fromMap(replyMap['result']);
     }
-    
   }
 }
 
@@ -95,18 +96,19 @@ abstract class TestWakelockApi {
   IsEnabledMessage isEnabled();
   static void setup(TestWakelockApi api) {
     {
-      const BasicMessageChannel<dynamic> channel =
-          BasicMessageChannel<dynamic>('dev.flutter.pigeon.WakelockApi.toggle', StandardMessageCodec());
+      const BasicMessageChannel<dynamic> channel = BasicMessageChannel<dynamic>(
+          'dev.flutter.pigeon.WakelockApi.toggle', StandardMessageCodec());
       channel.setMockMessageHandler((dynamic message) async {
-        final Map<dynamic, dynamic> mapMessage = message as Map<dynamic, dynamic>;
+        final Map<dynamic, dynamic> mapMessage =
+            message as Map<dynamic, dynamic>;
         final ToggleMessage input = ToggleMessage._fromMap(mapMessage);
         api.toggle(input);
         return <dynamic, dynamic>{};
       });
     }
     {
-      const BasicMessageChannel<dynamic> channel =
-          BasicMessageChannel<dynamic>('dev.flutter.pigeon.WakelockApi.isEnabled', StandardMessageCodec());
+      const BasicMessageChannel<dynamic> channel = BasicMessageChannel<dynamic>(
+          'dev.flutter.pigeon.WakelockApi.isEnabled', StandardMessageCodec());
       channel.setMockMessageHandler((dynamic message) async {
         final IsEnabledMessage output = api.isEnabled();
         return <dynamic, dynamic>{'result': output._toMap()};
@@ -114,4 +116,3 @@ abstract class TestWakelockApi {
     }
   }
 }
-

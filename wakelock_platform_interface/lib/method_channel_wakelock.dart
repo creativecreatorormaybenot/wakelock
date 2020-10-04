@@ -6,7 +6,7 @@ class MethodChannelWakelock extends WakelockPlatformInterface {
   final _api = WakelockApi();
 
   @override
-  Future<bool> get isEnabled async {
+  Future<bool> get enabled async {
     final message = await _api.isEnabled();
 
     return message.enabled;
