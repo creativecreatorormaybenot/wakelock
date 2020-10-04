@@ -37,14 +37,11 @@ jobs:
       - uses: subosito/flutter-action@v1.3.2
         with:
           channel: ${{ matrix.channel }}
-      - run: |
-          ls
-          cd ${{ matrix.package }}
-          ls
-      - run: flutter pub get
+      - run: cd ${{ matrix.package }}
+      - run: flutter pub get .
       - name: Check format
         run: dart format . --set-exit-if-changed
-      - run: flutter analyze
+      - run: flutter analyze .
       - run: cd ..
 
   # test:
