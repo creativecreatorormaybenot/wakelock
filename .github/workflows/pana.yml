@@ -29,6 +29,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2.3.3
       - uses: axel-op/dart-package-analyzer@v3
-        working-directory: ${{ matrix.package }}
         with:
+          relativePath: ${{ matrix.package }}
           githubToken: ${{ secrets.GITHUB_TOKEN }}
