@@ -4,7 +4,7 @@ version: 0.1.0
 homepage: https://github.com/creativecreatorormaybenot/wakelock/tree/master/wakelock_web
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ">=2.8.0 <3.0.0"
   flutter: ">=1.20.0 <2.0.0"
 
 dependencies:
@@ -12,6 +12,11 @@ dependencies:
     sdk: flutter
   flutter_web_plugins:
     sdk: flutter
+
+  import_js_library: ^1.0.1
+  js: ^0.6.2
+
+  wakelock_platform_interface: ^0.1.0
 
 dev_dependencies:
   flutter_test:
@@ -25,3 +30,6 @@ flutter:
       web:
         pluginClass: WakelockWeb
         fileName: wakelock_web.dart
+
+  assets:
+    - assets/no_sleep.js

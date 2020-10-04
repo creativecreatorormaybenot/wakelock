@@ -1,4 +1,4 @@
-# wakelock_platform_interface [![Pub version](https://img.shields.io/pub/v/wakelock_platform_interface.svg)](https://pub.dev/packages/wakelock_platform_interface)
+# wakelock_platform_interface [![Pub version](https://img.shields.io/pub/v/wakelock_platform_interface.svg)](https://pub.dev/packages/wakelock_platform_interface) [![GitHub stars](https://img.shields.io/github/stars/creativecreatorormaybenot/wakelock.svg)](https://github.com/creativecreatorormaybenot/wakelock)
 
 A common platform interface for the [wakelock plugin][wakelock GitHub] used by the different
 platform implementations.
