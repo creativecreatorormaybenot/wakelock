@@ -1,0 +1,101 @@
+name: Checks
+
+on:
+  pull_request:
+    branches:
+      - master
+    paths:
+      - '**/lib/**'
+      - '**/android/**'
+      - '**/ios/**'
+      - '**/pubspec.yaml'
+      - '**/test/**'
+      - '**/test_driver/**'
+      - '**/assets/**'
+      - '**/integration_test/**'
+
+jobs:
+  analyze:
+    runs-on: ${{ matrix.os }}
+    name: Format check & analysis (${{ matrix.channel }} on ${{ matrix.os }})
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+        channel:
+          - 'stable'
+          - 'beta'
+          - 'dev'
+        package:
+          - 'wakelock'
+          - 'wakelock_platform_interface'
+          - 'wakelock_web'
+      fail-fast: false
+
+    steps:
+      - uses: actions/checkout@v2.3.3
+      - uses: subosito/flutter-action@v1.3.2
+        with:
+          channel: ${{ matrix.channel }}
+      - run: cd ${{ matrix.package }}
+      - run: flutter pub get
+      - name: Check format
+        run: dart format . --set-exit-if-changed
+      - run: flutter analyze
+      - run: cd ..
+
+  # test:
+  #   # Not using the conditional as jobs are not re-run when the draft status changes.
+  #   #if: github.event.pull_request.draft == false
+  #   runs-on: macos-latest
+  #   name: Unit & integration tests (${{ matrix.channel }} on ${{ matrix.device }})
+  #   strategy:
+  #     matrix:
+  #       device:
+  #         - 'iPhone 11 Pro Max (13.7)'
+  #         - 'Android'
+  #       channel:
+  #         - 'stable'
+  #         - 'beta'
+  #         - 'dev'
+  #     fail-fast: false
+
+  #   steps:
+  #     - name: Start iOS simulator
+  #       if: contains(matrix.device, 'iPhone')
+  #       run: |
+  #         xcrun instruments -s
+  #         UDID=$(
+  #           xcrun instruments -s |
+  #           awk \
+  #             -F ' *[][]' \
+  #             -v 'device=${{ matrix.device }}' \
+  #             '$1 == device { print $2 }'
+  #         )
+  #         xcrun simctl boot "${UDID:?simulator not found}"
+  #     - uses: actions/checkout@v2.3.3
+  #     - uses: subosito/flutter-action@v1.3.2
+  #       with:
+  #         channel: ${{ matrix.channel }}
+  #     - name: Setup projects (root & example)
+  #       run: |
+  #         flutter pub get
+  #         cd example
+  #         flutter create .
+  #         rm -rf test
+  #         flutter pub get
+  #         cd ..
+  #     - name: Run unit tests
+  #       run: flutter test
+  #     - name: Run integration tests on iOS
+  #       if: contains(matrix.device, 'iPhone')
+  #       run: |
+  #         cd example
+  #         flutter drive --target=test_driver/app.dart
+  #     - name: Run integration tests on Android
+  #       if: contains(matrix.device, 'Android') && false # Need to run locally for now.
+  #       uses: reactivecircus/android-emulator-runner@v2.5.0
+  #       with:
+  #         api-level: 29
+  #         disable-animations: false
+  #         script: cd example && flutter drive --target=test_driver/app.dart
