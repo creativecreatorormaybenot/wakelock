@@ -22,3 +22,9 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_driver:
+    sdk: flutter
+  integration_test: ^0.9.1
+  test: any
+
+  pedantic: ^1.9.2
