@@ -17,7 +17,7 @@ on:
 jobs:
   configure:
     runs-on: ubuntu-latest
-    name: Pana configuration (${{ matrix.package }})
+    name: Configuration of ${{ matrix.package }}
     strategy:
       matrix:
         package:
