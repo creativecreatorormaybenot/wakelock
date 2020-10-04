@@ -17,7 +17,7 @@ on:
 jobs:
   analyze:
     runs-on: ${{ matrix.os }}
-    name: Format check & analysis (${{ matrix.channel }} on ${{ matrix.os }})
+    name: Format & analysis (${{ matrix.package }}; ${{ matrix.channel }}; ${{ matrix.os }})
     strategy:
       matrix:
         os:
@@ -37,7 +37,10 @@ jobs:
       - uses: subosito/flutter-action@v1.3.2
         with:
           channel: ${{ matrix.channel }}
-      - run: cd ${{ matrix.package }}
+      - run: |
+          ls
+          cd ${{ matrix.package }}
+          ls
       - run: flutter pub get
       - name: Check format
         run: dart format . --set-exit-if-changed
