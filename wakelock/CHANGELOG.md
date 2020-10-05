@@ -1,3 +1,7 @@
+## 0.2.0+1
+
+* Fix iOS build issue by bumping the `wakelock_web` dependency.
+
 ## 0.2.0
 
 * Added web support.
