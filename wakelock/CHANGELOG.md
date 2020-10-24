@@ -1,3 +1,7 @@
+## 0.2.0+2
+
+* Bumped pigeon to `0.1.14`.
+
 ## 0.2.0+1
 
 * Fix iOS build issue by bumping the `wakelock_web` dependency.
