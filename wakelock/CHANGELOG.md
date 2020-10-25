@@ -1,3 +1,8 @@
+## 0.2.1
+
+* Rewrite messages to stay as Java code and use `1.8` JVM target in order to allow interop with
+  Kotlin. This **fixes** Android build errors.
+
 ## 0.2.0+2
 
 * Bumped pigeon to `0.1.14`.
