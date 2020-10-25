@@ -42,8 +42,7 @@ class WakelockPlugin : FlutterPlugin, WakelockApi, ActivityAware {
     wakelock!!.toggle(arg!!)
   }
 
-  override val isEnabled: IsEnabledMessage
-    get() {
-      return wakelock!!.isEnabled()
-    }
+  override fun isEnabled(): IsEnabledMessage {
+    return wakelock!!.isEnabled()
+  }
 }
