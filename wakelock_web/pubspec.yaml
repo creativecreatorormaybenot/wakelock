@@ -1,6 +1,6 @@
 name: wakelock_web
 description: Web platform implementation of the wakelock_platform_interface for the wakelock plugin.
-version: 0.1.0+2
+version: 0.1.0+3
 homepage: https://github.com/creativecreatorormaybenot/wakelock/tree/master/wakelock_web
 
 environment:
@@ -13,7 +13,7 @@ dependencies:
   flutter_web_plugins:
     sdk: flutter
 
-  import_js_library: ^1.0.1
+  import_js_library: ^1.0.2
   js: ^0.6.2
 
   wakelock_platform_interface: ^0.1.0
