@@ -53,7 +53,7 @@ jobs:
     strategy:
       matrix:
         device:
-          - 'iPhone 11 Pro Max (13.7)'
+          - 'iPhone 11 Pro Max (14.0)'
         channel:
           - 'stable'
           - 'beta'
