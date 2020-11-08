@@ -1,10 +1,10 @@
 ## 0.2.1+1
 
-* Fix Android build warning (`import_js_library`) by bumping `wakelock_web`.
+* Fixed Android build warning (`import_js_library`) by bumping `wakelock_web`.
 
 ## 0.2.1
 
-* Rewrite messages to stay as Java code and use `1.8` JVM target in order to allow interop with
+* Rewrote messages to stay as Java code and use `1.8` JVM target in order to allow interop with
   Kotlin. This **fixes** Android build errors.
 
 ## 0.2.0+2
@@ -13,7 +13,7 @@
 
 ## 0.2.0+1
 
-* Fix iOS build issue by bumping the `wakelock_web` dependency.
+* Fixed iOS build issue by bumping the `wakelock_web` dependency.
 
 ## 0.2.0
 
