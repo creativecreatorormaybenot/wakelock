@@ -54,7 +54,7 @@ jobs:
         if: steps.pubspec.outputs.changed == 0
         run: |
           cd ${{ matrix.package }}
-          echo ::set-env name=VERSION::"$(awk '{if ($1 ~ /^version:/) print $2}' pubspec.yaml)"
+          echo VERSION="$(awk '{if ($1 ~ /^version:/) print $2}' pubspec.yaml)" >> $GITHUB_ENV
       - uses: sakebook/actions-flutter-pub-publisher@v1.3.1
         if: steps.pubspec.outputs.changed == 0
         with:
