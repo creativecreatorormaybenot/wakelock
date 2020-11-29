@@ -1,3 +1,7 @@
+## 0.2.0-nullsafety.2
+
+* Remove `flutter` SDK constraint.
+
 ## 0.2.0-nullsafety.1
 
 * Fix null safety issues.
