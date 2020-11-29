@@ -2,13 +2,12 @@ name: wakelock_platform_interface
 description: >-2
   A common platform interface for the wakelock plugin used by the different platform
   implementations.
-version: 0.2.0-nullsafety.1
+version: 0.2.0-nullsafety.2
 homepage: >-2
   https://github.com/creativecreatorormaybenot/wakelock/tree/master/wakelock_platform_interface
 
 environment:
   sdk: '>=2.12.0-0 <3.0.0'
-  flutter: ">=1.17.0 <2.0.0"
 
 dependencies:
   flutter:
