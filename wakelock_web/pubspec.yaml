@@ -4,7 +4,7 @@ version: 0.2.0-nullsafety.0
 homepage: https://github.com/creativecreatorormaybenot/wakelock/tree/master/wakelock_web
 
 environment:
-  sdk: '>=2.12.0-29.10.beta <3.0.0'
+  sdk: '>=2.12.0-0 <3.0.0'
 
 dependencies:
   flutter:
