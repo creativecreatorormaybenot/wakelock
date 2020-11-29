@@ -1,3 +1,8 @@
+## 0.3.0-nullsafety.0
+
+* Migrated to null safety.
+* **Breaking**: removed deprecated `isEnabled` and `on` in `toggle`.
+
 ## 0.2.1+1
 
 * Fixed Android build warning (`import_js_library`) by bumping `wakelock_web`.

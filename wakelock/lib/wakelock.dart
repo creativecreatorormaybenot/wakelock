@@ -1,4 +1,3 @@
-import 'package:meta/meta.dart';
 import 'package:wakelock_platform_interface/wakelock_platform_interface.dart';
 
 final _wakelockPlatformInstance = WakelockPlatformInterface.instance;
@@ -53,20 +52,9 @@ class Wakelock {
   ///
   /// You can await the [Future] to wait for the operation to complete.
   static Future<void> toggle({
-    @required bool enable,
-    @Deprecated('Use the `enable` parameter instead.') bool on,
+    required bool enable,
   }) {
-    // The checks allow only `on` to be used in the case of old code and
-    // they encourage to use only `enable` instead (combined with the
-    // deprecation warning).
-    assert(enable != null || on != null,
-        'The `enable` parameter must not be null when toggling the wakelock.');
-    assert(
-        on == null || enable == null,
-        'The `on` parameter has been deprecated; '
-        'specify only the `enable` parameter instead.');
-
-    return _wakelockPlatformInstance.toggle(enable: enable ?? on);
+    return _wakelockPlatformInstance.toggle(enable: enable);
   }
 
   /// Returns whether the wakelock is currently enabled or not.
@@ -78,8 +66,4 @@ class Wakelock {
   /// bool wakelockEnabled = await Wakelock.enabled;
   /// ```
   static Future<bool> get enabled => _wakelockPlatformInstance.enabled;
-
-  /// Returns the current wakelock status.
-  @Deprecated('Use the `enabled` getter instead.')
-  static Future<bool> get isEnabled => enabled;
 }

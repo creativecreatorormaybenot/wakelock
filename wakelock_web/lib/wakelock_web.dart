@@ -1,10 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
-import 'package:import_js_library/import_js_library.dart';
 import 'package:js/js.dart';
 import 'package:wakelock_platform_interface/wakelock_platform_interface.dart';
-import 'package:wakelock_web/src/js_wakelock.dart' as Wakelock;
+import 'package:wakelock_web/src/import_js_library.dart';
+import 'package:wakelock_web/src/js_wakelock.dart' as wakelock_web;
 
 /// The web implementation of the [WakelockPlatformInterface].
 ///
@@ -22,17 +22,15 @@ class WakelockWeb extends WakelockPlatformInterface {
   }
 
   @override
-  Future<void> toggle({bool enable}) async {
-    assert(enable != null);
-
-    Wakelock.toggle(enable);
+  Future<void> toggle({required bool enable}) async {
+    wakelock_web.toggle(enable);
   }
 
   @override
   Future<bool> get enabled async {
     final completer = Completer<bool>();
 
-    Wakelock.enabled().then(
+    wakelock_web.enabled().then(
       // onResolve
       allowInterop((value) {
         assert(value is bool);
