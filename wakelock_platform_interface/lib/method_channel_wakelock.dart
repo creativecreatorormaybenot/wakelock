@@ -1,3 +1,6 @@
+// Ignoring until pigeon is migrated to null safety.
+// See https://github.com/flutter/flutter/issues/71360.
+// ignore: import_of_legacy_library_into_null_safe
 import 'package:wakelock_platform_interface/messages.dart';
 import 'package:wakelock_platform_interface/wakelock_platform_interface.dart';
 
@@ -13,9 +16,7 @@ class MethodChannelWakelock extends WakelockPlatformInterface {
   }
 
   @override
-  Future<void> toggle({bool enable}) async {
-    assert(enable != null);
-
+  Future<void> toggle({required bool enable}) async {
     final message = ToggleMessage();
     message.enable = enable;
 

@@ -1,12 +1,14 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/mockito.dart';
+// Ignoring until pigeon is migrated to null safety.
+// See https://github.com/flutter/flutter/issues/71360.
+// ignore: import_of_legacy_library_into_null_safe
 import 'package:wakelock_platform_interface/messages.dart';
 import 'package:wakelock_platform_interface/method_channel_wakelock.dart';
 import 'package:wakelock_platform_interface/wakelock_platform_interface.dart';
 
 class _ApiLogger implements TestWakelockApi {
   final List<String> log = [];
-  ToggleMessage toggleMessage;
+  late ToggleMessage toggleMessage;
 
   @override
   IsEnabledMessage isEnabled() {
@@ -33,14 +35,13 @@ void main() {
     test('Cannot be implemented with `implements`', () {
       expect(() {
         WakelockPlatformInterface.instance =
-            ImplementsWakelockPlatformInterface();
-      }, throwsA(isInstanceOf<AssertionError>()));
+            ImplementsWakelockPlatformInterface(false);
+      }, throwsA(isInstanceOf<NoSuchMethodError>()));
     });
 
     test('Can be mocked with `implements`', () {
-      final mock = ImplementsWakelockPlatformInterface();
-      when(mock.isMock).thenReturn(true);
-      WakelockPlatformInterface.instance = mock;
+      WakelockPlatformInterface.instance =
+          ImplementsWakelockPlatformInterface(true);
     });
 
     test('Can be extended', () {
@@ -50,9 +51,9 @@ void main() {
 
   group('$MethodChannelWakelock', () {
     final wakelock = MethodChannelWakelock();
-    _ApiLogger logger;
+    late final _ApiLogger logger;
 
-    setUp(() {
+    setUpAll(() {
       logger = _ApiLogger();
       TestWakelockApi.setup(logger);
     });
@@ -79,7 +80,16 @@ void main() {
   });
 }
 
-class ImplementsWakelockPlatformInterface extends Mock
-    implements WakelockPlatformInterface {}
+class ImplementsWakelockPlatformInterface implements WakelockPlatformInterface {
+  const ImplementsWakelockPlatformInterface(this.mocked);
+
+  final bool mocked;
+
+  @override
+  dynamic noSuchMethod(Invocation invocation) {
+    if (invocation.memberName == #isMock && mocked) return true;
+    throw NoSuchMethodError.withInvocation(this, invocation);
+  }
+}
 
 class ExtendsVideoPlayerPlatform extends WakelockPlatformInterface {}
