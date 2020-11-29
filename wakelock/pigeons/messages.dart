@@ -1,3 +1,6 @@
+// This is fine because it is a dev dependency.
+// See https://github.com/flutter/flutter/issues/71360.
+// @dart=2.9
 import 'package:pigeon/pigeon.dart';
 
 /// Message for toggling the wakelock on the platform side.

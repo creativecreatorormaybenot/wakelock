@@ -6,14 +6,10 @@ void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   group('$Wakelock', () {
-    FakeWakelockApi fakeWakelock;
+    late FakeWakelockApi fakeWakelock;
 
     setUpAll(() {
       fakeWakelock = FakeWakelockApi();
-    });
-
-    test('toggle enable non-null assertion', () {
-      expect(() => Wakelock.toggle(enable: null), throwsAssertionError);
     });
 
     test('enable', () async {
@@ -55,7 +51,7 @@ class FakeWakelockApi extends TestWakelockApi {
   }
 
   final calls = <String>[];
-  ToggleMessage toggleMessage;
+  late ToggleMessage toggleMessage;
 
   @override
   IsEnabledMessage isEnabled() {
