@@ -13,9 +13,7 @@ class MethodChannelWakelock extends WakelockPlatformInterface {
   }
 
   @override
-  Future<void> toggle({bool enable}) async {
-    assert(enable != null);
-
+  Future<void> toggle({required bool enable}) async {
     final message = ToggleMessage();
     message.enable = enable;
 

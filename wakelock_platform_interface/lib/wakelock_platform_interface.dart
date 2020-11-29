@@ -25,12 +25,7 @@ abstract class WakelockPlatformInterface {
   /// has been resolved.
   static set instance(WakelockPlatformInterface instance) {
     if (!instance.isMock) {
-      try {
-        instance._verifyProvidesDefaultImplementations();
-      } on NoSuchMethodError catch (_) {
-        throw AssertionError(
-            'Platform interfaces must not be implemented with `implements`');
-      }
+      instance._verifyProvidesDefaultImplementations();
     }
     _instance = instance;
   }
@@ -45,7 +40,7 @@ abstract class WakelockPlatformInterface {
   bool get isMock => false;
 
   /// Toggles the wakelock based on the given [enable] value.
-  Future<void> toggle({@required bool enable}) {
+  Future<void> toggle({required bool enable}) {
     throw UnimplementedError('toggle() has not been implemented.');
   }
 
