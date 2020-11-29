@@ -58,16 +58,17 @@ class _WakelockExampleAppState extends State<WakelockExampleApp> {
               FutureBuilder(
                 future: Wakelock.enabled,
                 builder: (context, AsyncSnapshot<bool> snapshot) {
+                  final data = snapshot.data;
                   // The use of FutureBuilder is necessary here to await the
                   // bool value from the `enabled` getter.
-                  if (!snapshot.hasData) {
+                  if (data == null) {
                     // The Future is retrieved so fast that you will not be able
                     // to see any loading indicator.
                     return Container();
                   }
 
                   return Text('The wakelock is currently '
-                      '${snapshot.data ? 'enabled' : 'disabled'}.');
+                      '${data ? 'enabled' : 'disabled'}.');
                 },
               ),
               const Spacer(
