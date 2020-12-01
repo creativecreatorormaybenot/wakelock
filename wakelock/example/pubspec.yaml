@@ -3,6 +3,7 @@ description: >-2
   Example app demonstrating how to use the wakelock plugin. It also includes integration tests for
   testing the plugin in an integrated example.
 publish_to: 'none'
+version: 1.0.0+1
 
 environment:
   sdk: '>=2.12.0-0 <3.0.0'
