@@ -1,3 +1,7 @@
+## 0.3.0-nullsafety.1
+
+* Fixed `UIImagePickerController` disabling the wakelock (using the camera on iOS).
+
 ## 0.3.0-nullsafety.0
 
 * Migrated to null safety.
