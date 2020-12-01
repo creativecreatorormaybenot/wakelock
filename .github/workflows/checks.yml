@@ -98,4 +98,5 @@ jobs:
         if: matrix.package == 'wakelock'
         run: |
           cd wakelock/example
+          flutter pub get
           flutter drive --driver=test_driver/integration_test.dart --target=integration_test/wakelock_test.dart --no-sound-null-safety
