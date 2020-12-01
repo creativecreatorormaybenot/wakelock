@@ -24,7 +24,8 @@ jobs:
         os:
           - ubuntu-latest
         channel:
-          - 'stable'
+          # Do not check stable until NNBD is on stable.
+          #- 'stable'
           - 'beta'
           - 'dev'
         package:
@@ -55,7 +56,8 @@ jobs:
         device:
           - 'iPhone 11 Pro Max (14.0)'
         channel:
-          - 'stable'
+          # Do not check stable until NNBD is on stable.
+          #- 'stable'
           - 'beta'
           - 'dev'
         package:
