@@ -15,37 +15,6 @@ on:
       - '**/integration_test/**'
 
 jobs:
-  analyze:
-    timeout-minutes: 7
-    runs-on: ${{ matrix.os }}
-    name: Analysis of ${{ matrix.package }} (${{ matrix.channel }}; ${{ matrix.os }})
-    strategy:
-      matrix:
-        os:
-          - ubuntu-latest
-        channel:
-          # Do not check stable until NNBD is on stable.
-          #- 'stable'
-          - 'beta'
-          - 'dev'
-        package:
-          - 'wakelock'
-          - 'wakelock_platform_interface'
-          - 'wakelock_web'
-      fail-fast: false
-
-    steps:
-      - uses: actions/checkout@v2.3.3
-      - uses: subosito/flutter-action@v1.4.0
-        with:
-          channel: ${{ matrix.channel }}
-      - run: flutter pub get
-        working-directory: ${{ matrix.package }}
-      - name: Check format
-        working-directory: ${{ matrix.package }}
-        run: dart format . --set-exit-if-changed
-      - run: flutter analyze
-        working-directory: ${{ matrix.package }}
 
   test:
     timeout-minutes: 14
@@ -58,13 +27,9 @@ jobs:
         channel:
           # Do not check stable until NNBD is on stable.
           #- 'stable'
-          - 'beta'
-          - 'dev'
+          - 'master'
         package:
           - 'wakelock'
-          - 'wakelock_platform_interface'
-          # Web tests do not work for now.
-          # - 'wakelock_web'
       fail-fast: false
 
     steps:
