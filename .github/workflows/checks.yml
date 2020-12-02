@@ -37,7 +37,7 @@ jobs:
           )
           xcrun simctl boot "${UDID:?simulator not found}"
       - uses: actions/checkout@v2.3.3
-      - uses: subosito/flutter-action@v1.4.0
+      - uses: subosito/flutter-action@master
         with:
           channel: ${{ matrix.channel }}
       - run: flutter pub get
