@@ -4,15 +4,6 @@ on:
   pull_request:
     branches:
       - master
-    paths:
-      - '**/lib/**'
-      - '**/android/**'
-      - '**/ios/**'
-      - '**/pubspec.yaml'
-      - '**/test/**'
-      - '**/test_driver/**'
-      - '**/assets/**'
-      - '**/integration_test/**'
 
 jobs:
 
