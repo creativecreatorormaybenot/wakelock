@@ -8,7 +8,6 @@ on:
 jobs:
 
   test:
-    timeout-minutes: 14
     runs-on: macos-latest
     name: Testing of ${{ matrix.package }} (${{ matrix.channel }}; ${{ matrix.device }})
     strategy:
