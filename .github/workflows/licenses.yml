@@ -2,7 +2,7 @@ name: Licenses
 
 on:
   schedule:
-    - cron: '11 1 11 1 *'
+    - cron: '0 0 1 1 *'
   workflow_dispatch:
 
 jobs:
@@ -21,5 +21,5 @@ jobs:
         path: '**/LICENSE'
         commitTitle: Update copyright year in LICENSE file(s)
         prTitle: Update copyright year in LICENSE file(s)
-        prBody: New year is here and we want to keep up with time.
+        prBody: New Year is here and we want to keep up with time :)
         assignees: creativecreatorormaybenot
