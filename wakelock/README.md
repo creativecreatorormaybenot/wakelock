@@ -13,6 +13,9 @@ Essentially, this allows you to keep the device awake, i.e. prevent the device f
 
 To use this plugin, follow the [installing guide](https://pub.dev/packages/wakelock/install).
 
+The `wakelock` plugin **does not require any special *permissions*** on any platform :)  
+This is because it only enables the *screen wakelock* and not any partial (CPU) wakelocks that would keep the app alive in the background.
+
 ### Implementation
 
 Everything in this plugin is controlled via the [`Wakelock` class](https://pub.dev/documentation/wakelock/latest/wakelock/Wakelock-class.html).  
