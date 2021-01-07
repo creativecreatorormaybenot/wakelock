@@ -18,7 +18,7 @@ jobs:
     - uses: FantasticFiasco/action-update-license-year@v2
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        path: **/LICENSE
+        path: '**/LICENSE'
         commitTitle: Update copyright year in LICENSE file(s)
         prTitle: Update copyright year in LICENSE file(s)
         prBody: New year is here and we want to keep up with time.
