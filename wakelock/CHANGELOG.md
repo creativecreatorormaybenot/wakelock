@@ -1,3 +1,7 @@
+## 0.3.0-nullsafety.2
+
+* Indicated that no permissions are required for using the `wakelock` plugin in the README.
+
 ## 0.3.0-nullsafety.1
 
 * Fixed `UIImagePickerController` disabling the wakelock (using the camera on iOS).
