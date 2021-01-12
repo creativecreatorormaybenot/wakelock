@@ -1,25 +1,34 @@
 # wakelock [![Pub version](https://img.shields.io/pub/v/wakelock.svg)](https://pub.dev/packages/wakelock) [![GitHub stars](https://img.shields.io/github/stars/creativecreatorormaybenot/wakelock.svg)](https://github.com/creativecreatorormaybenot/wakelock) [![Twitter Follow](https://img.shields.io/twitter/follow/creativemaybeno?label=Follow&style=social)](https://twitter.com/creativemaybeno)
 
-Plugin that allows you to keep the device screen awake, i.e. prevent the screen from sleeping on
-Android, iOS, and web.
+Plugin that allows you to keep the device screen awake, i.e. prevent the screen from sleeping
 
 ---
 
-The plugin allows you to enable and toggle the screen wakelock on Android, iOS, and web, which 
-prevents the screen from turning off automatically.    
+The plugin allows you to enable and toggle the screen wakelock, which prevents the screen from turning off automatically.  
 Essentially, this allows you to keep the device awake, i.e. prevent the device from sleeping.
+
+## Supported platforms
+
+| Platform | `wakelock` support |
+| :------- | :----------------: |
+| Android  |         ✅         |
+| iOS      |         ✅         |
+| Web      |         ✅         |
+| macOS    | ⚒ work in progress |
+| Windows  |     ❎ planned     |
+| Linux    |     ❎ planned     |
 
 ## Usage
 
 To use this plugin, follow the [installing guide](https://pub.dev/packages/wakelock/install).
 
-The `wakelock` plugin **does not require any special *permissions*** on any platform :)  
-This is because it only enables the *screen wakelock* and not any partial (CPU) wakelocks that would keep the app alive in the background.
+The `wakelock` plugin **does not require any special _permissions_** on any platform :)  
+This is because it only enables the _screen wakelock_ and not any partial (CPU) wakelocks that would keep the app alive in the background.
 
 ### Implementation
 
 Everything in this plugin is controlled via the [`Wakelock` class](https://pub.dev/documentation/wakelock/latest/wakelock/Wakelock-class.html).  
-If you want to enable the wakelock, i.e. keep the device awake, you can simply call [`Wakelock.enable`](https://pub.dev/documentation/wakelock/latest/wakelock/Wakelock/enable.html) 
+If you want to enable the wakelock, i.e. keep the device awake, you can simply call [`Wakelock.enable`](https://pub.dev/documentation/wakelock/latest/wakelock/Wakelock/enable.html)
 and to disable it again, you can use [`Wakelock.disable`](https://pub.dev/documentation/wakelock/latest/wakelock/Wakelock/disable.html):
 
 ```dart
