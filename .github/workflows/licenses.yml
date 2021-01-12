@@ -15,7 +15,7 @@ jobs:
     - uses: actions/checkout@v2
       with:
         fetch-depth: 0
-    - uses: FantasticFiasco/action-update-license-year@v2
+    - uses: FantasticFiasco/action-update-license-year@66564cc720675678f03c008d254ebbf5f22609ac
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         path: '**/LICENSE'
