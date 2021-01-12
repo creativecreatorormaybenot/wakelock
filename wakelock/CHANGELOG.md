@@ -1,3 +1,7 @@
+## 0.3.0-nullsafety.3
+
+* Add supported platforms to README.
+
 ## 0.3.0-nullsafety.2
 
 * Indicated that no permissions are required for using the `wakelock` plugin in the README.
