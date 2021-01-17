@@ -35,7 +35,7 @@ flutter:
         pluginClass: WakelockPlugin
       ios:
         pluginClass: WakelockPlugin
-#      macos:
-#        default_package: wakelock_macos
+      macos:
+        default_package: wakelock_macos
       web:
         default_package: wakelock_web
