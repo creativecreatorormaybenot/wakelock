@@ -1,3 +1,7 @@
+## 0.4.0-nullsafety.0
+
+* Added macOS support 🚀
+
 ## 0.3.0-nullsafety.3
 
 * Add supported platforms to README.

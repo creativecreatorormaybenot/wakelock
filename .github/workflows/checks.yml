@@ -30,6 +30,7 @@ jobs:
           - 'dev'
         package:
           - 'wakelock'
+          - 'wakelock_macos'
           - 'wakelock_platform_interface'
           - 'wakelock_web'
       fail-fast: false
@@ -62,6 +63,7 @@ jobs:
           - 'dev'
         package:
           - 'wakelock'
+          - 'wakelock_macos'
           - 'wakelock_platform_interface'
           # Web tests do not work for now.
           # - 'wakelock_web'
@@ -98,4 +100,9 @@ jobs:
         if: matrix.package == 'wakelock'
         run: |
           cd wakelock/example
-          flutter drive --driver=test_driver/integration_test.dart --target=integration_test/wakelock_test.dart --no-sound-null-safety
+          flutter drive --driver=test_driver/integration_test.dart --target=integration_test/wakelock_test.dart
+      - name: Integration tests on macOS
+        if: matrix.package == 'wakelock_macos'
+        run: |
+          cd wakelock/example
+          flutter drive --driver=test_driver/integration_test.dart --target=integration_test/wakelock_test.dart -d macos
