@@ -1,7 +1,3 @@
-## 0.3.0-nullsafety.4
-
-* Prepare macOS integration.
-
 ## 0.3.0-nullsafety.3
 
 * Add supported platforms to README.
