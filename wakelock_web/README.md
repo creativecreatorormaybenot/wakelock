@@ -1,4 +1,4 @@
-# wakelock_web [![Pub version](https://img.shields.io/pub/v/wakelock_platform_interface.svg)](https://pub.dev/packages/wakelock_web) [![GitHub stars](https://img.shields.io/github/stars/creativecreatorormaybenot/wakelock.svg)](https://github.com/creativecreatorormaybenot/wakelock) [![Twitter Follow](https://img.shields.io/twitter/follow/creativemaybeno?label=Follow&style=social)](https://twitter.com/creativemaybeno)
+# wakelock_web [![Pub version](https://img.shields.io/pub/v/wakelock_web.svg)](https://pub.dev/packages/wakelock_web) [![GitHub stars](https://img.shields.io/github/stars/creativecreatorormaybenot/wakelock.svg)](https://github.com/creativecreatorormaybenot/wakelock) [![Twitter Follow](https://img.shields.io/twitter/follow/creativemaybeno?label=Follow&style=social)](https://twitter.com/creativemaybeno)
 
 Web platform implementation of the `wakelock_platform_interface` for the 
 [wakelock plugin][wakelock GitHub].

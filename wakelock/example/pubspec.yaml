@@ -26,7 +26,18 @@ dev_dependencies:
   flutter_driver:
     sdk: flutter
 
-  integration_test: ^0.9.2+2
+  integration_test: ^1.0.1
   test: any
 
   pedantic: ^1.10.0-nullsafety.3
+
+dependency_overrides:
+  # We override the platform dependencies of wakelock here because we use the example app for
+  # integration testing and want to make sure that the CI always runs integration tests using the
+  # current platform implementations.
+  wakelock_macos:
+    path: ../../wakelock_macos
+  wakelock_platform_interface:
+    path: ../../wakelock_platform_interface
+  wakelock_web:
+    path: ../../wakelock_web
