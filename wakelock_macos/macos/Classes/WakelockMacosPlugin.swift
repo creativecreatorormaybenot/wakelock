@@ -11,37 +11,38 @@ public class WakelockMacosPlugin: NSObject, FlutterPlugin {
   
   var assertionID: IOPMAssertionID = 0
   var wakelockEnabled = false
+
   public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
     switch call.method {
     case "toggle":
-    let args = call.arguments as? Dictionary<String, Any>
-    let enable = args!["enable"] as! Bool
-    if(enable){
-      enableWakelock()
-    }else {
-      disableWakelock();
-    }
-    result(true)
+      let args = call.arguments as? Dictionary<String, Any>
+      let enable = args!["enable"] as! Bool
+      if enable {
+        enableWakelock()
+      } else {
+        disableWakelock();
+      }
+      result(true)
     case "enabled":
       result(wakelockEnabled)
     default:
       result(FlutterMethodNotImplemented)
     }
   }
-
-  func enableWakelock(reason: String = "Disabling Screen Sleep") {
-    if(!wakelockEnabled){
+  
+  func enableWakelock(reason: String = "Disabling display sleep") {
+    if !wakelockEnabled {
       wakelockEnabled = IOPMAssertionCreateWithName( kIOPMAssertionTypeNoDisplaySleep as CFString,
                                        IOPMAssertionLevel(kIOPMAssertionLevelOn),
                                        reason as CFString,
                                        &assertionID) == kIOReturnSuccess
     }
   }
-
-func disableWakelock() {
+  
+  func disableWakelock() {
     if wakelockEnabled {
-        IOPMAssertionRelease(assertionID)
-        wakelockEnabled = false
+      IOPMAssertionRelease(assertionID)
+      wakelockEnabled = false
     }
   }
 }

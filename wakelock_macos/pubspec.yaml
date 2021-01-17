@@ -1,6 +1,6 @@
 name: wakelock_macos
 description: macOS platform implementation of the wakelock_platform_interface for the wakelock plugin.
-version: 0.2.0-nullsafety.0
+version: 0.1.0-nullsafety.0
 homepage: https://github.com/creativecreatorormaybenot/wakelock/tree/master/wakelock_macos
 
 environment:

@@ -1,3 +1,7 @@
+## 0.2.0-nullsafety.1
+
+* Correct Pub badge in README.
+
 ## 0.2.0-nullsafety.0
 
 * Migrated to null safety.

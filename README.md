@@ -9,9 +9,9 @@ Wakelock is Flutter plugin that allows you to keep the device screen awake, i.e.
 | Android  |         ✅         |
 | iOS      |         ✅         |
 | Web      |         ✅         |
-| macOS    | ⚒ work in progress |
-| Windows  |     ❎ planned     |
-| Linux    |     ❎ planned     |
+| macOS    |         ✅         |
+| Windows  |      planned       |
+| Linux    |      planned       |
 
 ## Getting started
 
@@ -29,6 +29,7 @@ The packages in this repo are the following:
 | Package                                                                                                                        | Implementations                                     |
 | ------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------- |
 | [`wakelock`](https://github.com/creativecreatorormaybenot/wakelock/tree/master/wakelock)                                       | Main plugin package + Android & iOS implementations |
+| [`wakelock_macos`](https://github.com/creativecreatorormaybenot/wakelock/tree/master/wakelock_macos)                           | macOS implementation                                |
 | [`wakelock_platform_interface`](https://github.com/creativecreatorormaybenot/wakelock/tree/master/wakelock_platform_interface) | Basic API definition & message handling             |
 | [`wakelock_web`](https://github.com/creativecreatorormaybenot/wakelock/tree/master/wakelock_web)                               | Web implementation                                  |
 
@@ -41,4 +42,5 @@ If you want to contribute to this plugin, follow the [contributing guide](https:
 Originally, this plugin was based on [`screen`](https://pub.dev/packages/screen).  
 Specifically, the wakelock functionality was extracted into this plugin due to lack of maintenance by the author of the `screen` plugin.
 
-Today, the `wakelock` plugin has been completely refreshed (using latest Flutter standards and platform integration) with added web support.
+Today, the `wakelock` plugin has been completely refreshed (using latest Flutter standards and platform integration) with added support
+for web & macOS.
