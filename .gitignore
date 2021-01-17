@@ -9,8 +9,6 @@
 pubspec.lock
 flutter_export_environment.sh
 
-examples/all_plugins/pubspec.yaml
-
 Podfile
 Podfile.lock
 Pods/
@@ -34,12 +32,12 @@ gradle-wrapper.jar
 .flutter-plugins-dependencies
 *.iml
 
-generated_plugin_registrant.dart
-GeneratedPluginRegistrant.h
-GeneratedPluginRegistrant.m
-generated_plugin_registrant.cc
-GeneratedPluginRegistrant.java
-GeneratedPluginRegistrant.swift
+**/generated_plugin_registrant.dart
+**/GeneratedPluginRegistrant.h
+**/GeneratedPluginRegistrant.m
+**/generated_plugin_registrant.cc
+**/GeneratedPluginRegistrant.java
+**/GeneratedPluginRegistrant.swift
 build/
 .flutter-plugins
 
