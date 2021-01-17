@@ -11,8 +11,9 @@ import 'package:wakelock_platform_interface/wakelock_platform_interface.dart';
 /// instance). We use manual method channel calls instead of `pigeon` for the
 /// moment because macOS support for `pigeon` is not clear yet.
 /// See https://github.com/flutter/flutter/issues/73738.
-class WakelockMacos extends WakelockPlatformInterface {
-  static const MethodChannel _channel = const MethodChannel('wakelock_macos');
+class WakelockMacOS extends WakelockPlatformInterface {
+  // todo(creativecreatorormaybenot): use default method channel instance.
+  static const MethodChannel _channel = MethodChannel('wakelock_macos');
 
   @override
   Future<void> toggle({required bool enable}) async {
@@ -22,5 +23,6 @@ class WakelockMacos extends WakelockPlatformInterface {
   }
 
   @override
-  Future<bool> get enabled async => _channel.invokeMethod('enabled');
+  Future<bool> get enabled async =>
+      await _channel.invokeMethod('enabled') as bool;
 }

@@ -1,6 +1,18 @@
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
+import 'package:wakelock_macos/wakelock_macos.dart';
 import 'package:wakelock_platform_interface/wakelock_platform_interface.dart';
 
-final _wakelockPlatformInstance = WakelockPlatformInterface.instance;
+final _wakelockPlatformInstance = !kIsWeb &&
+        // Assigning the macOS platform instance like this is not optimal.
+        // Ideally, we would use the default method channel instance on macOS,
+        // however, it is not yet entirely clear how to integrate with pigeon.
+        // This should just work fine and the io reference should be tree shaken
+        // on web.
+        Platform.isMacOS
+    ? WakelockMacOS()
+    : WakelockPlatformInterface.instance;
 
 /// Class providing all wakelock functionality using static members.
 ///

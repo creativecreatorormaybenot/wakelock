@@ -16,7 +16,8 @@ dependencies:
   meta: ^1.2.0
 
   # Include in a followup version when wakelock_macos has been published.
-#  wakelock_macos: ^0.1.0-nullsafety.0
+  wakelock_macos: #^0.1.0-nullsafety.0
+    path: ../wakelock_macos
   wakelock_platform_interface: ^0.2.0-nullsafety.2
   wakelock_web: ^0.2.0-nullsafety.0
 
