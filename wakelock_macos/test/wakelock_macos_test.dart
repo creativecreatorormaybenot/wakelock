@@ -1,6 +1,3 @@
-import 'package:flutter/services.dart';
-import 'package:flutter_test/flutter_test.dart';
-
 void main() {
   // There are currently no unit tests for the macOS implementation as we
   // ideally want to integrate with pigeon and write tests for that instead.
