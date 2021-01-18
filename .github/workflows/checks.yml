@@ -30,6 +30,7 @@ jobs:
           - 'dev'
         package:
           - 'wakelock'
+          - 'wakelock_macos'
           - 'wakelock_platform_interface'
           - 'wakelock_web'
       fail-fast: false
@@ -50,7 +51,7 @@ jobs:
   test:
     timeout-minutes: 14
     runs-on: macos-latest
-    name: Testing of ${{ matrix.package }} (${{ matrix.channel }}; ${{ matrix.device }})
+    name: Testing of ${{ matrix.package }} (${{ matrix.channel }})
     strategy:
       matrix:
         device:
@@ -62,6 +63,7 @@ jobs:
           - 'dev'
         package:
           - 'wakelock'
+          - 'wakelock_macos'
           - 'wakelock_platform_interface'
           # Web tests do not work for now.
           # - 'wakelock_web'
@@ -92,10 +94,18 @@ jobs:
         working-directory: ${{ matrix.package }}
       - name: Run unit tests (chrome)
         if: matrix.package == 'wakelock_web'
-        run: flutter test --platform chrome
+        run: |
+          flutter config --enable-web
+          flutter test --platform chrome
         working-directory: ${{ matrix.package }}
       - name: Integration tests on iOS
         if: matrix.package == 'wakelock'
         run: |
           cd wakelock/example
-          flutter drive --driver=test_driver/integration_test.dart --target=integration_test/wakelock_test.dart --no-sound-null-safety
+          flutter drive --driver=test_driver/integration_test.dart --target=integration_test/wakelock_test.dart
+      - name: Integration tests on macOS
+        if: matrix.package == 'wakelock_macos' && matrix.channel == 'dev'
+        run: |
+          cd wakelock/example
+          flutter config --enable-macos-desktop
+          flutter drive --driver=test_driver/integration_test.dart --target=integration_test/wakelock_test.dart -d macos

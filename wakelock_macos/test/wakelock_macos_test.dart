@@ -1,4 +1,3 @@
-import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
@@ -12,4 +11,8 @@ void main() {
   // example app.
   // Consequently, the macOS implementation will be tested in CI via the
   // example integration test running on -d macos.
+  test('stub', () {
+    final acceptUnitTestingDefeat = true;
+    expect(acceptUnitTestingDefeat, isTrue);
+  });
 }

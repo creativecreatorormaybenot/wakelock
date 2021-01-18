@@ -4,9 +4,9 @@
 Pod::Spec.new do |s|
   s.name             = 'wakelock_macos'
   s.version          = '0.0.1'
-  s.summary          = 'Plugin that allows you to keep the device screen awake, i.e. prevent the screen from sleeping on Android, iOS, and web.'
+  s.summary          = 'Plugin that allows you to keep the device screen awake, i.e. prevent the screen from sleeping on Android, iOS, macOS, and web.'
   s.description      = <<-DESC
-  Plugin that allows you to keep the device screen awake, i.e. prevent the screen from sleeping on Android, iOS, and web.
+  Plugin that allows you to keep the device screen awake, i.e. prevent the screen from sleeping on Android, iOS, macOS, and web.
                        DESC
   s.homepage         = 'https://github.com/creativecreatorormaybenot/wakelock/tree/master/packages/wakelock_macos'
   s.license          = { :type => 'BSD', :file => '../LICENSE' }

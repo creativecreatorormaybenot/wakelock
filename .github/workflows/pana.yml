@@ -23,6 +23,7 @@ jobs:
       matrix:
         package:
           - 'wakelock'
+          - 'wakelock_macos'
           - 'wakelock_platform_interface'
           - 'wakelock_web'
       fail-fast: false

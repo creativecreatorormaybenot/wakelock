@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:wakelock/wakelock.dart';
 import 'package:wakelock_platform_interface/messages.dart';
+import 'package:wakelock_platform_interface/wakelock_platform_interface.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
@@ -9,6 +12,12 @@ void main() {
     late FakeWakelockApi fakeWakelock;
 
     setUpAll(() {
+      if (Platform.isMacOS) {
+        // See the member documentation for the reason behind this.
+        // todo(creativecreatorormaybenot): remove this once macOS is migrated
+        // todo| to pigeon.
+        wakelockPlatformInstance = WakelockPlatformInterface.instance;
+      }
       fakeWakelock = FakeWakelockApi();
     });
 

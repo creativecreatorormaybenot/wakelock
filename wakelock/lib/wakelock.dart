@@ -4,7 +4,15 @@ import 'package:flutter/foundation.dart';
 import 'package:wakelock_macos/wakelock_macos.dart';
 import 'package:wakelock_platform_interface/wakelock_platform_interface.dart';
 
-final _wakelockPlatformInstance = !kIsWeb &&
+/// The [WakelockPlatformInterface] that is used by [Wakelock].
+///
+/// This needs to be exposed for testing as unit tests might run on macOS.
+/// In that case, the "hacky" instance override that we use here would be
+/// triggered for the unit tests, even though the unit tests should actually
+/// test the `pigeon` method channel implementation. Therefore, we want to
+/// override this in tests that run on macOS (where there is no actual device).
+@visibleForTesting
+var wakelockPlatformInstance = !kIsWeb &&
         // Assigning the macOS platform instance like this is not optimal.
         // Ideally, we would use the default method channel instance on macOS,
         // however, it is not yet entirely clear how to integrate with pigeon.
@@ -66,7 +74,7 @@ class Wakelock {
   static Future<void> toggle({
     required bool enable,
   }) {
-    return _wakelockPlatformInstance.toggle(enable: enable);
+    return wakelockPlatformInstance.toggle(enable: enable);
   }
 
   /// Returns whether the wakelock is currently enabled or not.
@@ -77,5 +85,5 @@ class Wakelock {
   /// ```dart
   /// bool wakelockEnabled = await Wakelock.enabled;
   /// ```
-  static Future<bool> get enabled => _wakelockPlatformInstance.enabled;
+  static Future<bool> get enabled => wakelockPlatformInstance.enabled;
 }
