@@ -1,3 +1,5 @@
+import 'package:flutter_test/flutter_test.dart';
+
 void main() {
   // There are currently no unit tests for the macOS implementation as we
   // ideally want to integrate with pigeon and write tests for that instead.
@@ -9,4 +11,8 @@ void main() {
   // example app.
   // Consequently, the macOS implementation will be tested in CI via the
   // example integration test running on -d macos.
+  test('stub', () {
+    final acceptUnitTestingDefeat = true;
+    expect(acceptUnitTestingDefeat, isTrue);
+  });
 }
