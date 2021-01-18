@@ -94,7 +94,9 @@ jobs:
         working-directory: ${{ matrix.package }}
       - name: Run unit tests (chrome)
         if: matrix.package == 'wakelock_web'
-        run: flutter test --platform chrome
+        run: |
+          flutter config --enable-web
+          flutter test --platform chrome
         working-directory: ${{ matrix.package }}
       - name: Integration tests on iOS
         if: matrix.package == 'wakelock'
@@ -105,4 +107,5 @@ jobs:
         if: matrix.package == 'wakelock_macos' && matrix.channel == 'dev'
         run: |
           cd wakelock/example
+          flutter config --enable-macos
           flutter drive --driver=test_driver/integration_test.dart --target=integration_test/wakelock_test.dart -d macos
