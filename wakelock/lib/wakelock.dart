@@ -74,7 +74,7 @@ class Wakelock {
   static Future<void> toggle({
     required bool enable,
   }) {
-    return _wakelockPlatformInstance.toggle(enable: enable);
+    return wakelockPlatformInstance.toggle(enable: enable);
   }
 
   /// Returns whether the wakelock is currently enabled or not.
@@ -85,5 +85,5 @@ class Wakelock {
   /// ```dart
   /// bool wakelockEnabled = await Wakelock.enabled;
   /// ```
-  static Future<bool> get enabled => _wakelockPlatformInstance.enabled;
+  static Future<bool> get enabled => wakelockPlatformInstance.enabled;
 }
