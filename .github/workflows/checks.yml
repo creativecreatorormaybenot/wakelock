@@ -51,7 +51,7 @@ jobs:
   test:
     timeout-minutes: 14
     runs-on: macos-latest
-    name: Testing of ${{ matrix.package }} (${{ matrix.channel }}; ${{ matrix.device }})
+    name: Testing of ${{ matrix.package }} (${{ matrix.channel }})
     strategy:
       matrix:
         device:
@@ -107,5 +107,5 @@ jobs:
         if: matrix.package == 'wakelock_macos' && matrix.channel == 'dev'
         run: |
           cd wakelock/example
-          flutter config --enable-macos
+          flutter config --enable-macos-desktop
           flutter drive --driver=test_driver/integration_test.dart --target=integration_test/wakelock_test.dart -d macos
