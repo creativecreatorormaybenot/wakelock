@@ -1,11 +1,11 @@
 name: wakelock_web
 description: Web platform implementation of the wakelock_platform_interface for the wakelock plugin.
-version: 0.2.0-nullsafety.1
+version: 0.2.0
 homepage: https://github.com/creativecreatorormaybenot/wakelock/tree/master/wakelock_web
 
 environment:
-  sdk: '>=2.12.0-0 <3.0.0'
-  flutter: '>=1.24.0-0 <2.0.0'
+  sdk: '>=2.12.0-259.9.beta <3.0.0'
+  flutter: '>=1.24.0-0'
 
 dependencies:
   flutter:
@@ -13,15 +13,15 @@ dependencies:
   flutter_web_plugins:
     sdk: flutter
 
-  js: ^0.6.3-nullsafety.0
+  js: ^0.6.3
 
-  wakelock_platform_interface: ^0.2.0-nullsafety.2
+  wakelock_platform_interface: ^0.2.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  pedantic: ^1.10.0-nullsafety.0
+  pedantic: ^1.10.0
 
   wakelock:
     path: ../wakelock

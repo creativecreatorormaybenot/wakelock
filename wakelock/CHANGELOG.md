@@ -1,3 +1,7 @@
+## 0.4.0
+
+* Bumped to stable null safety release.
+
 ## 0.4.0-nullsafety.0
 
 * Added macOS support 🚀
