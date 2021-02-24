@@ -32,7 +32,7 @@ dev_dependencies:
   integration_test: ^1.0.1
   test: any
 
-  pedantic: ^1.10.0-nullsafety.3
+  pedantic: ^1.10.0
 
 dependency_overrides:
   # We override the platform dependencies of wakelock here because we use the example app for
