@@ -24,8 +24,7 @@ jobs:
         os:
           - ubuntu-latest
         channel:
-          # Do not check stable until NNBD is on stable.
-          #- 'stable'
+          - 'stable'
           - 'beta'
           - 'dev'
         package:
@@ -33,6 +32,7 @@ jobs:
           - 'wakelock_macos'
           - 'wakelock_platform_interface'
           - 'wakelock_web'
+          - 'wakelock_windows'
       fail-fast: false
 
     steps:
@@ -57,8 +57,7 @@ jobs:
         device:
           - 'iPhone 12 Pro Max (14.2)'
         channel:
-          # Do not check stable until NNBD is on stable.
-          #- 'stable'
+          - 'stable'
           - 'beta'
           - 'dev'
         package:
@@ -67,6 +66,7 @@ jobs:
           - 'wakelock_platform_interface'
           # Web tests do not work for now.
           # - 'wakelock_web'
+          - 'wakelock_windows'
       fail-fast: false
 
     steps:

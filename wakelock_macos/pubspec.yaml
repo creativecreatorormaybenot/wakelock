@@ -1,5 +1,6 @@
 name: wakelock_macos
-description: macOS platform implementation of the wakelock_platform_interface for the wakelock plugin.
+description: >-2
+  macOS platform implementation of the wakelock_platform_interface for the wakelock plugin.
 version: 0.1.0
 homepage: https://github.com/creativecreatorormaybenot/wakelock/tree/master/wakelock_macos
 
@@ -19,10 +20,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  pedantic: ^1.10.0
-  
-  wakelock:
-    path: ../wakelock
+  pedantic: ^1.11.0
 
 flutter:
   plugin:

@@ -7,7 +7,7 @@ void main() {
 
 /// Example app widget demonstrating how to use the wakelock plugin.
 ///
-/// The example implementation is located inside [OutlineButton.onPressed]
+/// The example implementation is located inside [OutlinedButton.onPressed]
 /// callback functions and a [FutureBuilder].
 class WakelockExampleApp extends StatefulWidget {
   @override
@@ -29,7 +29,7 @@ class _WakelockExampleAppState extends State<WakelockExampleApp> {
               const Spacer(
                 flex: 3,
               ),
-              OutlineButton(
+              OutlinedButton(
                 onPressed: () {
                   // The following code will enable the wakelock on the device
                   // using the wakelock plugin.
@@ -41,7 +41,7 @@ class _WakelockExampleAppState extends State<WakelockExampleApp> {
                 child: const Text('enable wakelock'),
               ),
               const Spacer(),
-              OutlineButton(
+              OutlinedButton(
                 onPressed: () {
                   // The following code will disable the wakelock on the device
                   // using the wakelock plugin.
