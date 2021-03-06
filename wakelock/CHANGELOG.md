@@ -1,3 +1,7 @@
+## 0.5.0
+
+* Added Windows support 🚀
+
 ## 0.4.0
 
 * Bumped to stable null safety release.
