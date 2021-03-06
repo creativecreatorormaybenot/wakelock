@@ -1,6 +1,7 @@
 # Wakelock [![GitHub stars](https://img.shields.io/github/stars/creativecreatorormaybenot/wakelock.svg)](https://github.com/creativecreatorormaybenot/wakelock) [![Pub version](https://img.shields.io/pub/v/wakelock.svg)](https://pub.dev/packages/wakelock) [![Twitter Follow](https://img.shields.io/twitter/follow/creativemaybeno?label=Follow&style=social)](https://twitter.com/creativemaybeno)
 
-Wakelock is Flutter plugin that allows you to keep the device screen awake, i.e. prevent the screen from sleeping.
+Wakelock is Flutter plugin that allows you to keep the device screen awake, i.e. prevent the screen
+from sleeping.
 
 ## Supported platforms
 
@@ -10,7 +11,7 @@ Wakelock is Flutter plugin that allows you to keep the device screen awake, i.e.
 | iOS      |         ✅         |
 | Web      |         ✅         |
 | macOS    |         ✅         |
-| Windows  |      planned       |
+| Windows  |         ✅         |
 | Linux    |      planned       |
 
 ## Getting started
@@ -32,6 +33,7 @@ The packages in this repo are the following:
 | [`wakelock_macos`](https://github.com/creativecreatorormaybenot/wakelock/tree/master/wakelock_macos)                           | macOS implementation                                |
 | [`wakelock_platform_interface`](https://github.com/creativecreatorormaybenot/wakelock/tree/master/wakelock_platform_interface) | Basic API definition & message handling             |
 | [`wakelock_web`](https://github.com/creativecreatorormaybenot/wakelock/tree/master/wakelock_web)                               | Web implementation                                  |
+| [`wakelock_web`](https://github.com/creativecreatorormaybenot/wakelock/tree/master/wakelock_windows)                           | Windows implementation                              |
 
 ## Contributing
 
@@ -40,7 +42,8 @@ If you want to contribute to this plugin, follow the [contributing guide](https:
 ## Origin
 
 Originally, this plugin was based on [`screen`](https://pub.dev/packages/screen).  
-Specifically, the wakelock functionality was extracted into this plugin due to lack of maintenance by the author of the `screen` plugin.
+Specifically, the wakelock functionality was extracted into this plugin due to lack of maintenance
+by the author of the `screen` plugin.
 
-Today, the `wakelock` plugin has been completely refreshed (using latest Flutter standards and platform integration) with added support
-for web & macOS.
+Today, the `wakelock` plugin has been completely refreshed (using latest Flutter standards and
+platform integration) with added support for web, Windows, & macOS.
