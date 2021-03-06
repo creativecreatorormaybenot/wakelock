@@ -17,12 +17,10 @@ on:
 jobs:
   analyze:
     timeout-minutes: 7
-    runs-on: ${{ matrix.os }}
-    name: Analysis of ${{ matrix.package }} (${{ matrix.channel }}; ${{ matrix.os }})
+    runs-on: ubuntu-latest
+    name: ${{ matrix.package }} analysis on ${{ matrix.channel }}
     strategy:
       matrix:
-        os:
-          - ubuntu-latest
         channel:
           - 'stable'
           - 'beta'
@@ -51,7 +49,7 @@ jobs:
   test:
     timeout-minutes: 14
     runs-on: macos-latest
-    name: Testing of ${{ matrix.package }} (${{ matrix.channel }})
+    name: ${{ matrix.package }} testing on ${{ matrix.channel }}
     strategy:
       matrix:
         device:
