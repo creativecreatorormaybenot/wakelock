@@ -2,4 +2,6 @@ include: package:pedantic/analysis_options.yaml
 
 linter:
   rules:
-    - public_member_api_docs
+    public_member_api_docs: true
+    # Ignoring unsafe_html as we need to import a JS script in wakelock_web and because of https://github.com/dart-lang/sdk/issues/45230.
+    unsafe_html: false
