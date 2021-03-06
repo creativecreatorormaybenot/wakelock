@@ -3,37 +3,42 @@ import 'dart:async';
 import 'package:wakelock_platform_interface/wakelock_platform_interface.dart';
 import 'package:win32/win32.dart';
 
+/// Informs the system that the state being set should remain in effect until
+/// the next call that uses ES_CONTINUOUS and one of the other state flags is
+/// cleared.
+///
+/// See https://docs.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-setthreadexecutionstate#parameters.
 const _ES_CONTINUOUS = 0x80000000;
+
+/// Forces the display to be on by resetting the display idle timer.
+///
+/// See https://docs.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-setthreadexecutionstate#parameters.
 const _ES_DISPLAY_REQUIRED = 0x00000002;
 
-
-/// The windows implementation of the [WakelockPlatformInterface].
+/// The Windows implementation of the [WakelockPlatformInterface].
 ///
-/// This class implements the `wakelock` plugin functionality for windows using
-/// SetThreadExecutionState from win32 api.
-///
-/// https://docs.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-setthreadexecutionstate#parameters
-///
+/// This class implements the `wakelock` plugin functionality for Windows using
+/// the `SetThreadExecutionState` win32 API (see https://docs.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-setthreadexecutionstate).
 class WakelockWindows extends WakelockPlatformInterface {
-  bool _isEnabled = false;
+  var _enabled = false;
 
   @override
   Future<void> toggle({required bool enable}) async {
-    int response;
+    final int response;
     if (enable) {
       response = SetThreadExecutionState(_ES_CONTINUOUS | _ES_DISPLAY_REQUIRED);
     } else {
       response = SetThreadExecutionState(_ES_CONTINUOUS);
     }
 
-    // SetThreadExecutionState returns 0 if the operation failed
+    // SetThreadExecutionState returns 0 if the operation failed.
     if (response != 0) {
-      _isEnabled = enable;
+      _enabled = enable;
     }
   }
 
   @override
-  Future<bool> get enabled async => _isEnabled;
+  Future<bool> get enabled async => _enabled;
 
   @override
   bool get isMock => false;

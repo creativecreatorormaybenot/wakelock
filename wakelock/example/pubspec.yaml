@@ -32,7 +32,7 @@ dev_dependencies:
   integration_test: ^1.0.1
   test: any
 
-  pedantic: ^1.10.0
+  pedantic: ^1.11.0
 
 dependency_overrides:
   # We override the platform dependencies of wakelock here because we use the example app for
@@ -40,9 +40,9 @@ dependency_overrides:
   # current platform implementations.
   wakelock_macos:
     path: ../../wakelock_macos
-  wakelock_windows:
-    path: ../../wakelock_windows
   wakelock_platform_interface:
     path: ../../wakelock_platform_interface
   wakelock_web:
     path: ../../wakelock_web
+  wakelock_windows:
+    path: ../../wakelock_windows

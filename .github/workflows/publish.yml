@@ -9,7 +9,7 @@ jobs:
   pana:
     timeout-minutes: 9
     runs-on: ubuntu-latest
-    name: Configuration of ${{ matrix.package }}
+    name: ${{ matrix.package }} configuration
     strategy:
       matrix:
         package:
@@ -17,6 +17,7 @@ jobs:
           - 'wakelock_macos'
           - 'wakelock_platform_interface'
           - 'wakelock_web'
+          - 'wakelock_windows'
       fail-fast: false
 
     steps:
@@ -30,7 +31,7 @@ jobs:
     needs: pana
     timeout-minutes: 4
     runs-on: ubuntu-latest
-    name: Publishing of ${{ matrix.package }}
+    name: ${{ matrix.package }} publishing
     strategy:
       matrix:
         package:
@@ -38,6 +39,7 @@ jobs:
           - 'wakelock_macos'
           - 'wakelock_platform_interface'
           - 'wakelock_web'
+          - 'wakelock_windows'
       fail-fast: false
 
     steps:

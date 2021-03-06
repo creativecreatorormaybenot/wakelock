@@ -21,7 +21,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  pedantic: ^1.10.0
+  pedantic: ^1.11.0
 
   wakelock:
     path: ../wakelock

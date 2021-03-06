@@ -16,16 +16,13 @@ on:
 
 jobs:
   analyze:
-    timeout-minutes: 7
-    runs-on: ${{ matrix.os }}
-    name: Analysis of ${{ matrix.package }} (${{ matrix.channel }}; ${{ matrix.os }})
+    timeout-minutes: 11
+    runs-on: ubuntu-latest
+    name: ${{ matrix.package }} analysis on ${{ matrix.channel }}
     strategy:
       matrix:
-        os:
-          - ubuntu-latest
         channel:
-          # Do not check stable until NNBD is on stable.
-          #- 'stable'
+          - 'stable'
           - 'beta'
           - 'dev'
         package:
@@ -33,6 +30,7 @@ jobs:
           - 'wakelock_macos'
           - 'wakelock_platform_interface'
           - 'wakelock_web'
+          - 'wakelock_windows'
       fail-fast: false
 
     steps:
@@ -49,16 +47,15 @@ jobs:
         working-directory: ${{ matrix.package }}
 
   test:
-    timeout-minutes: 14
+    timeout-minutes: 16
     runs-on: macos-latest
-    name: Testing of ${{ matrix.package }} (${{ matrix.channel }})
+    name: ${{ matrix.package }} testing on ${{ matrix.channel }}
     strategy:
       matrix:
         device:
-          - 'iPhone 12 Pro Max (14.2)'
+          - 'iPhone 12 Pro Max (14.4)'
         channel:
-          # Do not check stable until NNBD is on stable.
-          #- 'stable'
+          - 'stable'
           - 'beta'
           - 'dev'
         package:
@@ -67,6 +64,7 @@ jobs:
           - 'wakelock_platform_interface'
           # Web tests do not work for now.
           # - 'wakelock_web'
+          - 'wakelock_windows'
       fail-fast: false
 
     steps:
