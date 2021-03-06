@@ -1,4 +1,4 @@
-# wakelock_windows
+# wakelock_windows [![Pub version](https://img.shields.io/pub/v/wakelock_windows.svg)](https://pub.dev/packages/wakelock_windows) [![GitHub stars](https://img.shields.io/github/stars/creativecreatorormaybenot/wakelock.svg)](https://github.com/creativecreatorormaybenot/wakelock) [![Twitter Follow](https://img.shields.io/twitter/follow/creativemaybeno?label=Follow&style=social)](https://twitter.com/creativemaybeno)
 
 Windows platform implementation of the `wakelock_platform_interface` for the
 [wakelock plugin][wakelock GitHub].
