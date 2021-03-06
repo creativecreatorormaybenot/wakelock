@@ -16,12 +16,17 @@ class WakelockWindows extends WakelockPlatformInterface {
 
   @override
   Future<void> toggle({required bool enable}) async {
+    int response;
     if (enable) {
-      SetThreadExecutionState(_ES_CONTINUOUS | _ES_DISPLAY_REQUIRED);
+      response = SetThreadExecutionState(_ES_CONTINUOUS | _ES_DISPLAY_REQUIRED);
     } else {
-      SetThreadExecutionState(_ES_CONTINUOUS);
+      response = SetThreadExecutionState(_ES_CONTINUOUS);
     }
-    _isEnabled = enable;
+
+    // SetThreadExecutionState returns 0 if the operation failed
+    if (response != 0) {
+      _isEnabled = enable;
+    }
   }
 
   @override
