@@ -1,0 +1,9 @@
+include: package:pedantic/analysis_options.yaml
+
+linter:
+  rules:
+    - public_member_api_docs
+
+analyzer:
+  errors:
+    public_member_api_docs: warning

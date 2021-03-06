@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:wakelock_macos/wakelock_macos.dart';
+import 'package:wakelock_windows/wakelock_windows.dart';
 import 'package:wakelock_platform_interface/wakelock_platform_interface.dart';
 
 /// The [WakelockPlatformInterface] that is used by [Wakelock].
@@ -20,7 +21,10 @@ var wakelockPlatformInstance = !kIsWeb &&
         // on web.
         Platform.isMacOS
     ? WakelockMacOS()
-    : WakelockPlatformInterface.instance;
+        // This doesn't feel like the correct way to assign the windows implementation,
+        // but platform channels aren't used due to the win32 package.
+        // See this issue for details: https://github.com/flutter/flutter/issues/52267.
+    : (!kIsWeb && Platform.isWindows ? WakelockWindows() : WakelockPlatformInterface.instance);
 
 /// Class providing all wakelock functionality using static members.
 ///

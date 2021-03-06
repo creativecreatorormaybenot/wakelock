@@ -40,6 +40,8 @@ dependency_overrides:
   # current platform implementations.
   wakelock_macos:
     path: ../../wakelock_macos
+  wakelock_windows:
+    path: ../../wakelock_windows
   wakelock_platform_interface:
     path: ../../wakelock_platform_interface
   wakelock_web:
