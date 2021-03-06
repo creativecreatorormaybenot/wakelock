@@ -16,7 +16,7 @@ on:
 
 jobs:
   analyze:
-    timeout-minutes: 7
+    timeout-minutes: 11
     runs-on: ubuntu-latest
     name: ${{ matrix.package }} analysis on ${{ matrix.channel }}
     strategy:
@@ -47,13 +47,13 @@ jobs:
         working-directory: ${{ matrix.package }}
 
   test:
-    timeout-minutes: 14
+    timeout-minutes: 16
     runs-on: macos-latest
     name: ${{ matrix.package }} testing on ${{ matrix.channel }}
     strategy:
       matrix:
         device:
-          - 'iPhone 12 Pro Max (14.2)'
+          - 'iPhone 12 Pro Max (14.4)'
         channel:
           - 'stable'
           - 'beta'
