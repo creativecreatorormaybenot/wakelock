@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:wakelock_macos/wakelock_macos.dart';
-import 'package:wakelock_windows/wakelock_windows.dart';
 import 'package:wakelock_platform_interface/wakelock_platform_interface.dart';
 
 /// The [WakelockPlatformInterface] that is used by [Wakelock].
@@ -14,19 +13,19 @@ import 'package:wakelock_platform_interface/wakelock_platform_interface.dart';
 /// override this in tests that run on macOS (where there is no actual device).
 @visibleForTesting
 var wakelockPlatformInstance = !kIsWeb &&
-        // Assigning the macOS platform instance like this is not optimal.
-        // Ideally, we would use the default method channel instance on macOS,
-        // however, it is not yet entirely clear how to integrate with pigeon.
-        // This should just work fine and the io reference should be tree shaken
-        // on web.
-        Platform.isMacOS
+    // Assigning the macOS platform instance like this is not optimal.
+    // Ideally, we would use the default method channel instance on macOS,
+    // however, it is not yet entirely clear how to integrate with pigeon.
+    // This should just work fine and the io reference should be tree shaken
+    // on web.
+    Platform.isMacOS
     ? WakelockMacOS()
-    // This doesn't feel like the correct way to assign the windows implementation,
-    // but platform channels aren't used due to the win32 package.
-    // See this issue for details: https://github.com/flutter/flutter/issues/52267.
-    : (!kIsWeb && Platform.isWindows
-        ? WakelockWindows()
-        : WakelockPlatformInterface.instance);
+// This does not feel like the correct way to assign the Windows
+// implementation, however, the platform channels do not have to be used
+// thanks to the win32 package. See https://github.com/flutter/flutter/issues/52267.
+// : (!kIsWeb && Platform.isWindows)
+//     ? WakelockWindows()
+    : WakelockPlatformInterface.instance;
 
 /// Class providing all wakelock functionality using static members.
 ///
