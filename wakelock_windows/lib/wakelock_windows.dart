@@ -9,7 +9,10 @@ const _ES_DISPLAY_REQUIRED = 0x00000002;
 
 /// The windows implementation of the [WakelockPlatformInterface].
 ///
-/// This class implements the `wakelock` plugin functionality for windows.
+/// This class implements the `wakelock` plugin functionality for windows using
+/// SetThreadExecutionState from win32 api.
+///
+/// https://docs.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-setthreadexecutionstate#parameters
 ///
 class WakelockWindows extends WakelockPlatformInterface {
   bool _isEnabled = false;
