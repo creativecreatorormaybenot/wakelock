@@ -1,3 +1,7 @@
+## 0.5.0+2
+
+* Fixed example app builds on macOS.
+
 ## 0.5.0+1
 
 * Fixed broken web builds due to FFI imports.
