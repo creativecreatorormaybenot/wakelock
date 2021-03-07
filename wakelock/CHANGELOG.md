@@ -1,3 +1,7 @@
+## 0.5.0+1
+
+* Fixed broken web builds due to FFI imports.
+
 ## 0.5.0
 
 * Added Windows support 🚀
