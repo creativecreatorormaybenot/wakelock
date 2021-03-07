@@ -1,9 +1,10 @@
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
+import 'package:wakelock/src/windows_stub.dart'
+    if (dart.library.io) 'package:wakelock_windows/wakelock_windows.dart';
 import 'package:wakelock_macos/wakelock_macos.dart';
 import 'package:wakelock_platform_interface/wakelock_platform_interface.dart';
-import 'package:wakelock_windows/wakelock_windows.dart';
 
 /// The [WakelockPlatformInterface] that is used by [Wakelock].
 ///
@@ -17,6 +18,10 @@ var wakelockPlatformInstance = _defaultPlatformInstance;
 
 /// Workaround for configuring platform instances until https://github.com/flutter/flutter/issues/52267
 /// arrives on stable.
+///
+/// As soon as https://github.com/flutter/flutter/issues/52267#issuecomment-792302417
+/// is available, this should be completely removed and both macOS & Windows
+/// should use `dartPluginClass` instead.
 WakelockPlatformInterface get _defaultPlatformInstance {
   // We want to return early on web as the platform checks are unsupported on
   // web.
