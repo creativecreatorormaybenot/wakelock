@@ -33,7 +33,7 @@ The packages in this repo are the following:
 | [`wakelock_macos`](https://github.com/creativecreatorormaybenot/wakelock/tree/master/wakelock_macos)                           | macOS implementation                                |
 | [`wakelock_platform_interface`](https://github.com/creativecreatorormaybenot/wakelock/tree/master/wakelock_platform_interface) | Basic API definition & message handling             |
 | [`wakelock_web`](https://github.com/creativecreatorormaybenot/wakelock/tree/master/wakelock_web)                               | Web implementation                                  |
-| [`wakelock_web`](https://github.com/creativecreatorormaybenot/wakelock/tree/master/wakelock_windows)                           | Windows implementation                              |
+| [`wakelock_windows`](https://github.com/creativecreatorormaybenot/wakelock/tree/master/wakelock_windows)                           | Windows implementation                              |
 
 ## Contributing
 
