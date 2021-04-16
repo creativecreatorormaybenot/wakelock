@@ -1,7 +1,7 @@
 #import "WakelockPlugin.h"
+#import "IdleTimerDisabledObserver.h"
 #import "messages.h"
 
-static void * mKeyPathObserverContextApplicationIsIdleTimerDisabled = &mKeyPathObserverContextApplicationIsIdleTimerDisabled;
 
 @interface WakelockPlugin () <FLTWakelockApi>
 
@@ -13,8 +13,8 @@ static void * mKeyPathObserverContextApplicationIsIdleTimerDisabled = &mKeyPathO
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
   WakelockPlugin* instance = [[WakelockPlugin alloc] init];
   FLTWakelockApiSetup(registrar.messenger, instance);
-    
-  [UIApplication.sharedApplication addObserver:instance forKeyPath:@"idleTimerDisabled" options:NSKeyValueObservingOptionNew context:mKeyPathObserverContextApplicationIsIdleTimerDisabled];
+  
+  [[IdleTimerDisabledObserver singleInstance] beginObserving];
 }
 
 - (void)toggle:(FLTToggleMessage*)input error:(FlutterError**)error {
@@ -36,18 +36,14 @@ static void * mKeyPathObserverContextApplicationIsIdleTimerDisabled = &mKeyPathO
   return result;
 }
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-  if (context == mKeyPathObserverContextApplicationIsIdleTimerDisabled) {
-    if (UIApplication.sharedApplication.idleTimerDisabled != self.enable) {
-      UIApplication.sharedApplication.idleTimerDisabled = self.enable;
-    }
-  } else {
-    [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
-  }
+- (void)setEnable:(BOOL)enable {
+  [IdleTimerDisabledObserver singleInstance].enable = enable;
+  
+  _enable = enable;
 }
 
 - (void)dealloc {
-  [UIApplication.sharedApplication removeObserver:self forKeyPath:@"idleTimerDisabled" context:mKeyPathObserverContextApplicationIsIdleTimerDisabled];
+  [[IdleTimerDisabledObserver singleInstance] endObserving];
 }
 
 @end
