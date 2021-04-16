@@ -1,9 +1,9 @@
-name: Checks
+name: checks
 
 on:
   pull_request:
     branches:
-      - master
+      - main
     paths:
       - '**/lib/**'
       - '**/android/**'
