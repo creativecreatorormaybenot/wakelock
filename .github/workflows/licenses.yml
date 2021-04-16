@@ -1,4 +1,4 @@
-name: Licenses
+name: licenses
 
 on:
   schedule:
@@ -9,7 +9,7 @@ jobs:
   years:
     timeout-minutes: 11
     runs-on: ubuntu-latest
-    name: Update copyright year(s)
+    name: copyright year(s)
 
     steps:
     - uses: actions/checkout@v2
