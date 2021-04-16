@@ -1,3 +1,7 @@
+## 0.5.1
+
+* Resolves a crash on iOS which was caused by 2 observers on idleTimerDisabled.
+
 ## 0.5.0+2
 
 * Fixed example app builds on macOS.
