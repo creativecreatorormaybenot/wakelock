@@ -1,9 +1,9 @@
-name: Publish
+name: publish
 
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   pana:
