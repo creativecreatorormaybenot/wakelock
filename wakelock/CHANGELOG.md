@@ -1,3 +1,7 @@
+## 0.5.1+1
+
+* Added Podspec to the `wakelock` package to avoid build issues on macOS.
+
 ## 0.5.1
 
 * Resolved a crash on iOS which was caused by 2 observers on idleTimerDisabled.
