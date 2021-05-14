@@ -3,6 +3,8 @@ import 'package:wakelock_platform_interface/messages.dart';
 import 'package:wakelock_platform_interface/method_channel_wakelock.dart';
 import 'package:wakelock_platform_interface/wakelock_platform_interface.dart';
 
+import 'messages.dart';
+
 class _ApiLogger implements TestWakelockApi {
   final List<String> log = [];
   late ToggleMessage toggleMessage;

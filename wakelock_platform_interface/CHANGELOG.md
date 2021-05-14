@@ -1,3 +1,7 @@
+## 0.2.1
+
+* Migrated to pigeon `0.2.1`, which fixes deprecated usage of `setMockMessageHandler`.
+
 ## 0.2.0
 
 * Bumped to stable null safety release.
