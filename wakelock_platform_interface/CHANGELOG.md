@@ -1,3 +1,7 @@
+## 0.2.1+1
+
+* Changed Dart SDK constraint to `>=2.12.0`.
+
 ## 0.2.1
 
 * Migrated to pigeon `0.2.1`, which fixes deprecated usage of `setMockMessageHandler`.
