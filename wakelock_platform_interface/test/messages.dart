@@ -20,7 +20,8 @@ abstract class TestWakelockApi {
         channel.setMockMessageHandler(null);
       } else {
         channel.setMockMessageHandler((Object? message) async {
-          assert(message != null, 'Argument for dev.flutter.pigeon.WakelockApi.toggle was null. Expected ToggleMessage.');
+          assert(message != null,
+              'Argument for dev.flutter.pigeon.WakelockApi.toggle was null. Expected ToggleMessage.');
           final ToggleMessage input = ToggleMessage.decode(message!);
           api.toggle(input);
           return <Object?, Object?>{};
