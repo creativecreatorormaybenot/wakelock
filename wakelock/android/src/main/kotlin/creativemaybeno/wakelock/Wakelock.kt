@@ -20,7 +20,7 @@ internal class Wakelock {
     val activity = this.activity!!
     val enabled = this.enabled
 
-    if (message.getEnable()!!) {
+    if (message.enable!!) {
       if (!enabled) activity.window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
     } else if (enabled) {
       activity.window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
@@ -33,7 +33,7 @@ internal class Wakelock {
     }
 
     val msg = IsEnabledMessage()
-    msg.setEnabled(enabled)
+    msg.enabled = enabled
     return msg
   }
 }

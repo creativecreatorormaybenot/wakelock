@@ -1,3 +1,9 @@
+## 0.5.2
+
+* Updated generated message handling.
+* Updated generated messages in the platform interface, which fixed calling `setMockMessageHandler`.
+* Updated `wakelock_` dependencies with updated Dart SDK constraints (`>=2.12.0`).
+
 ## 0.5.1+1
 
 * Added Podspec to the `wakelock` package to avoid build issues on macOS.
