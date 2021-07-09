@@ -38,4 +38,4 @@ internal class Wakelock {
   }
 }
 
-class NoActivityException() : Exception("wakelock requires a foreground activity")
+class NoActivityException : Exception("wakelock requires a foreground activity")
