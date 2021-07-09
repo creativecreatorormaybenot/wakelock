@@ -8,10 +8,10 @@ Pod::Spec.new do |s|
   s.description      = <<-DESC
   Plugin that allows you to keep the device screen awake, i.e. prevent the screen from sleeping on Android, iOS, macOS, Windows, and web.
                        DESC
-  s.homepage         = 'https://github.com/creativecreatorormaybenot/wakelock/tree/master/packages/wakelock_macos'
+  s.homepage         = 'https://github.com/creativecreatorormaybenot/wakelock/tree/main/packages/wakelock_macos'
   s.license          = { :type => 'BSD', :file => '../LICENSE' }
   s.author           = { 'Your Company' => 'email@example.com' }
-  s.source           = { :http => 'https://github.com/creativecreatorormaybenot/wakelock/tree/master/packages/wakelock_macos' }
+  s.source           = { :http => 'https://github.com/creativecreatorormaybenot/wakelock/tree/main/packages/wakelock_macos' }
   s.source_files     = 'Classes/**/*'
   s.dependency 'FlutterMacOS'
 
