@@ -1,3 +1,5 @@
+## 0.2.0+2
+
 ## 0.2.0+1
 
 * Changed Dart SDK constraint to `>=2.12.0`.
