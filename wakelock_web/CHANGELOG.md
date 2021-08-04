@@ -1,5 +1,7 @@
 ## 0.2.0+2
 
+* Updated GitHub references to use `main` instead of `master`.
+
 ## 0.2.0+1
 
 * Changed Dart SDK constraint to `>=2.12.0`.
