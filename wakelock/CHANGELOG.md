@@ -1,6 +1,6 @@
-## 0.5.4
+## 0.5.3+1
 
-* Add mavenCentral to Gradle build.
+* Addded mavenCentral to Gradle build.
 
 ## 0.5.3
 
