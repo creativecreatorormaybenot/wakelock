@@ -1,3 +1,7 @@
+## 0.5.4
+
+* Add mavenCentral to Gradle build.
+
 ## 0.5.3
 
 * Removed Jcenter from Gradle build as has been sunset.
