@@ -1,3 +1,7 @@
+## 0.5.3+2
+
+* Removed empty constructor in Android code.
+
 ## 0.5.3+1
 
 * Addded mavenCentral to Gradle build.
