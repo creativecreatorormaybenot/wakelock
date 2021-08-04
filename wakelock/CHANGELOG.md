@@ -1,3 +1,7 @@
+## 0.5.3+3
+
+* Updated GitHub references to use `main` instead of `master`.
+
 ## 0.5.3+2
 
 * Removed empty constructor in Android code.
