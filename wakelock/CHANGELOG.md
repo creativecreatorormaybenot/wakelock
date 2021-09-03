@@ -1,3 +1,7 @@
+## 0.5.3+4
+
+Updated android build to use Kotlin stdlib-jdk8 version 1.5.21
+
 ## 0.5.3+3
 
 * Updated GitHub references to use `main` instead of `master`.
