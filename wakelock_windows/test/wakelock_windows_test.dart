@@ -9,7 +9,7 @@ void main() {
   // before being published. For that, we use dependency overrides in the
   // example app.
   test('stub', () {
-    final acceptUnitTestingDefeat = true;
+    const acceptUnitTestingDefeat = true;
     expect(acceptUnitTestingDefeat, isTrue);
   });
 }

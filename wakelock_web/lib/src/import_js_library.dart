@@ -41,13 +41,13 @@ Future<void> _importJSLibraries(List<String> libraries) {
   final loading = <Future<void>>[];
   final head = html.querySelector('head');
 
-  libraries.forEach((String library) {
+  for (final library in libraries) {
     if (!_isImported(library)) {
       final scriptTag = _createScriptTag(library);
       head!.children.add(scriptTag);
       loading.add(scriptTag.onLoad.first);
     }
-  });
+  }
 
   return Future.wait(loading);
 }

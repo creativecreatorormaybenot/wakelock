@@ -8,11 +8,13 @@ import 'package:win32/win32.dart';
 /// cleared.
 ///
 /// See https://docs.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-setthreadexecutionstate#parameters.
+// ignore: constant_identifier_names
 const _ES_CONTINUOUS = 0x80000000;
 
 /// Forces the display to be on by resetting the display idle timer.
 ///
 /// See https://docs.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-setthreadexecutionstate#parameters.
+// ignore: constant_identifier_names
 const _ES_DISPLAY_REQUIRED = 0x00000002;
 
 /// The Windows implementation of the [WakelockPlatformInterface].

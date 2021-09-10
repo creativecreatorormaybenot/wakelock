@@ -1,3 +1,7 @@
+## 0.5.4
+
+* Upgraded `pigeon` and lints.
+
 ## 0.5.3+3
 
 * Updated GitHub references to use `main` instead of `master`.

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:wakelock/wakelock.dart';
 
 void main() {
-  runApp(WakelockExampleApp());
+  runApp(const WakelockExampleApp());
 }
 
 /// Example app widget demonstrating how to use the wakelock plugin.
@@ -10,6 +10,9 @@ void main() {
 /// The example implementation is located inside [OutlinedButton.onPressed]
 /// callback functions and a [FutureBuilder].
 class WakelockExampleApp extends StatefulWidget {
+  /// Creates the [WakelockExampleApp] widget.
+  const WakelockExampleApp({Key key}) : super(key: key);
+
   @override
   _WakelockExampleAppState createState() => _WakelockExampleAppState();
 }
