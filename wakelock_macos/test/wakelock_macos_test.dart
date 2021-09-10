@@ -12,7 +12,7 @@ void main() {
   // Consequently, the macOS implementation will be tested in CI via the
   // example integration test running on -d macos.
   test('stub', () {
-    final acceptUnitTestingDefeat = true;
+    const acceptUnitTestingDefeat = true;
     expect(acceptUnitTestingDefeat, isTrue);
   });
 }

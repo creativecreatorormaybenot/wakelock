@@ -28,11 +28,10 @@ dev_dependencies:
     sdk: flutter
   flutter_driver:
     sdk: flutter
+  integration_test:
+    sdk: flutter
 
-  integration_test: ^1.0.1
-  test: any
-
-  pedantic: ^1.11.0
+  flutter_lints: ^1.0.4
 
 dependency_overrides:
   # We override the platform dependencies of wakelock here because we use the example app for

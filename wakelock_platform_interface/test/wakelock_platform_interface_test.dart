@@ -34,13 +34,13 @@ void main() {
     test('Cannot be implemented with `implements`', () {
       expect(() {
         WakelockPlatformInterface.instance =
-            ImplementsWakelockPlatformInterface(false);
+            const ImplementsWakelockPlatformInterface(false);
       }, throwsA(isInstanceOf<NoSuchMethodError>()));
     });
 
     test('Can be mocked with `implements`', () {
       WakelockPlatformInterface.instance =
-          ImplementsWakelockPlatformInterface(true);
+          const ImplementsWakelockPlatformInterface(true);
     });
 
     test('Can be extended', () {

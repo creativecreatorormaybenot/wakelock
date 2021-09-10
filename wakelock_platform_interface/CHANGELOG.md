@@ -1,3 +1,7 @@
+## 0.2.1+3
+
+* Upgraded lints.
+
 ## 0.2.1+2
 
 * Updated GitHub references to use `main` instead of `master`.
