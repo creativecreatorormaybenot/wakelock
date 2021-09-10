@@ -3,7 +3,7 @@ description: >-2
   Plugin that allows you to keep the device screen awake, i.e. prevent the screen from sleeping on
   Android, iOS, macOS, Windows, and web.
 version: 0.5.4
-homepage: https://github.com/creativecreatorormaybenot/wakelock/tree/main/wakelock
+repository: https://github.com/creativecreatorormaybenot/wakelock/tree/main/wakelock
 
 environment:
   sdk: '>=2.12.0 <3.0.0'
