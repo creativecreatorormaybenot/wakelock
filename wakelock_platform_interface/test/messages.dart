@@ -8,7 +8,7 @@ import 'package:flutter/foundation.dart' show WriteBuffer, ReadBuffer;
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import '..\\lib\\messages.dart';
+import 'package:wakelock_platform_interface/messages.dart';
 
 class _TestWakelockApiCodec extends StandardMessageCodec {
   const _TestWakelockApiCodec();
