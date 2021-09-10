@@ -10,7 +10,7 @@ class IsEnabledMessage {
   bool? enabled;
 }
 
-@PigeonOptions(
+@ConfigurePigeon(PigeonOptions(
   dartOut: '../wakelock_platform_interface/lib/messages.dart',
   dartTestOut: '../wakelock_platform_interface/test/messages.dart',
   objcHeaderOut: 'ios/Classes/messages.h',
@@ -22,7 +22,7 @@ class IsEnabledMessage {
   javaOptions: JavaOptions(
     package: 'creativemaybeno.wakelock',
   ),
-)
+))
 @HostApi(dartHostTestHandler: 'TestWakelockApi')
 abstract class WakelockApi {
   void toggle(ToggleMessage msg);

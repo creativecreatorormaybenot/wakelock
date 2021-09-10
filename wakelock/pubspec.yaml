@@ -25,7 +25,7 @@ dev_dependencies:
     sdk: flutter
 
   flutter_lints: ^1.0.4
-  pigeon: ^1.0.2 # flutter pub run pigeon --input "pigeons/messages.dart" --dart_out "../wakelock_platform_interface/lib/messages.dart"
+  pigeon: ^1.0.2 # flutter pub run pigeon --input "pigeons/messages.dart"
 
 flutter:
   plugin:

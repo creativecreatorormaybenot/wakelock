@@ -40,7 +40,6 @@ class IsEnabledMessage {
 
 class _WakelockApiCodec extends StandardMessageCodec {
   const _WakelockApiCodec();
-
   @override
   void writeValue(WriteBuffer buffer, Object? value) {
     if (value is IsEnabledMessage) {
