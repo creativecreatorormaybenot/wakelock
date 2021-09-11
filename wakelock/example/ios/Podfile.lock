@@ -19,10 +19,10 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/wakelock/ios"
 
 SPEC CHECKSUMS:
-  Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
-  integration_test: 5ed24a436eb7ec17b6a13046e9bf7ca4a404e59e
+  Flutter: 50d75fe2f02b26cc09d224853bb45737f8b3214a
+  integration_test: 7db6d89f336f671dcbc7563ee27a5b08f6f8aee1
   wakelock: d0fc7c864128eac40eba1617cb5264d9c940b46f
 
-PODFILE CHECKSUM: 8e679eca47255a8ca8067c4c67aab20e64cb974d
+PODFILE CHECKSUM: da6cafc552cabecbcfc14b81246265fade7d4e24
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.10.2

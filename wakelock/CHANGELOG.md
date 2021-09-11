@@ -1,3 +1,7 @@
+## 0.5.5
+
+* Fixed iOS API by updating the method signatures to match the newly generated protocol.
+
 ## 0.5.4
 
 * Upgraded `pigeon` and lints.
