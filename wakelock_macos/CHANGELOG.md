@@ -1,3 +1,7 @@
+## 0.4.0
+
+* Fixed platform interface dependency.
+
 ## 0.3.0
 
 * Bumped to depend on latest platform interface.
