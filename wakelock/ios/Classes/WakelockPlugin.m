@@ -17,7 +17,7 @@
   [[IdleTimerDisabledObserver singleInstance] beginObserving];
 }
 
-- (void)toggle:(FLTToggleMessage*)input error:(FlutterError**)error {
+- (void)toggleMsg:(FLTToggleMessage*)input error:(FlutterError**)error {
   NSNumber *enable = input.enable;
   self.enable = enable.boolValue;
   NSNumber *enabled = [NSNumber numberWithBool:[[UIApplication sharedApplication] isIdleTimerDisabled]];
@@ -27,7 +27,7 @@
   }
 }
 
-- (FLTIsEnabledMessage*)isEnabled:(FlutterError* __autoreleasing *)error {
+- (FLTIsEnabledMessage*)isEnabledWithError:(FlutterError* __autoreleasing *)error {
   NSNumber *enabled = [NSNumber numberWithBool:[[UIApplication sharedApplication] isIdleTimerDisabled]];
   
   FLTIsEnabledMessage* result = [[FLTIsEnabledMessage alloc] init];
