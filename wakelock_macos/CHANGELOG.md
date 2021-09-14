@@ -1,3 +1,7 @@
+## 0.3.0
+
+* Bumped to depend on latest platform interface.
+
 ## 0.2.0
 
 * Bumped to depend on latest platform interface.
