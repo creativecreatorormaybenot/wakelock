@@ -1,3 +1,7 @@
+## 0.5.6
+
+* Fixed platform interface incompatibility by bumping the version constraint.
+
 ## 0.5.5
 
 * Fixed iOS API by updating the method signatures to match the newly generated protocol.
