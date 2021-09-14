@@ -1,3 +1,7 @@
+## 0.3.0
+
+* Upgraded version to indicate breaking method channel codec changes published with `0.2.1+3`.
+
 ## 0.2.1+3
 
 * Upgraded lints.

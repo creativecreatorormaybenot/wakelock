@@ -2,7 +2,7 @@ name: wakelock_platform_interface
 description: >-2
   A common platform interface for the wakelock plugin used by the different platform
   implementations.
-version: 0.2.1+3
+version: 0.3.0
 repository: >-2
   https://github.com/creativecreatorormaybenot/wakelock/tree/main/wakelock_platform_interface
 
