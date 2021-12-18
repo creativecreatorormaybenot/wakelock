@@ -36,4 +36,5 @@ static NSString *idleTimerLockKey = @"idleTimerLockKey";
 {
   return [objc_getAssociatedObject(self, &idleTimerLockKey) boolValue];
 }
+
 @end
