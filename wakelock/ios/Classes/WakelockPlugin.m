@@ -20,7 +20,7 @@
   if (!enable) {
     [[UIApplication sharedApplication] lock_idleTimerlockEnable:enable];//should disable first
     [self setIdleTimerDisabled:enable];
-  }else {
+  } else {
     [self setIdleTimerDisabled:enable];
     [[UIApplication sharedApplication] lock_idleTimerlockEnable:enable];
   }
