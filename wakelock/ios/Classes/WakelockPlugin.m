@@ -37,7 +37,6 @@
 
 - (FLTIsEnabledMessage*)isEnabledWithError:(FlutterError* __autoreleasing *)error {
   NSNumber *enabled = [NSNumber numberWithBool:[[UIApplication sharedApplication] isIdleTimerDisabled]];
-    
   FLTIsEnabledMessage* result = [[FLTIsEnabledMessage alloc] init];
   result.enabled = enabled;
     
