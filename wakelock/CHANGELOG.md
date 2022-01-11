@@ -1,3 +1,7 @@
+## 0.6.0
+
+* Upgraded Android embedding.
+
 ## 0.5.6
 
 * Fixed platform interface incompatibility by bumping the version constraint.

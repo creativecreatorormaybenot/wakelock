@@ -24,7 +24,6 @@ jobs:
         channel:
           - 'stable'
           - 'beta'
-          - 'dev'
         package:
           - 'wakelock'
           - 'wakelock_macos'
@@ -57,7 +56,6 @@ jobs:
         channel:
           - 'stable'
           - 'beta'
-          - 'dev'
         package:
           - 'wakelock'
           - 'wakelock_macos'
@@ -102,7 +100,7 @@ jobs:
           cd wakelock/example
           flutter drive --driver=test_driver/integration_test.dart --target=integration_test/wakelock_test.dart
       - name: Integration tests on macOS
-        if: matrix.package == 'wakelock_macos' && matrix.channel == 'dev'
+        if: matrix.package == 'wakelock_macos'
         run: |
           cd wakelock/example
           flutter config --enable-macos-desktop
