@@ -1,3 +1,7 @@
+## 0.6.0+1
+
+* Remove Podfiles from example directory.
+
 ## 0.6.0
 
 * Upgraded Android embedding.
