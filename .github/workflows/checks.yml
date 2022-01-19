@@ -70,14 +70,14 @@ jobs:
     steps:
       - name: Start iOS simulator
         if: matrix.package == 'wakelock'
+        # Using gawk to be able to use my regex to separate the IDs from the device names
+        # (because my awk skills suck) to then pipe that to awk to find the right device.
         run: |
           xcrun xctrace list devices
           UDID=$(
             xcrun xctrace list devices |
-            awk \
-              -F ' *()()' \
-              -v 'device=${{ matrix.device }}' \
-              '$1 == device { print $2 }'
+            gawk 'match($0, /(.+) \(([^.]*)\)/, a) { printf "%s,%s\n", a[1], a[2] }' |
+            awk -F ',' -v 'device=${{ matrix.device }}' '$1 == device { print $2 }'
           )
           echo "${UDID}"
           xcrun simctl boot "${UDID:?simulator not found}"
