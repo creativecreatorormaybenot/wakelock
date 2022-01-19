@@ -39,7 +39,6 @@
   NSNumber *enabled = [NSNumber numberWithBool:[[UIApplication sharedApplication] isIdleTimerDisabled]];
   FLTIsEnabledMessage* result = [[FLTIsEnabledMessage alloc] init];
   result.enabled = enabled;
-    
   return result;
 }
 
