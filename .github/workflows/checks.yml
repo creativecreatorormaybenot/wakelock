@@ -74,12 +74,12 @@ jobs:
         # (because my awk skills suck) to then pipe that to awk to find the right device.
         run: |
           xcrun xctrace list devices
+          xcrun xctrace list devices | gawk 'match($0, /(.+) \(([^.]*)\)/, a) { printf "%s,%s\n", a[1], a[2] }'
           UDID=$(
             xcrun xctrace list devices |
             gawk 'match($0, /(.+) \(([^.]*)\)/, a) { printf "%s,%s\n", a[1], a[2] }' |
             awk -F ',' -v 'device=${{ matrix.device }}' '$1 == device { print $2 }'
           )
-          echo "${UDID}"
           xcrun simctl boot "${UDID:?simulator not found}"
       - uses: actions/checkout@v2.3.3
       - uses: subosito/flutter-action@v1.4.0
