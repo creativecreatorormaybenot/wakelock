@@ -73,8 +73,8 @@ jobs:
         # Using gawk to be able to use my regex to separate the IDs from the device names
         # (because my awk skills suck) to then pipe that to awk to find the right device.
         run: |
+          brew install gawk
           xcrun xctrace list devices
-          xcrun xctrace list devices | gawk 'match($0, /(.+) \(([^.]*)\)/, a) { printf "%s,%s\n", a[1], a[2] }'
           UDID=$(
             xcrun xctrace list devices |
             gawk 'match($0, /(.+) \(([^.]*)\)/, a) { printf "%s,%s\n", a[1], a[2] }' |
