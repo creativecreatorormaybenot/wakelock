@@ -13,6 +13,7 @@ on:
       - '**/test_driver/**'
       - '**/assets/**'
       - '**/integration_test/**'
+      - '.github/workflows/checks.yml'
 
 jobs:
   analyze:
