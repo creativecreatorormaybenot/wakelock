@@ -1,3 +1,7 @@
+## 0.6.1
+
+* Fixed infinite loop on iOS.
+
 ## 0.6.0+1
 
 * Remove Podfiles from example directory.
