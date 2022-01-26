@@ -68,6 +68,24 @@ bool wakelockEnabled = await Wakelock.enabled;
 If you want to wait for the wakelock toggle to complete (which takes an insignificant amount of
 time), you can also `await` any of `Wakelock.enable`, `Wakelock.disable`, and `Wakelock.toggle`.
 
+### Ensure the `WidgetsBinding` is initialized
+
+If you want to call `Wakelock.enable()` or the other functions before `runApp()` (e.g. in `main()`),
+you will have to ensure that the `WidgetsBinding` is initialized first:
+
+```dart
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  Wakelock.enable();
+
+  runApp(..);
+}
+```
+
+In general, it is advisable to make your wakelock dependent on certain components within your app
+instead, e.g. by only enabling it (continually) when a certain widget is visible.
+There is no negative impact in calling `Wakelock.enable()` more often.
+
 ## Learn more
 
 If you want to learn more about how this plugin works, how to contribute, etc., you can read through

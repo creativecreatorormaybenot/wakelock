@@ -1,3 +1,7 @@
+## 0.6.1+1
+
+* Documented necessity of ensuring that the `WidgetsBinding` is initialized.
+
 ## 0.6.1
 
 * Fixed infinite loop on iOS.
