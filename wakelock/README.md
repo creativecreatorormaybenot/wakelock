@@ -86,6 +86,23 @@ In general, it is advisable to make your wakelock dependent on certain component
 instead, e.g. by only enabling it (continually) when a certain widget is visible.
 There is no negative impact in calling `Wakelock.enable()` more often.
 
+### Calling `Wakelock.enable()` in `main()`
+
+As touched on in the previous paragraph, calling `Wakelock.enable()` in your `main()` function is
+not the best approach for a number of reasons.
+
+The most important factors are:
+
+1. Users expect their screen to automatically turn off unless e.g. a video is playing.  
+   It is unlikely that your whole app requires the screen to always stay on.
+2. The wakelock can be released by external sources at any time (e.g. by the OS).  
+   Only calling `Wakelock.enable()` once will most likely mean that the screen turns off at one
+   point or another anyway.
+
+This is why you should instead prefer to enable the wakelock whenever components inside of your app
+that require the screen to stay on are active. This can e.g. happen in the `build` method of your
+widget.
+
 ## Learn more
 
 If you want to learn more about how this plugin works, how to contribute, etc., you can read through
