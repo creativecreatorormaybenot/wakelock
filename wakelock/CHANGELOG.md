@@ -1,3 +1,7 @@
+## 0.6.1+2
+
+* Documented the recommendation of not calling `Wakelock.enable()` directly inside of `main()`.
+
 ## 0.6.1+1
 
 * Documented necessity of ensuring that the `WidgetsBinding` is initialized.
