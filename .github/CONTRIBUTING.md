@@ -16,7 +16,7 @@ The following steps are based on a version of [flutter/plugin's contributing gui
 ### Create pull requests
 
 - Fetch the latest repo state: `git fetch upstream`
-- Create a feature branch: `git checkout upstream/master -b <name_of_your_branch>`
+- Create a feature branch: `git checkout upstream/main -b <name_of_your_branch>`
 - Now, you can change the code necessary for your patch.
 
   Make sure that you bump the version in [`pubspec.yaml`][pubspec]. You **must** bump the Pubspec
