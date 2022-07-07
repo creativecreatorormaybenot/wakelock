@@ -1,3 +1,7 @@
+## 0.6.2
+
+* Fixed Android build issues.
+
 ## 0.6.1+2
 
 * Documented the recommendation of not calling `Wakelock.enable()` directly inside of `main()`.
