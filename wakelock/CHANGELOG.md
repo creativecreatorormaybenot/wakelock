@@ -1,3 +1,7 @@
+## 0.6.2+1
+
+* Dependenncy update for flutter 3.3.0
+
 ## 0.6.2
 
 * Fixed Android build issues.
