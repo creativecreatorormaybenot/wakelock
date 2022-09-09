@@ -1,3 +1,7 @@
+## 0.2.1
+
+* Increase version for win32 dependency from 2 to 3
+
 ## 0.2.0
 
 * Bumped to depend on latest platform interface.
