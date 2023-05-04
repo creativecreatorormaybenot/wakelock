@@ -1,3 +1,7 @@
+## 0.6.3
+
+* Add compatibility with AGP 8 (Android Gradle Plugin).
+
 ## 0.6.2
 
 * Fixed Android build issues.
