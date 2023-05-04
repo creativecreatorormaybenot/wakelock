@@ -1,7 +1,7 @@
 name: wakelock_windows
 description: >-2
   Windows platform implementation of the wakelock_platform_interface for the wakelock plugin.
-version: 0.2.1
+version: 0.2.2
 repository: https://github.com/creativecreatorormaybenot/wakelock/tree/main/wakelock_windows
 
 environment:
