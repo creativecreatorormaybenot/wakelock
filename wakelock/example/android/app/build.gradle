@@ -26,13 +26,15 @@ apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
+    namespace 'creativemaybeno.wakelock_example'
+
     compileSdkVersion 31
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
-
-    lintOptions {
+    
+    lint {
         disable 'InvalidPackage'
     }
 
