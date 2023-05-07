@@ -53,8 +53,8 @@ jobs:
     strategy:
       matrix:
         device:
-          - 'iPhone 12 Pro Simulator (15.2)'
-          - 'iPhone 13 Pro Max Simulator (15.2)'
+          - 'iPhone 13 Pro Simulator (16.2)'
+          - 'iPhone 14 Pro Max Simulator (16.2)'
         channel:
           - 'stable'
           - 'beta'
