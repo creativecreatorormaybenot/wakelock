@@ -81,8 +81,8 @@ jobs:
             awk -F ',' -v 'device=${{ matrix.device }}' '$1 == device { print $2 }'
           )
           xcrun simctl boot "${UDID:?simulator not found}"
-      - uses: actions/checkout@v2.3.3
-      - uses: subosito/flutter-action@v1.4.0
+      - uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2
         with:
           channel: ${{ matrix.channel }}
       - run: flutter pub get
