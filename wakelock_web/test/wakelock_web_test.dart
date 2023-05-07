@@ -1,9 +1,10 @@
+@TestOn('browser')
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:wakelock/wakelock.dart';
 import 'package:wakelock_platform_interface/wakelock_platform_interface.dart';
 import 'package:wakelock_web/wakelock_web.dart';
 
-@TestOn('browser')
 void main() {
   group('$WakelockWeb', () {
     setUpAll(() async {
