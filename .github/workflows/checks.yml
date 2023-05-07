@@ -3,7 +3,7 @@ name: checks
 on:
   push:
     branches:
-      - *
+      - '*'
     paths:
       - '**/lib/**'
       - '**/android/**'
