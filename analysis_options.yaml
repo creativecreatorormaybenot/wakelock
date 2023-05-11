@@ -1,7 +1,0 @@
-include: package:flutter_lints/flutter.yaml
-
-linter:
-  rules:
-    public_member_api_docs: true
-    # Ignoring unsafe_html as we need to import a JS script in wakelock_web and because of https://github.com/dart-lang/sdk/issues/45230.
-    unsafe_html: false
