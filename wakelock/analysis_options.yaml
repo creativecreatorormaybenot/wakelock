@@ -1,11 +1,5 @@
 include: package:flutter_lints/flutter.yaml
 
-analyzer:
-  exclude:
-    - 'lib/messages.dart'
-    - 'test/messages.dart'
-
 linter:
   rules:
     public_member_api_docs: true
-

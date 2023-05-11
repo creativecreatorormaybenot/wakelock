@@ -1,3 +1,7 @@
+## 0.2.2
+
+* Bumped the `win32` dependency to support v4 or v5.
+
 ## 0.2.1
 
 * Bumped the `win32` dependency from `^2.0.0` to `^3.0.0`.
