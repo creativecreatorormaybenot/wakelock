@@ -4,7 +4,7 @@ version: 0.4.0
 repository: https://github.com/creativecreatorormaybenot/wakelock/tree/main/wakelock_web
 
 environment:
-  sdk: '>=2.12.0 <3.0.0'
+  sdk: '>=3.0.0 <4.0.0'
   flutter: '>=1.24.0-0'
 
 dependencies:
