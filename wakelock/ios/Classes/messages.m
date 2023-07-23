@@ -108,7 +108,7 @@ static NSDictionary<NSString *, id> *wrapResult(id result, FlutterError *error) 
 }
 @end
 
-NSObject<FlutterMessageCodec> *FLTWakelockApiGetCodec() {
+NSObject<FlutterMessageCodec> *FLTWakelockApiGetCodec(void) {
   static dispatch_once_t s_pred = 0;
   static FlutterStandardMessageCodec *s_sharedObject = nil;
   dispatch_once(&s_pred, ^{

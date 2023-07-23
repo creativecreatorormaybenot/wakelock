@@ -3,13 +3,13 @@ description: >-2
   Example app demonstrating how to use the wakelock plugin. It also includes integration tests for
   testing the plugin in an integrated example.
 publish_to: 'none'
-version: 1.0.0+1
+version: 1.1.0+1
 
 environment:
   # Opt out of null safety on purpose because dependencies do not support sound null safety yet
   # and flutter drive ignores the --no-sound-null-safety parameter.
   # todo(creativecreatorormaybenot): switch to 2.12.0-0 lower bound.
-  sdk: '>=2.11.0 <3.0.0'
+  sdk: '>=2.17.0 <4.0.0'
 
 dependencies:
   flutter:

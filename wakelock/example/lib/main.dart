@@ -11,7 +11,7 @@ void main() {
 /// callback functions and a [FutureBuilder].
 class WakelockExampleApp extends StatefulWidget {
   /// Creates the [WakelockExampleApp] widget.
-  const WakelockExampleApp({Key key}) : super(key: key);
+  const WakelockExampleApp({Key? key}) : super(key: key);
 
   @override
   _WakelockExampleAppState createState() => _WakelockExampleAppState();

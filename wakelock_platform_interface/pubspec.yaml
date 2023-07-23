@@ -2,12 +2,12 @@ name: wakelock_platform_interface
 description: >-2
   A common platform interface for the wakelock plugin used by the different platform
   implementations.
-version: 0.3.0
+version: 0.8.0
 repository: >-2
   https://github.com/creativecreatorormaybenot/wakelock/tree/main/wakelock_platform_interface
 
 environment:
-  sdk: '>=2.12.0 <3.0.0'
+  sdk: '>=2.17.0 <4.0.0'
 
 dependencies:
   flutter:
@@ -19,4 +19,4 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  flutter_lints: ^1.0.4
+  flutter_lints: ^2.0.2
