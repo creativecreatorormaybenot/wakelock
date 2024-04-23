@@ -1,3 +1,7 @@
+## 0.7.0
+
+* Support OpenHarmony.
+
 ## 0.6.2
 
 * Fixed Android build issues.

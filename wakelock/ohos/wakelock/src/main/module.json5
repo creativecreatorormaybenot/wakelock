@@ -1,0 +1,10 @@
+{
+  "module": {
+    "name": "wakelock",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ]
+  }
+}

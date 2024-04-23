@@ -36,9 +36,9 @@ class _WakelockExampleAppState extends State<WakelockExampleApp> {
                 onPressed: () {
                   // The following code will enable the wakelock on the device
                   // using the wakelock plugin.
-                  setState(() {
-                    Wakelock.enable();
-                    // You could also use Wakelock.toggle(on: true);
+                  // You could also use Wakelock.toggle(on: true);
+                  Wakelock.enable().whenComplete(() {
+                    setState(() {});
                   });
                 },
                 child: const Text('enable wakelock'),
@@ -48,9 +48,9 @@ class _WakelockExampleAppState extends State<WakelockExampleApp> {
                 onPressed: () {
                   // The following code will disable the wakelock on the device
                   // using the wakelock plugin.
-                  setState(() {
-                    Wakelock.disable();
-                    // You could also use Wakelock.toggle(on: false);
+                  // You could also use Wakelock.toggle(on: false);
+                  Wakelock.disable().whenComplete(() {
+                    setState(() {});
                   });
                 },
                 child: const Text('disable wakelock'),
